@@ -323,13 +323,13 @@ const projectTemplates = {
     learning:
       "The service prepares the document image, extracts text, and arranges the detected lines into code. Continuation rules associate side-written code with the main text when the layout is clear; uncertain cases retain their order for teacher review. Original extraction and teacher corrections are kept separate. Mobile capture and Judge0 grading were developed by my teammates.",
     footer:
-      "The video is a screen recording of the team’s real web interface, run through its own test harness with my handwritten test page from our end-to-end run and the text our OCR pipeline produced for it. The questions are demo data, and no Judge0 grading run is shown.",
+      "The video is a screen recording of the team’s real web interface, run through its own test harness with my handwritten test page from our end-to-end run and the text our OCR pipeline produced for it. The questions are demo data; the grading is a live run on our team’s Judge0 server, reached over Tailscale.",
     video: {
       src: "assets/videos/maistra.mp4",
       hevc: "assets/videos/maistra.hevc.mp4",
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/maistra.jpg",
-      duration: 53.0,
+      duration: 78.5,
       chapters: [
         {
           time: 0,
@@ -346,7 +346,7 @@ const projectTemplates = {
           screen: "assets/projects/maistra-real-submissions.png",
         },
         {
-          time: 9.7,
+          time: 9.6,
           title: "Check the question",
           caption:
             "The page was submitted to Q1, which supplies its grading test cases.",
@@ -374,7 +374,7 @@ const projectTemplates = {
           screen: "assets/projects/maistra-real-program2-picker.png",
         },
         {
-          time: 39.5,
+          time: 39.4,
           title: "Save both programs",
           caption:
             "One save stores every program on the paper, each with its own question.",
@@ -382,10 +382,27 @@ const projectTemplates = {
         },
         {
           time: 44,
-          title: "Ready to grade",
+          title: "Run a sample",
           caption:
-            "Each program is graded on Judge0 against its own question's test cases.",
+            "Run Sample compiles the saved code on our Judge0 server over Tailscale. It prints 16, as expected.",
           screen: "assets/projects/maistra-real-grading.png",
+        },
+        {
+          time: 52.3,
+          title: "Grade against test cases",
+          caption:
+            "Submit Code runs every Q1 test case on Judge0: square(4) gives 16 and square(-3) gives 9. Score: 100%.",
+        },
+        {
+          time: 61.9,
+          title: "Grade Program 2",
+          caption:
+            "The cube program runs against Q2's own test cases: 8 and -27, both accepted.",
+        },
+        {
+          time: 73.6,
+          title: "Paper graded",
+          caption: "Both programs on the handwritten page show 2/2 passed.",
         },
       ],
     },

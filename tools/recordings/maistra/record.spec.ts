@@ -5,7 +5,8 @@ import { FakeBackend } from '/Users/johncalen.nombrado/Desktop/mAIstra/maistra_w
 // Screen recording of the real mAIstra interface for the portfolio video.
 // JC's handwritten test pages from the 2026-10-01 end-to-end run, with the text
 // the OCR pipeline produced for each. Supabase and the OCR server are faked, so
-// nothing reaches the cloud project. Judge0 is not called.
+// nothing reaches the cloud project. Grading is real: our Judge0 VM over
+// Tailscale, through mAIstra's own judge0_api wrapper on 127.0.0.1:8001.
 //
 // The browser is recorded with Chrome's screencast. A headless browser draws no
 // mouse pointer, so every move, click, caption and zoom is logged with its time
@@ -86,11 +87,32 @@ async function textAt(page: Page, index: number, needle: string) {
   }, [index, needle] as const);
 }
 
+// Scroll the dialog with the wheel (under the pointer) until locator sits in view.
+async function scrollTo(page: Page, locator: Locator) {
+  const b = await locator.first().boundingBox();
+  if (!b) throw new Error('no box');
+  const dy = b.y < 260 ? b.y - 260 : b.y + b.height > H - 120 ? b.y + b.height - (H - 120) : 0;
+  if (!dy) return;
+  const steps = 24;
+  for (let i = 0; i < steps; i++) {
+    await page.mouse.wheel(0, dy / steps);
+    await page.waitForTimeout(16);
+  }
+  await page.waitForTimeout(350);
+}
+
+// Grow a camera rectangle a little so the subject is not flush with the edge.
+function pad(r: number[]) {
+  const m = 0.03;
+  return [Math.max(0, r[0] - m), Math.max(0, r[1] - m), Math.min(1, r[2] + m), Math.min(1, r[3] + m)];
+}
+
 test('record the mAIstra review flow', async ({ page }) => {
   test.setTimeout(240_000);
   mkdirSync(`${OUT}/frames`, { recursive: true });
   const backend = new FakeBackend();
   await backend.install(page);
+  await page.unroute('http://127.0.0.1:8001/api/judge0/**');
   const section = backend.addSection('E2E TEST');
   backend.addQuestion({
     id: Q1,
@@ -262,14 +284,47 @@ test('record the mAIstra review flow', async ({ page }) => {
   await click(page, dialog.getByRole('button', { name: 'Continue to grading' }), 1100);
   await expect(dialog.getByRole('heading', { name: 'Run and grade' })).toBeVisible();
 
-  chapter('Ready to grade', 'Each program is graded on Judge0 against its own question\'s test cases.');
+  chapter('Run a sample', 'Run Sample compiles the saved code on our Judge0 server over Tailscale. It prints 16, as expected.');
   await page.waitForTimeout(700);
-  zoom([0.08, 0.27, 0.74, 0.86]);
-  await page.waitForTimeout(2000);
+  await click(page, dialog.getByRole('button', { name: 'Run Sample' }), 1000);
+  await expect(dialog.locator('.terminal-results')).toBeVisible({ timeout: 60_000 });
+  await page.waitForTimeout(500);
+  await scrollTo(page, dialog.locator('.terminal-results'));
+  zoom(await box(dialog.locator('.terminal-results')).then(pad));
+  await page.waitForTimeout(3000);
+  zoom(null, 700);
+  await page.waitForTimeout(500);
+
+  chapter('Grade against test cases', 'Submit Code runs every Q1 test case on Judge0: square(4) gives 16 and square(-3) gives 9. Score: 100%.');
+  await scrollTo(page, dialog.getByRole('button', { name: 'Submit Code' }));
+  await click(page, dialog.getByRole('button', { name: 'Submit Code' }), 900);
+  await expect(dialog.locator('.submit-results')).toBeVisible({ timeout: 60_000 });
+  await page.waitForTimeout(500);
+  await scrollTo(page, dialog.locator('.submit-results'));
+  zoom(await box(dialog.locator('.submit-results')).then(pad));
+  await page.waitForTimeout(3400);
+  zoom(null, 700);
+  await page.waitForTimeout(400);
+
+  chapter('Grade Program 2', 'The cube program runs against Q2\'s own test cases: 8 and -27, both accepted.');
+  await scrollTo(page, dialog.locator('.grading-programs'));
   await click(page, dialog.getByRole('tab', { name: /Program 2/ }), 1000);
-  await page.waitForTimeout(2000);
-  await moveTo(page, ...(Object.values(await center(dialog.getByRole('button', { name: 'Run Sample' }))) as [number, number]), 1000);
-  await page.waitForTimeout(1800);
+  await page.waitForTimeout(900);
+  await scrollTo(page, dialog.getByRole('button', { name: 'Submit Code' }));
+  await click(page, dialog.getByRole('button', { name: 'Submit Code' }), 900);
+  await expect(dialog.locator('.submit-results')).toBeVisible({ timeout: 60_000 });
+  await page.waitForTimeout(500);
+  await scrollTo(page, dialog.locator('.submit-results'));
+  zoom(await box(dialog.locator('.submit-results')).then(pad));
+  await page.waitForTimeout(3400);
+  zoom(null, 700);
+  await page.waitForTimeout(400);
+
+  chapter('Paper graded', 'Both programs on the handwritten page show 2/2 passed.');
+  await scrollTo(page, dialog.locator('.grading-programs'));
+  await page.waitForTimeout(500);
+  zoom(await box(dialog.locator('.grading-programs')).then(pad));
+  await page.waitForTimeout(2800);
   log('end');
   await page.waitForTimeout(300);
   await cdp.send('Page.stopScreencast');

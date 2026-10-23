@@ -1005,7 +1005,7 @@ def maistra():
     ]
     return Recording(
         "maistra", "mAIstra", "Screen recording",
-        "My real test page and its OCR output  ·  demo questions, no grading run",
+        "My real test page and its OCR output  ·  graded live on our Judge0 server",
         (40, 46, 70), ROOT / "tools" / "recordings" / "maistra", window,
         poster_chapter=3, eyebrow="mAIstra", screens=screens,
         # Wide for navigation; frames only where text has to be read.
@@ -1016,7 +1016,13 @@ def maistra():
             (4, 0.0, [0.4, 0.38, 0.84, 0.69], 1.0),    # in on the code being corrected
             (5, 0.0, [0.38, 0.22, 0.9, 0.58], 0.9),    # program tabs and question picker
             (6, 3.9, None, 0.7),                       # back out for Continue to grading
-            (7, 1.2, [0.08, 0.27, 0.74, 0.86], 1.1),   # the two programs to grade
+            (7, 4.8, [0.1, 0.27, 0.7, 0.73], 1.0),     # Accepted, and what it printed
+            (7, 7.8, None, 0.7),                       # back out for Submit Code
+            (8, 5.9, [0.37, 0.53, 0.9, 0.85], 1.0),    # outputs, expected values, score
+            (8, 9.3, None, 0.7),                       # back out for the Program 2 tab
+            (9, 7.9, [0.37, 0.53, 0.9, 0.85], 1.0),    # the cube program's results
+            (9, 11.3, None, 0.7),
+            (10, 1.6, [0.1, 0.25, 0.4, 0.34], 1.0),    # both programs: 2/2 passed
         ],
     )
 
