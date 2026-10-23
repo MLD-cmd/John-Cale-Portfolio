@@ -122,13 +122,15 @@ const projectTemplates = {
     label: "Solo project / Mobile development",
     description:
       "A Flutter hydration app with daily logging, progress tracking, reminders, and an AI coach.",
-    idea: "A mobile app that tracks how much you drink each day against a personal goal.",
+    idea: "Hydro-Tracker is a mobile app that helps users build a healthy drinking habit. Users log each drink, follow their progress toward a personal daily goal, and review their history through daily, weekly, and monthly statistics.",
     contribution:
-      "Solo project. I built every screen, sign-in and cloud saving with Supabase, reminders, editable history, weather data, and an AI coach.",
-    stack: "Flutter, Dart, Supabase, and external APIs (weather and AI coach).",
+      "I developed this app on my own, from the interface to the backend connection. I designed and built the Flutter screens and the logic that calculates daily intake, progress, and reminders. I also set up user accounts and cloud storage with Supabase, added local caching, made past entries editable, and integrated a weather service and an AI hydration coach.",
+    stack:
+      "Flutter and Dart for the app, Supabase for accounts and cloud storage, and external APIs for weather information and the AI coach.",
     learning:
-      "Log a drink and the daily ring fills up. Weekly and monthly charts show the trend, and past entries, the goal, and reminders can all be edited.",
-    footer: "Video: real app screens from a demo account.",
+      "Each logged drink immediately updates the daily total and the progress ring. Users can correct earlier entries from their history and change their daily goal and reminder schedule in settings. Weather information can be used to adjust the goal, and the AI coach sends its requests through a backend function instead of directly from the app.",
+    footer:
+      "About the video: it animates real screens captured from the app with a demo account, covering registration, logging, statistics, settings, and history.",
     video: {
       src: "assets/videos/hydro-tracker.mp4",
       hevc: "assets/videos/hydro-tracker.hevc.mp4",
@@ -240,15 +242,15 @@ const projectTemplates = {
     label: "Group project / Mobile development",
     description:
       "A Flutter app for sharing bulk purchases within a campus or dorm community.",
-    idea: "A campus app where students split bulk purchases, like a 25 kg rice sack, so each one pays only for their share.",
+    idea: "Bulk Buying Companion helps students in the same campus or dorm community share the cost of bulk purchases. Students join a nearby hub, browse shared deals on its Split Board, and reserve a portion of an item, such as one share of a 25 kg rice sack. Each deal shows how much a student pays, what quantity they receive, and where to pick it up.",
     contribution:
-      "Group project. I built the cost splitting, slot reservations, database access rules, deal status tracking, receipt scanning, and deal recommendations.",
+      "I co-developed this app with my group and handled much of its core logic. I implemented the cost-splitting calculation, which divides prices in whole centavos and shows any rounding difference openly, along with the reservation and cancellation logic. I wrote the database rules that limit each deal to members of its hub, added deal statuses based on payment, purchase, and pickup records, built on-device receipt scanning, and created a rules-based recommendation feature. I also improved form validation, loading and error messages, and the speed of profile-history queries.",
     stack:
-      "Flutter, Dart, Provider, and Supabase (PostgreSQL, Auth, Realtime).",
+      "Flutter and Dart for the app, Provider for state management, and Supabase (PostgreSQL database, authentication, and realtime updates) for the backend.",
     learning:
-      "Students join a nearby hub, reserve a slot on a deal, and see exactly what they owe and where to pick it up. Costs split to the centavo, and scanning a receipt fills in a new deal.",
+      "Reservations and access rules are enforced in the database, so the number of open slots stays accurate for every member. The receipt scanner reads a photo of a receipt, keeps each item paired with its price, ignores cash and change amounts, and fills in a new deal that the organiser can still edit. Recommendations are based on a student’s preferred categories and past activity, and each one explains why it was suggested.",
     footer:
-      "Video: the real app running on its built-in sample data. Receipt scanning and the live database are not shown.",
+      "About the video: it is a screen recording of the real app, built for the web and running on its built-in sample hubs, deals, and student account. Receipt scanning and live database operations are not shown.",
     video: {
       src: "assets/videos/bulk-buying.mp4",
       hevc: "assets/videos/bulk-buying.hevc.mp4",
@@ -314,15 +316,15 @@ const projectTemplates = {
     label: "Group / Thesis project",
     description:
       "A group thesis project for reviewing handwritten C programming assignments.",
-    idea: "Helps teachers check C programs that students write by hand: it turns a photo of the paper into code, then grades it automatically.",
+    idea: "mAIstra is our group thesis: a system that helps teachers check C programming answers written by hand on paper. It uses optical character recognition (OCR) to turn a photo of a student’s handwritten code into editable text. The teacher compares the result with the paper, corrects any errors, and then runs the verified program against the question’s test cases for grading.",
     contribution:
-      "Thesis team. I built the OCR service that reads handwritten code, trained it on handwritten C samples, and built the code-review screens in the web app. My teammates built the mobile app and Judge0 grading.",
+      "I was responsible for the OCR part of the system. I developed the Python and FastAPI service that reads handwritten code, fine-tuned an existing text-recognition model with handwritten C samples, and added image preprocessing and code clean-up to improve accuracy. I also wrote reading-order rules so code continued in the page margin or a second column is placed correctly. In the Angular web app, I added tabs for papers with more than one program, status messages during extraction, and safeguards against losing unsaved edits. My teammates developed the mobile capture app and the Judge0 grading.",
     stack:
-      "Python, FastAPI, OpenCV, Angular, TypeScript, Supabase, and Judge0 (team stack).",
+      "Our team used Angular and TypeScript for the web app, Flutter and Dart for the mobile app, Python, FastAPI, and OpenCV for the OCR service, Supabase for data and storage, and Judge0 for running and grading code.",
     learning:
-      "The teacher photographs the paper, OCR turns it into code, and the teacher fixes any misread characters. The corrected program then runs against the question’s test cases on Judge0.",
+      "The OCR service first prepares the photo, then extracts the text and arranges the detected lines into code. When the page layout is clear, code written on the side is joined to the main program; when it is not, the original order is kept so the teacher can decide. The original extraction and the teacher’s corrections are stored separately, so every change can be traced.",
     footer:
-      "Video: the real web app with my own handwritten test page, graded live on our Judge0 server. The questions are demo data.",
+      "About the video: it is a screen recording of our real web app, using my own handwritten test page from our end-to-end testing and the text our OCR produced for it. The grading is a live run on our team’s Judge0 server; the questions are demo data.",
     video: {
       src: "assets/videos/maistra.mp4",
       hevc: "assets/videos/maistra.hevc.mp4",
@@ -412,14 +414,15 @@ const projectTemplates = {
     label: "Graphics and visual computing",
     description:
       "A desktop workflow for document image correction, cleanup, and text extraction, with primary and fallback OCR engines.",
-    idea: "A desktop app that straightens and cleans up photos of documents, then reads their text.",
+    idea: "MeshUnwarp is a desktop application that prepares photos of documents for text extraction. It straightens curved or creased pages, corrects lighting and background, and then reads the text so it can be saved.",
     contribution:
-      "I built the desktop interface and connected the pipeline: OpenCV preprocessing, existing page-flattening models, and OCR engines.",
-    stack: "Python, Tkinter, OpenCV, DocTr, and OCR engines.",
+      "I built the Python and Tkinter desktop interface and connected the processing stages into one complete workflow: OpenCV preprocessing, existing document-correction models for flattening pages, and the OCR engines. My focus was the application workflow and making these separate components work together reliably.",
+    stack:
+      "Python and Tkinter for the desktop app, OpenCV for image processing, DocTr for page flattening, and Apple Vision with a fallback engine for OCR.",
     learning:
-      "Pick a photo and an output mode. The app checks image quality, flattens the page, cleans it up, and extracts the text, with a backup OCR engine if the first one fails. Processing runs in the background so the window never freezes.",
+      "The user selects a photo and an output mode. The app preprocesses the image and checks its quality, then corrects page distortion and lighting, cleans up the result, and extracts the text. If the main OCR engine is unavailable or returns too little text, a fallback engine is used. Processing runs in a separate worker so the interface stays responsive.",
     footer:
-      "Video: the real app running my own test papers (cropped from my documentation, so low resolution).",
+      "About the video: it shows the real app processing my own test papers through the full pipeline. The papers were cropped from my documentation figures, so the photos are low resolution.",
     video: {
       src: "assets/videos/meshunwarp.mp4",
       hevc: "assets/videos/meshunwarp.hevc.mp4",
@@ -510,15 +513,15 @@ const projectTemplates = {
     label: "Software Engineering 1 / Team of three",
     description:
       "A Flutter study application with speech input, spoken feedback, notes, quizzes, and progress tracking.",
-    idea: "A study app for visually impaired learners: it reads notes aloud and accepts spoken quiz answers.",
+    idea: "OpenEar is a study app designed for visually impaired learners. It reads study notes aloud, lets users answer quizzes by voice or touch, and tracks their progress, so they can study without depending on the screen.",
     contribution:
-      "Team of three. I built the welcome and login screens, improved speech output and recognition, and added voice and tap navigation, the quiz flow, and question lookup in notes.",
+      "I co-developed OpenEar in a team of three. I built the welcome and login screens, improved the app’s spoken feedback and speech recognition, and added navigation that works with both voice commands and taps. I also implemented the basic quiz flow and a feature that looks up answers to questions within the user’s saved notes.",
     stack:
-      "Flutter, Dart, Firebase (Auth and Firestore), text-to-speech, and speech recognition.",
+      "Flutter and Dart for the app, Firebase Authentication and Firestore for accounts and data, and text-to-speech and speech recognition for voice interaction.",
     learning:
-      "Upload notes, then listen to them or take a quiz built from them. Every action gives spoken feedback, and answers can be tapped or spoken.",
+      "Users upload or select study material, then choose to listen to their notes or take a quiz. The app speaks feedback for each action, and users can navigate by voice or touch. When a user asks a question about their notes, the app searches the saved material using keyword and approximate text matching.",
     footer:
-      "Video: app screens with sample notes. Voice input and sign-in are not shown live.",
+      "About the video: it animates the app’s screens with sample notes and quiz content. It does not show a live voice or sign-in session.",
     video: {
       src: "assets/videos/openear.mp4",
       hevc: "assets/videos/openear.hevc.mp4",
@@ -573,14 +576,15 @@ const projectTemplates = {
     label: "Academic machine learning study",
     description:
       "A study of how machine-learning models classify student pass/fail outcomes.",
-    idea: "A class study on whether background details alone, like lunch type and test prep, can predict if a student passes math.",
+    idea: "This coursework study tested whether a student’s background information alone, such as gender, lunch type, parental education, and test preparation, can predict whether they pass math. It compares three machine-learning models on a dataset of 1,000 student records.",
     contribution:
-      "I cleaned the data, removed the score columns that would give away the answer, trained and compared three models, and wrote up the limits.",
+      "I built the data preprocessing and model evaluation pipeline. I removed the three score columns because they would give away the answer and make the results misleading. I then trained and compared Naive Bayes, a neural network (multilayer perceptron), and Random Forest, and documented the limits of the findings.",
     stack:
-      "Python, pandas, scikit-learn, imbalanced-learn, Matplotlib, and Seaborn.",
+      "Python with pandas for data handling, scikit-learn and imbalanced-learn for modelling, and Matplotlib and Seaborn for charts.",
     learning:
-      "Naive Bayes, a neural network, and Random Forest were tested on 1,000 records. The best scored 87.5% accuracy, barely above the 86.5% from always guessing “pass”, and caught few failing students. The lesson: high accuracy can hide a weak model.",
-    footer: "Video: charts from the evaluated notebook (June–July 2026).",
+      "The models were compared using accuracy, precision, recall, and confusion matrices. The neural network reached 87.5% accuracy, only slightly better than the 86.5% from always predicting “pass”, and it identified very few failing students. The study shows why accuracy alone can be misleading when one outcome is much more common than the other.",
+    footer:
+      "About the video: it walks through the charts from the evaluated notebook, completed June–July 2026, and the limits they reveal.",
     video: {
       src: "assets/videos/student-grade.mp4",
       hevc: "assets/videos/student-grade.hevc.mp4",
@@ -636,14 +640,15 @@ const projectTemplates = {
     label: "Mobile interface design / Figma",
     description:
       "A Figma design for a mobile fitness experience, covering workouts, meals, and account screens.",
-    idea: "A Figma design for a fitness app covering workouts, meal plans, and profiles.",
+    idea: "FitSync is a mobile app design that brings workout tracking and meal planning together in one place. It covers exercise categories, progress charts, meal details, and account and profile screens.",
     contribution:
-      "I designed the screens and the clickable flows between them.",
-    stack: "Figma (reusable components and prototype links).",
+      "I designed the FitSync interface in Figma, including the screen layouts and the navigation between them. The design covers workout statistics, meal planning, profile settings, and the sign-in and account screens, connected into an interactive prototype.",
+    stack:
+      "Figma, using reusable components and prototype links between screens.",
     learning:
-      "The meal plan links to breakfast, lunch, and dinner details. Workout screens show categories and progress charts, and account screens cover sign-in and profile settings.",
+      "In the prototype, the meal overview links to the breakfast, lunch, and dinner details. Workout screens present exercise categories and progress, while the account screens cover sign-in and profile settings.",
     footer:
-      "Video: selected screens from the Figma prototype, not the full prototype.",
+      "About the video: it moves through selected screens and the meal-planning connections. It does not yet cover the complete prototype.",
     designUrl:
       "https://www.figma.com/design/jcp04A19r5D7r49CBZZpa7/FitSync-by-Nombrado?node-id=0-1",
     linkLabel: "View Figma design",
