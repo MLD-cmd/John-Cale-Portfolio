@@ -1075,8 +1075,18 @@ function renderProjectVideo(project) {
   if (!motion.matches) {
     // Start once the dialog has painted and enough video is buffered, so the
     // opening frames don't stutter while the dialog appears.
-    const begin = () =>
-      window.requestAnimationFrame(() => window.requestAnimationFrame(start));
+    // A timer backs up the frame callbacks, which a browser can hold back
+    // (for example in a throttled or hidden view).
+    let begun = false;
+    const go = () => {
+      if (begun) return;
+      begun = true;
+      start();
+    };
+    const begin = () => {
+      window.requestAnimationFrame(() => window.requestAnimationFrame(go));
+      window.setTimeout(go, 200);
+    };
     if (video.readyState >= 3) begin();
     else
       video.addEventListener("canplay", begin, {

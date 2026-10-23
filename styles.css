@@ -3073,6 +3073,12 @@ body:has(dialog[open]) {
     padding-inline: 12px;
   }
 }
+/* The hint is about keyboard shortcuts, so touch screens skip it. */
+@media (hover: none) and (pointer: coarse) {
+  .video-hint {
+    display: none;
+  }
+}
 
 /* Larger, uncropped project previews and clear workflow explanations. */
 .project-dialog {

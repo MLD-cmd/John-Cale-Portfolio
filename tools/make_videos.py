@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Render my portfolio's project walkthrough videos from captured app screens.
 
-Each video moves real screenshots through the app's navigation (taps or clicks,
-page transitions, scrolling, and zooms) with a caption for every step.
+Each video moves real screenshots or screen recordings through the app's
+navigation (taps or clicks, page transitions, scrolling) with the app filling
+the frame. A spring-driven camera moves the whole scene into the detail each
+step is about, and a small label names the step; the site's player shows the
+full caption under the video.
 
 Run from the portfolio folder:
 
@@ -18,6 +21,7 @@ the old one so the step buttons stay in sync.
 """
 
 import json
+import math
 import subprocess
 import sys
 from pathlib import Path
@@ -38,9 +42,15 @@ ACCENT = (190, 216, 194)
 INK = (38, 58, 47)
 PAPER = (251, 251, 247)
 
-PANEL_X, PANEL_W = 96, 420
-MEDIA_CENTER = (1060, 450)
+# The app fills the frame, inside these margins, when the camera is at rest.
+# Windows leave a strip at the top for the step label.
+PAD_X, PAD_Y = 64, 40
+TOP, BOTTOM = 84, 36
 FULL = (0.0, 0.0, 1.0, 1.0)
+# Scene camera: centre x, centre y (scene pixels) and zoom.
+HOME = (W / 2, H / 2, 1.0)
+# The background reaches this far past the frame, so pulling back never shows an edge.
+BG_MARGIN = 0.2
 
 # Seconds each kind of screen change takes.
 TRANSITIONS = {
@@ -130,43 +140,133 @@ def rounded_mask(size, radius, scale=3, corners=None):
 
 
 def soft_shadow(size, radius, pad=90, drop=20, blur=34, strength=150):
+    """A blurred drop shadow as a black RGBA image, and how far it overhangs."""
     w, h = size
     s = Image.new("L", (w + 2 * pad, h + 2 * pad), 0)
     ImageDraw.Draw(s).rounded_rectangle(
         (pad, pad + drop, pad + w, pad + h + drop), radius=radius, fill=strength
     )
-    return s.filter(ImageFilter.GaussianBlur(blur)), pad
+    img = Image.new("RGBA", s.size, (0, 0, 0, 0))
+    img.putalpha(s.filter(ImageFilter.GaussianBlur(blur)))
+    return img, pad
 
 
 def background(tint):
-    y, x = np.mgrid[0:H, 0:W].astype(np.float32)
-    cx, cy = MEDIA_CENTER
-    r = np.sqrt(((x - cx) / 950) ** 2 + ((y - cy) / 720) ** 2)
+    """The backdrop, larger than the frame by BG_MARGIN on every side."""
+    bw, bh = round(W * (1 + 2 * BG_MARGIN)), round(H * (1 + 2 * BG_MARGIN))
+    y, x = np.mgrid[0:bh, 0:bw].astype(np.float32)
+    r = np.sqrt(((x - bw / 2) / 1100) ** 2 + ((y - bh / 2) / 760) ** 2)
     glow = np.clip(1 - r, 0, 1) ** 2
     base = np.array(BG, np.float32)
     img = base + (np.array(tint, np.float32) - base) * glow[..., None]
-    img += np.random.default_rng(7).uniform(-0.9, 0.9, (H, W))[..., None]
+    img += np.random.default_rng(7).uniform(-0.9, 0.9, (bh, bw))[..., None]
     return Image.fromarray(np.clip(img + 0.5, 0, 255).astype(np.uint8))
+
+
+# ---------------------------------------------------------------- camera
+
+
+def to_out(x, y, cam):
+    """A scene point's position in the frame."""
+    cx, cy, z = cam
+    return (x - cx) * z + W / 2, (y - cy) * z + H / 2
+
+
+def blit(canvas, src, box, cam, mask=None, resample=Image.BICUBIC):
+    """Paste `src`, which covers `box` in scene pixels, through the camera.
+
+    Only the visible part is resampled, straight from the source, so a zoom
+    stays as sharp as the source allows."""
+    ox0, oy0 = to_out(box[0], box[1], cam)
+    ox1, oy1 = to_out(box[2], box[3], cam)
+    ix0, iy0 = max(0, math.floor(ox0)), max(0, math.floor(oy0))
+    ix1, iy1 = min(W, math.ceil(ox1)), min(H, math.ceil(oy1))
+    if ix1 <= ix0 or iy1 <= iy0:
+        return
+    sx, sy = src.width / (ox1 - ox0), src.height / (oy1 - oy0)
+    # Pixel snapping can reach a fraction of a pixel past the source; clamp it.
+    sbox = (
+        max(0.0, (ix0 - ox0) * sx),
+        max(0.0, (iy0 - oy0) * sy),
+        min(src.width, (ix1 - ox0) * sx),
+        min(src.height, (iy1 - oy0) * sy),
+    )
+    size = (ix1 - ix0, iy1 - iy0)
+    piece = src.resize(size, resample, box=sbox)
+    if mask is not None:
+        canvas.paste(piece, (ix0, iy0), mask.resize(size, resample, box=sbox))
+    elif piece.mode == "RGBA":
+        canvas.paste(piece, (ix0, iy0), piece)
+    else:
+        canvas.paste(piece, (ix0, iy0))
+
+
+def scene_cam(dev, rect):
+    """The scene camera that frames `rect` (fractions of the device's content)."""
+    if dev.kind == "phone" or rect == FULL:
+        return HOME
+    x0, y0, x1, y1 = dev.content_box
+    bx0, bx1 = x0 + rect[0] * (x1 - x0), x0 + rect[2] * (x1 - x0)
+    by0, by1 = y0 + rect[1] * (y1 - y0), y0 + rect[3] * (y1 - y0)
+    z = clamp(min(W * 0.94 / (bx1 - bx0), H * 0.94 / (by1 - by0)), 1.0, dev.zmax)
+    # Keep a zoomed view inside the window's edges where the window is wide
+    # (or tall) enough, so the frame fills with the app, not the backdrop.
+    hx, hy = W / (2 * z), H / (2 * z)
+    wx0, wy0, wx1, wy1 = dev.box
+    lo, hi = (wx0 + hx, wx1 - hx) if wx1 - wx0 >= 2 * hx else ((wx0 + wx1) / 2,) * 2
+    cx = clamp((bx0 + bx1) / 2, lo, hi)
+    lo, hi = (wy0 + hy, wy1 - hy) if wy1 - wy0 >= 2 * hy else ((wy0 + wy1) / 2,) * 2
+    cy = clamp((by0 + by1) / 2, lo, hi)
+    return (cx, cy, z)
+
+
+def spring_track(events, duration, start):
+    """The camera for every frame. Each new target is followed by a critically
+    damped spring, so moves start gently, never overshoot, and blend into each
+    other when targets change mid-move. Zoom springs in log space."""
+    omega, sub = 4.6, 8
+    dt = 1 / FPS / sub
+    n = int(duration * FPS) + 3
+    track = np.zeros((n, 3))
+    state = np.array([start[0], start[1], math.log(start[2])])
+    vel = np.zeros(3)
+    target = np.array([HOME[0], HOME[1], 0.0])
+    k = 0
+    for f in range(n):
+        t = f / FPS
+        while k < len(events) and events[k][0] <= t:
+            cx, cy, z = events[k][1]
+            target = np.array([cx, cy, math.log(z)])
+            k += 1
+        track[f] = state
+        for _ in range(sub):
+            vel += (omega**2 * (target - state) - 2 * omega * vel) * dt
+            state += vel * dt
+    track[:, 2] = np.exp(track[:, 2])
+    return track
 
 
 # ---------------------------------------------------------------- devices
 
 
 class Phone:
-    """A minimal phone body; screens are shown at its screen size."""
+    """A minimal phone body, as tall as the frame allows; screens are shown at its screen size."""
 
     kind = "phone"
+    zmax = 1.0
 
-    def __init__(self, aspect, height=748, center=(1050, 450), inset=0):
+    def __init__(self, aspect, height=H - 2 * PAD_Y - 24, center=(W / 2, H / 2), inset=0):
         bezel = 12
         self.inset = inset
-        self.sh = height
+        self.sh = round(height)
         self.sw = round(height / aspect)
         fw, fh = self.sw + 2 * bezel, self.sh + 2 * bezel
-        self.x0 = round(center[0] - fw / 2)
-        self.y0 = round(center[1] - fh / 2)
-        self.sx, self.sy = self.x0 + bezel, self.y0 + bezel
-        s = 3
+        x0, y0 = center[0] - fw / 2, center[1] - fh / 2
+        self.box = (x0, y0, x0 + fw, y0 + fh)
+        self.sx, self.sy = x0 + bezel, y0 + bezel
+        self.content_box = (self.sx, self.sy, self.sx + self.sw, self.sy + self.sh)
+        # Drawn at 6x and kept at 2x, so it stays crisp while the scene moves.
+        s = 6
         body = Image.new("RGBA", (fw * s, fh * s), (0, 0, 0, 0))
         d = ImageDraw.Draw(body)
         d.rounded_rectangle(
@@ -182,10 +282,10 @@ class Phone:
             outline=(28, 35, 31, 255),
             width=s,
         )
-        self.body = body.resize((fw, fh), Image.LANCZOS)
+        self.body = body.resize((fw * 2, fh * 2), Image.LANCZOS)
         self.mask = rounded_mask((self.sw, self.sh), 40)
         self.shadow, pad = soft_shadow((fw, fh), 52)
-        self.shadow_at = (self.x0 - pad, self.y0 - pad)
+        self.shadow_box = (x0 - pad, y0 - pad, x0 - pad + self.shadow.width, y0 - pad + self.shadow.height)
         self.ref = (self.sw, self.sh)
         self._cache = {}
 
@@ -198,23 +298,22 @@ class Phone:
             self._cache[name] = img.resize(self.ref, Image.LANCZOS)
         return self._cache[name]
 
-    def view(self, content, cam):
-        return content
+    def place(self, canvas, content, cam):
+        blit(canvas, self.shadow, self.shadow_box, cam, resample=Image.BILINEAR)
+        blit(canvas, self.body, self.box, cam)
+        blit(canvas, content, self.content_box, cam, mask=self.mask)
 
-    def place(self, canvas, view):
-        canvas.paste((0, 0, 0), self.shadow_at, self.shadow)
-        canvas.paste(self.body, (self.x0, self.y0), self.body)
-        canvas.paste(view, (self.sx, self.sy), self.mask)
-
-    def point(self, fx, fy, cam=FULL):
+    def point(self, fx, fy):
+        """Scene position of a point given as fractions of the screen."""
         return self.sx + fx * self.sw, self.sy + fy * self.sh
 
 
 class Window:
     """A desktop window (optionally with a title bar) or a plain card.
 
-    Content is composed at `ref` size, then cropped by the camera and scaled
-    into the viewport, so zooms stay sharp.
+    Content stays at its `ref` size and is resampled straight into the frame,
+    so camera zooms stay sharp; `zmax` keeps zooms within what the source can
+    show without visible blur.
     """
 
     kind = "window"
@@ -222,8 +321,8 @@ class Window:
     def __init__(
         self,
         ref,
-        max_size=(1000, 770),
-        center=MEDIA_CENTER,
+        max_size=(W - 2 * PAD_X, H - TOP - BOTTOM),
+        center=(W / 2, (TOP + H - BOTTOM) / 2),
         bar=None,
         title="",
         radius=12,
@@ -235,10 +334,13 @@ class Window:
         scale = min(max_size[0] / rw, (max_size[1] - tb) / rh)
         self.vw, self.vh = round(rw * scale), round(rh * scale)
         fw, fh = self.vw, self.vh + tb
-        self.x0 = round(center[0] - fw / 2)
-        self.y0 = round(center[1] - fh / 2)
-        self.vx, self.vy = self.x0, self.y0 + tb
-        s = 3
+        x0, y0 = center[0] - fw / 2, center[1] - fh / 2
+        self.box = (x0, y0, x0 + fw, y0 + fh)
+        self.vx, self.vy = x0, y0 + tb
+        self.content_box = (self.vx, self.vy, self.vx + self.vw, self.vy + self.vh)
+        self.zmax = min(2.0, 1.35 * rw / self.vw)
+        # Frame and edge drawn at 6x and kept at 2x.
+        s, k = 6, 2
         frame = Image.new("RGBA", (fw * s, fh * s), (0, 0, 0, 0))
         d = ImageDraw.Draw(frame)
         bar_fill = (38, 40, 39) if bar == "dark" else fill
@@ -249,13 +351,13 @@ class Window:
             for i, color in enumerate([(255, 95, 86), (255, 189, 46), (39, 201, 63)]):
                 cx, cy = (22 + i * 20) * s, tb * s // 2
                 d.ellipse((cx - 6 * s, cy - 6 * s, cx + 6 * s, cy + 6 * s), fill=color)
-        self.frame = frame.resize((fw, fh), Image.LANCZOS)
+        self.frame = frame.resize((fw * k, fh * k), Image.LANCZOS)
         if bar and title:
             fd = ImageDraw.Draw(self.frame)
             color = (196, 199, 196) if bar == "dark" else (92, 96, 92)
-            fd.text((fw / 2, tb / 2 + 1), title, font=font(15, 500), fill=color, anchor="mm")
+            fd.text((fw * k / 2, (tb / 2 + 1) * k), title, font=font(15 * k, 500), fill=color, anchor="mm")
         corners = (False, False, True, True) if bar else None
-        self.mask = rounded_mask((self.vw, self.vh), radius, corners=corners)
+        self.mask = rounded_mask(ref, radius * rw / self.vw, corners=corners)
         edge = Image.new("RGBA", (fw * s, fh * s), (0, 0, 0, 0))
         ImageDraw.Draw(edge).rounded_rectangle(
             (0, 0, fw * s - 1, fh * s - 1),
@@ -263,9 +365,9 @@ class Window:
             outline=(255, 255, 255, 40) if bar == "dark" else (0, 0, 0, 50),
             width=2 * s,
         )
-        self.edge = edge.resize((fw, fh), Image.LANCZOS)
+        self.edge = edge.resize((fw * k, fh * k), Image.LANCZOS)
         self.shadow, pad = soft_shadow((fw, fh), radius, strength=170)
-        self.shadow_at = (self.x0 - pad, self.y0 - pad)
+        self.shadow_box = (x0 - pad, y0 - pad, x0 - pad + self.shadow.width, y0 - pad + self.shadow.height)
         self._cache = {}
 
     def screen(self, name, crop=None):
@@ -276,22 +378,15 @@ class Window:
             self._cache[name] = img.resize(self.ref, Image.LANCZOS)
         return self._cache[name]
 
-    def view(self, content, cam):
-        rw, rh = self.ref
-        box = (cam[0] * rw, cam[1] * rh, cam[2] * rw, cam[3] * rh)
-        return content.resize((self.vw, self.vh), Image.LANCZOS, box=box)
+    def place(self, canvas, content, cam):
+        blit(canvas, self.shadow, self.shadow_box, cam, resample=Image.BILINEAR)
+        blit(canvas, self.frame, self.box, cam)
+        blit(canvas, content, self.content_box, cam, mask=self.mask)
+        blit(canvas, self.edge, self.box, cam)
 
-    def place(self, canvas, view):
-        canvas.paste((0, 0, 0), self.shadow_at, self.shadow)
-        canvas.paste(self.frame, (self.x0, self.y0), self.frame)
-        canvas.paste(view, (self.vx, self.vy), self.mask)
-        canvas.paste(self.edge, (self.x0, self.y0), self.edge)
-
-    def point(self, fx, fy, cam=FULL):
-        return (
-            self.vx + (fx - cam[0]) / (cam[2] - cam[0]) * self.vw,
-            self.vy + (fy - cam[1]) / (cam[3] - cam[1]) * self.vh,
-        )
+    def point(self, fx, fy):
+        """Scene position of a point given as fractions of the content."""
+        return self.vx + fx * self.vw, self.vy + fy * self.vh
 
 
 def focus_rect(cx, cy, zoom):
@@ -300,10 +395,6 @@ def focus_rect(cx, cy, zoom):
     x0 = clamp(cx - half, 0, 1 - 2 * half)
     y0 = clamp(cy - half, 0, 1 - 2 * half)
     return (x0, y0, x0 + 2 * half, y0 + 2 * half)
-
-
-def lerp_rect(a, b, e):
-    return tuple(p + (q - p) * e for p, q in zip(a, b))
 
 
 # ---------------------------------------------------------------- transitions
@@ -418,17 +509,13 @@ def cursor_sprite():
 CURSOR, CURSOR_PAD = None, 0
 
 
-def draw_notes(view, notes, cam, alpha):
-    """Annotation boxes, dashed lines, and labels in viewport coordinates."""
-    vw, vh = view.size
-    over = Image.new("RGBA", view.size, (0, 0, 0, 0))
-    dim = Image.new("L", view.size, 0)
+def draw_notes(canvas, notes, px, alpha):
+    """Annotation boxes, dashed lines, and labels; `px` maps content fractions to the frame."""
+    over = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    dim = Image.new("L", canvas.size, 0)
     dim_any = False
     d = ImageDraw.Draw(over)
     dd = ImageDraw.Draw(dim)
-
-    def px(fx, fy):
-        return ((fx - cam[0]) / (cam[2] - cam[0]) * vw, (fy - cam[1]) / (cam[3] - cam[1]) * vh)
 
     for note, k in notes:
         k *= alpha
@@ -436,12 +523,12 @@ def draw_notes(view, notes, cam, alpha):
             continue
         x0, y0 = px(note["rect"][0], note["rect"][1])
         x1, y1 = px(note["rect"][2], note["rect"][3])
-        if x1 < 0 or y1 < 0 or x0 > vw or y0 > vh:
+        if x1 < 0 or y1 < 0 or x0 > W or y0 > H:
             continue
         color = note.get("color", (214, 64, 52))
         if note.get("dim"):
             dim_any = True
-            dd.rectangle((0, 0, vw, vh), fill=int(120 * k))
+            dd.rectangle((0, 0, W, H), fill=int(120 * k))
         if note["kind"] == "box":
             if note.get("dim"):
                 for other, _ in notes:
@@ -458,21 +545,37 @@ def draw_notes(view, notes, cam, alpha):
         if note.get("label"):
             f = font(20, 600)
             tw = f.getlength(note["label"])
-            lx, ly = note.get("label_at", "below"), None
+            lx = note.get("label_at", "below")
             if lx == "above":
                 bx, by = x0, y0 - 52
             elif lx == "right":
                 bx, by = x1 + 14, (y0 + y1) / 2 - 18
             else:
                 bx, by = x0, y1 + 14
-            bx = clamp(bx, 8, vw - tw - 36)
-            by = clamp(by, 8, vh - 46)
+            bx = clamp(bx, 8, W - tw - 36)
+            by = clamp(by, 8, H - 46)
             d.rounded_rectangle((bx, by, bx + tw + 28, by + 38), radius=19, fill=color + (int(240 * k),))
             d.text((bx + 14, by + 19), note["label"], font=f, fill=(255, 255, 255, int(255 * k)), anchor="lm")
     if dim_any:
-        view.paste((0, 0, 0), (0, 0), dim)
-    view.paste(over, (0, 0), over)
-    return view
+        canvas.paste((0, 0, 0), (0, 0), dim)
+    canvas.paste(over, (0, 0), over)
+
+
+def step_label(number, title):
+    """The small label that names a step as it starts."""
+    f_num, f_title = font(21, 700), font(21, 600)
+    num = f"{number:02d}"
+    w = round(22 + f_num.getlength(num) + 12 + f_title.getlength(title) + 22)
+    s = 3
+    img = Image.new("RGBA", (w * s, 44 * s), (0, 0, 0, 0))
+    ImageDraw.Draw(img).rounded_rectangle(
+        (0, 0, w * s - 1, 44 * s - 1), radius=22 * s, fill=(14, 19, 16, 222), outline=(255, 255, 255, 34), width=s
+    )
+    img = img.resize((w, 44), Image.LANCZOS)
+    d = ImageDraw.Draw(img)
+    d.text((22, 23), num, font=f_num, fill=ACCENT, anchor="lm")
+    d.text((22 + f_num.getlength(num) + 12, 23), title, font=f_title, fill=TEXT, anchor="lm")
+    return img
 
 
 # ---------------------------------------------------------------- video
@@ -503,50 +606,33 @@ def S(content, title, text, **kw):
     return dict(content=content, title=title, text=text, **kw)
 
 
+def paste_center(canvas, sprite, x, y, scale=1.0):
+    if scale != 1.0:
+        sprite = sprite.resize((max(1, round(sprite.width * scale)), max(1, round(sprite.height * scale))), Image.LANCZOS)
+    canvas.paste(sprite, (round(x - sprite.width / 2), round(y - sprite.height / 2)), sprite)
+
+
+def draw_cursor(canvas, x, y, z, press):
+    """The pointer, a little larger when the camera is zoomed in, as Screen Studio draws it."""
+    k = z**0.5 * (0.9 if press else 1.0)
+    sprite = CURSOR.resize((round(CURSOR.width * k), round(CURSOR.height * k)), Image.LANCZOS)
+    canvas.paste(sprite, (round(x - CURSOR_PAD * k), round(y - CURSOR_PAD * k)), sprite)
+
+
 class Video:
     def __init__(self, vid, name, kicker, note, tint, steps, poster_step=1, eyebrow=None):
+        # `kicker` and `note` describe the video; the site shows them, so they are not drawn.
         self.id, self.name, self.kicker, self.note = vid, name, kicker, note
-        self.eyebrow = eyebrow or name.upper()
         self.steps = steps
         self.poster_step = poster_step
-        self.bg = background(tint)
-        self.static = self.static_panel()
-        self.panels = [self.step_panel(i) for i in range(len(steps))]
+        self.bg_big = background(tint)
+        m = round(W * BG_MARGIN), round(H * BG_MARGIN)
+        self.bg = self.bg_big.crop((m[0], m[1], m[0] + W, m[1] + H))
+        self.bg_box = (-m[0], -m[1], W + m[0], H + m[1])
+        self.labels = [step_label(i + 1, s["title"]) for i, s in enumerate(steps)]
         self.schedule()
-
-    # -- text panel
-
-    def static_panel(self):
-        img = self.bg.copy()
-        d = ImageDraw.Draw(img)
-        tracked(d, (PANEL_X, 100), self.eyebrow, font(17, 600), ACCENT, 2.2)
-        d.text((PANEL_X, 128), self.kicker, font=font(18, 400), fill=MUTED, anchor="ls")
-        return img
-
-    def step_panel(self, i):
-        step = self.steps[i]
-        n = len(self.steps)
-        f_num, f_of = font(58, 600), font(24, 500)
-        f_title, f_text = font(44, 700), font(24, 400)
-        title = wrap(step["title"], f_title, PANEL_W)
-        text = wrap(step["text"], f_text, PANEL_W - 6)
-        block = 58 + 30 + len(title) * 52 + 16 + len(text) * 36
-        img = Image.new("RGBA", (PANEL_W + 40, block + 40), (0, 0, 0, 0))
-        d = ImageDraw.Draw(img)
-        y = 56
-        num = f"{i + 1:02d}"
-        d.text((0, y), num, font=f_num, fill=ACCENT, anchor="ls")
-        d.text((f_num.getlength(num) + 12, y), f"/ {n:02d}", font=f_of, fill=MUTED, anchor="ls")
-        y += 30
-        for line in title:
-            y += 52
-            d.text((0, y - 10), line, font=f_title, fill=TEXT, anchor="ls")
-        y += 16
-        for line in text:
-            y += 36
-            d.text((0, y - 6), line, font=f_text, fill=MUTED, anchor="ls")
-        top = (H - block) // 2 - 4
-        return img, top
+        # Open on a gentle push-in to the resting frame.
+        self.track = spring_track(self.camera_events(), self.duration, (W / 2, H / 2, 0.94))
 
     # -- timeline
 
@@ -626,6 +712,36 @@ class Video:
                 return (v0[0] + (v1[0] - v0[0]) * e, v0[1] + (v1[1] - v0[1]) * e)
         return keys[-1][1]
 
+    def step_at(self, t):
+        i = 0
+        for k, step in enumerate(self.steps):
+            if t >= step["t_enter"]:
+                i = k
+        return i
+
+    def camera_events(self):
+        """When the camera starts towards each new framing, and the scene camera for it."""
+        events = []
+        for (ta, va), (tb, vb) in zip(self.cam_keys, self.cam_keys[1:]):
+            if vb != va:
+                events.append((ta, scene_cam(self.steps[self.step_at(tb)]["dev"], vb)))
+        return sorted(events, key=lambda e: e[0])
+
+    def camera(self, t):
+        f = clamp(t * FPS, 0, len(self.track) - 1.001)
+        n = int(f)
+        cx, cy, z = self.track[n] + (self.track[n + 1] - self.track[n]) * (f - n)
+        if self.steps[self.step_at(t)]["dev"].kind == "phone":
+            # A slow float keeps a still phone from looking frozen.
+            cy += 4 * math.sin(t * 2 * math.pi / 7)
+        return (cx, cy, z)
+
+    def camera_speed(self, t):
+        """How fast the frame is moving, in frame widths per second."""
+        a, b = self.camera(t - 0.5 / FPS), self.camera(t + 0.5 / FPS)
+        z = (a[2] + b[2]) / 2
+        return (abs(b[0] - a[0]) * z / W + abs(b[1] - a[1]) * z / H + abs(math.log(b[2] / a[2]))) * FPS
+
     # -- rendering
 
     def content(self, step, t):
@@ -634,34 +750,33 @@ class Video:
             return c(t - step["t_shown"])
         return step["dev"].screen(c, step.get("crop")) if step["dev"].kind == "window" else step["dev"].screen(c)
 
-    def media(self, canvas, i, t):
+    def backdrop(self, cam):
+        canvas = Image.new("RGB", (W, H))
+        blit(canvas, self.bg_big, self.bg_box, cam, resample=Image.BILINEAR)
+        return canvas
+
+    def media(self, canvas, i, t, cam):
         step = self.steps[i]
         dev = step["dev"]
-        cam = self.at(self.cam_keys, t) if dev.kind == "window" else FULL
         p = (t - step["t_enter"]) / max(1e-6, step["t_shown"] - step["t_enter"])
         if step["enter"] != "none" and p < 1 and i:
             prev = self.steps[i - 1]
             a = self.content(prev, prev["t_end"])
             b = self.content(step, step["t_shown"])
             if prev["dev"] is dev and step["enter"] != "xfade":
-                frame = transition(step["enter"], a, b, ease(p), step.get("opt"))
-                view = dev.view(frame, cam)
-                self.note_layer(view, i, t, cam)
-                dev.place(canvas, view)
-                return dev, cam
+                dev.place(canvas, transition(step["enter"], a, b, ease(p), step.get("opt")), cam)
+                self.note_layer(canvas, dev, i, t, cam)
+                return dev
             under = canvas.copy()
-            pdev = prev["dev"]
-            pcam = self.at(self.cam_keys, prev["t_end"]) if pdev.kind == "window" else FULL
-            pdev.place(under, pdev.view(a, pcam))
-            dev.place(canvas, dev.view(b, cam))
+            prev["dev"].place(under, a, cam)
+            dev.place(canvas, b, cam)
             canvas.paste(Image.blend(under, canvas, ease(p)))
-            return None, cam
-        view = dev.view(self.content(step, t), cam)
-        self.note_layer(view, i, t, cam)
-        dev.place(canvas, view)
-        return dev, cam
+            return None
+        dev.place(canvas, self.content(step, t), cam)
+        self.note_layer(canvas, dev, i, t, cam)
+        return dev
 
-    def note_layer(self, view, i, t, cam):
+    def note_layer(self, canvas, dev, i, t, cam):
         step = self.steps[i]
         notes = []
         for note in step.get("notes", []):
@@ -674,55 +789,53 @@ class Video:
         if not notes:
             return
         out = 1 - ease((t - (step["t_end"] - 0.35)) / 0.35)
-        draw_notes(view, notes, cam, out)
+        draw_notes(canvas, notes, lambda fx, fy: to_out(*dev.point(fx, fy), cam), out)
 
-    def panel(self, canvas, i, t):
-        step = self.steps[i]
-        # The old caption leaves before the new one arrives, so they never overlap.
-        out = ease((t - step["t_enter"]) / 0.28) if i else 1.0
-        e = ease((t - step["t_enter"] - 0.2) / 0.4) if i else 1.0
-        if i and out < 1:
-            img, top = self.panels[i - 1]
-            faded = fade_alpha(img, 1 - out)
-            canvas.paste(faded, (PANEL_X, round(top - 16 * out)), faded)
-        img, top = self.panels[i]
-        if e > 0:
-            faded = fade_alpha(img, e)
-            canvas.paste(faded, (PANEL_X, round(top + 16 * (1 - e))), faded)
+    def label(self, canvas, i, t):
+        """Name the step for a few seconds as it starts."""
+        s = t - self.steps[i]["t_enter"] - (0.15 if i else 0.6)
+        k = min(ease_out(s / 0.35), 1 - ease((s - 2.6) / 0.4))
+        if k <= 0:
+            return
+        img = fade_alpha(self.labels[i], k)
+        canvas.paste(img, (36, round(32 + 8 * (1 - k))), img)
 
-    def frame(self, t):
-        i = 0
-        for k, step in enumerate(self.steps):
-            if t >= step["t_enter"]:
-                i = k
-        canvas = self.static.copy()
-        dev, cam = self.media(canvas, i, t)
-        if dev is not None and dev.kind == "phone":
-            for tp, k, fx, fy in self.taps:
-                sprite = touch_sprite(t - tp)
-                if sprite is not None and k in (i, i - 1):
-                    x, y = self.steps[k]["dev"].point(fx, fy)
-                    canvas.paste(sprite, (round(x - sprite.width / 2), round(y - sprite.height / 2)), sprite)
-        if dev is not None and dev.kind == "window" and self.steps[i].get("cursor", True):
-            fx, fy = self.at(self.cursor_keys, t)
-            x, y = dev.point(fx, fy, cam)
-            inside = dev.vx <= x <= dev.vx + dev.vw - 4 and dev.vy <= y <= dev.vy + dev.vh - 4
-            for tc, k, cx, cy in self.clicks:
-                sprite = touch_sprite(t - tc, dot=False)
-                if sprite is not None:
-                    canvas.paste(sprite, (round(x - sprite.width / 2), round(y - sprite.height / 2)), sprite)
-            press = any(-0.12 < t - tc < 0.08 for tc, *_ in self.clicks)
-            if not inside:
-                press = None
-            sprite = CURSOR if not press else CURSOR.resize((round(CURSOR.width * 0.9), round(CURSOR.height * 0.9)), Image.LANCZOS)
-            pad = CURSOR_PAD * (0.9 if press else 1)
-            if press is not None:
-                canvas.paste(sprite, (round(x - pad), round(y - pad)), sprite)
-        self.panel(canvas, i, t)
+    def finish(self, canvas, i, t):
+        self.label(canvas, i, t)
         k = min(ease(t / 0.45), ease((self.duration - t) / 0.5))
         if k < 1:
             canvas = Image.blend(self.bg, canvas, k)
         return canvas
+
+    def compose(self, t):
+        i = self.step_at(t)
+        cam = self.camera(t)
+        canvas = self.backdrop(cam)
+        dev = self.media(canvas, i, t, cam)
+        if dev is not None and dev.kind == "phone":
+            for tp, k, fx, fy in self.taps:
+                sprite = touch_sprite(t - tp)
+                if sprite is not None and k in (i, i - 1):
+                    paste_center(canvas, sprite, *to_out(*self.steps[k]["dev"].point(fx, fy), cam))
+        if dev is not None and dev.kind == "window" and self.steps[i].get("cursor", True):
+            x, y = to_out(*dev.point(*self.at(self.cursor_keys, t)), cam)
+            if 0 <= x <= W - 4 and 0 <= y <= H - 4:
+                for tc, *_ in self.clicks:
+                    sprite = touch_sprite(t - tc, dot=False)
+                    if sprite is not None:
+                        paste_center(canvas, sprite, x, y, cam[2] ** 0.5)
+                draw_cursor(canvas, x, y, cam[2], any(-0.12 < t - tc < 0.08 for tc, *_ in self.clicks))
+        return self.finish(canvas, i, t)
+
+    def frame(self, t):
+        # Fast camera moves get a light motion blur: five samples across half
+        # a frame, as a 180-degree shutter would record them.
+        if self.camera_speed(t) < 0.3:
+            return self.compose(t)
+        acc = np.zeros((H, W, 3), np.float32)
+        for k in range(5):
+            acc += np.asarray(self.compose(t + (k - 2) / 8 / FPS), np.float32)
+        return Image.fromarray((acc / 5 + 0.5).astype(np.uint8))
 
     def render(self):
         OUT.mkdir(parents=True, exist_ok=True)
@@ -788,7 +901,7 @@ class Recording(Video):
         """`camera`, if given, replaces the zooms logged during recording:
         (chapter index, seconds into the chapter, viewport rect or None, seconds to move)."""
         folder = Path(folder)
-        self.camera = camera
+        self.camera_shots = camera
         events = json.loads((folder / "events.json").read_text())
         frames = json.loads((folder / "frames.json").read_text())
         t0 = next(e["t"] for e in events if e["type"] == "start")
@@ -822,8 +935,8 @@ class Recording(Video):
         self.duration = self.end + 0.8
         cam = FULL
         self.cam_keys = [(0.0, FULL)]
-        if self.camera is not None:
-            zooms = [dict(t=self.steps[c]["at"] + off, rect=rect, ms=ms) for c, off, rect, ms in self.camera]
+        if self.camera_shots is not None:
+            zooms = [dict(t=self.steps[c]["at"] + off, rect=rect, ms=ms) for c, off, rect, ms in self.camera_shots]
         else:
             zooms = [e for e in self.events if e["type"] == "zoom"]
         for e in zooms:
@@ -855,31 +968,20 @@ class Recording(Video):
             pos = {"x": a["x"] + (b["x"] - a["x"]) * e, "y": a["y"] + (b["y"] - a["y"]) * e}
         return pos["x"] / rw, pos["y"] / rh
 
-    def frame(self, t):
-        i = 0
-        for k, step in enumerate(self.steps):
-            if t >= step["t_enter"]:
-                i = k
-        canvas = self.static.copy()
+    def compose(self, t):
+        i = self.step_at(t)
+        cam = self.camera(t)
+        canvas = self.backdrop(cam)
         dev = self.window
-        cam = self.at(self.cam_keys, t)
-        dev.place(canvas, dev.view(self.screen_image(t), cam))
-        fx, fy = self.pointer(t)
-        x, y = dev.point(fx, fy, cam)
-        if dev.vx <= x <= dev.vx + dev.vw - 4 and dev.vy <= y <= dev.vy + dev.vh - 4:
+        dev.place(canvas, self.screen_image(t), cam)
+        x, y = to_out(*dev.point(*self.pointer(t)), cam)
+        if 0 <= x <= W - 4 and 0 <= y <= H - 4:
             for c in self.rec_clicks:
                 sprite = touch_sprite(t - c["t"] - 0.05, dot=False)
                 if sprite is not None:
-                    canvas.paste(sprite, (round(x - sprite.width / 2), round(y - sprite.height / 2)), sprite)
-            press = any(-0.08 < t - c["t"] < 0.14 for c in self.rec_clicks)
-            sprite = CURSOR if not press else CURSOR.resize((round(CURSOR.width * 0.9), round(CURSOR.height * 0.9)), Image.LANCZOS)
-            pad = CURSOR_PAD * (0.9 if press else 1)
-            canvas.paste(sprite, (round(x - pad), round(y - pad)), sprite)
-        self.panel(canvas, i, t)
-        k = min(ease(t / 0.45), ease((self.duration - t) / 0.5))
-        if k < 1:
-            canvas = Image.blend(self.bg, canvas, k)
-        return canvas
+                    paste_center(canvas, sprite, x, y, cam[2] ** 0.5)
+            draw_cursor(canvas, x, y, cam[2], any(-0.08 < t - c["t"] < 0.14 for c in self.rec_clicks))
+        return self.finish(canvas, i, t)
 
 
 class PhoneRecording(Recording):
@@ -890,34 +992,26 @@ class PhoneRecording(Recording):
         self.taps_rec = [e for e in self.events if e["type"] == "tap"]
         self.swipes = [e for e in self.events if e["type"] == "swipe"]
 
-
-    def frame(self, t):
-        i = 0
-        for k, step in enumerate(self.steps):
-            if t >= step["t_enter"]:
-                i = k
-        canvas = self.static.copy()
+    def compose(self, t):
+        i = self.step_at(t)
+        cam = self.camera(t)
+        canvas = self.backdrop(cam)
         phone = self.window
-        phone.place(canvas, self.screen_image(t))
+        phone.place(canvas, self.screen_image(t), cam)
         sw, sh = self.size
         for e in self.taps_rec:
             sprite = touch_sprite(t - e["t"])
             if sprite is not None:
-                x, y = phone.point(e["x"] / sw, e["y"] / sh)
-                canvas.paste(sprite, (round(x - sprite.width / 2), round(y - sprite.height / 2)), sprite)
+                paste_center(canvas, sprite, *to_out(*phone.point(e["x"] / sw, e["y"] / sh), cam))
         for e in self.swipes:
             k = (t - e["t"]) / e["ms"]
             if -0.25 < k < 1.25:
                 p = ease(k)
                 a, b = e["from"], e["to"]
-                x, y = phone.point((a["x"] + (b["x"] - a["x"]) * p) / sw, (a["y"] + (b["y"] - a["y"]) * p) / sh)
+                x, y = to_out(*phone.point((a["x"] + (b["x"] - a["x"]) * p) / sw, (a["y"] + (b["y"] - a["y"]) * p) / sh), cam)
                 sprite = fade_alpha(touch_sprite(-0.2), clamp(min(k + 0.25, 1.25 - k) * 4))
-                canvas.paste(sprite, (round(x - sprite.width / 2), round(y - sprite.height / 2)), sprite)
-        self.panel(canvas, i, t)
-        k = min(ease(t / 0.45), ease((self.duration - t) / 0.5))
-        if k < 1:
-            canvas = Image.blend(self.bg, canvas, k)
-        return canvas
+                paste_center(canvas, sprite, x, y)
+        return self.finish(canvas, i, t)
 
 
 # ---------------------------------------------------------------- projects
@@ -1030,7 +1124,7 @@ def meshunwarp():
 
 def fitsync():
     canvas = Window((1100, 785), bar="dark", title="FitSync  ·  Figma prototype map")
-    phone = Phone(733 / 340, height=740)
+    phone = Phone(733 / 340)
     steps = [
         S("fitsync-connections.png", "Map the prototype", "Figma links connect the meal plan to its breakfast, lunch, and dinner screens.", dev=canvas, focus=[(0.55, 0.33, 1.6)], dwell=2.8, cursor=False),
         S("fitsync-meal-plan.png", "Plan meals", "Meal cards sit beside a water reminder and protein tracking.", dev=phone, enter="xfade", tap=(0.24, 0.47), hold=3.4),
@@ -1138,7 +1232,9 @@ def takeaway_card(t):
 
 
 def ml():
-    card = Window(ML_REF, max_size=(1000, 720), radius=18, fill=PAPER)
+    card = Window(ML_REF, radius=18, fill=PAPER)
+    # The notebook's charts are small images, so zooms stay gentle.
+    card.zmax = 1.4
     comparison = chart_card("student-grade-model-comparison.png")
     confusion = chart_card("student-grade-confusion-matrices.png")
     heatmap = chart_card("student-grade-feature-ranking.png")
