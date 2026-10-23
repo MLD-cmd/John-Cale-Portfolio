@@ -522,7 +522,9 @@ class Video:
         d = ImageDraw.Draw(img)
         tracked(d, (PANEL_X, 100), self.eyebrow, font(17, 600), ACCENT, 2.2)
         d.text((PANEL_X, 128), self.kicker, font=font(18, 400), fill=MUTED, anchor="ls")
-        d.text((PANEL_X, H - 72), self.note, font=font(16, 400), fill=MUTED, anchor="ls")
+        # Wrapped to the panel so a long note never runs under the window.
+        for j, line in enumerate(wrap(self.note, font(16, 400), PANEL_W)):
+            d.text((PANEL_X, H - 72 + 22 * j), line, font=font(16, 400), fill=MUTED, anchor="ls")
         return img
 
     def step_panel(self, i):
@@ -1005,7 +1007,7 @@ def maistra():
     ]
     return Recording(
         "maistra", "mAIstra", "Screen recording",
-        "My real test page and its OCR output  ·  graded live on our Judge0 server",
+        "My real test page and OCR output  ·  live Judge0 grading",
         (40, 46, 70), ROOT / "tools" / "recordings" / "maistra", window,
         poster_chapter=3, eyebrow="mAIstra", screens=screens,
         # Wide for navigation; frames only where text has to be read.
