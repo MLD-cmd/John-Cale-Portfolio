@@ -35,7 +35,6 @@ BG = (21, 27, 24)
 TEXT = (239, 238, 229)
 MUTED = (175, 186, 176)
 ACCENT = (190, 216, 194)
-LINE = (73, 87, 75)
 INK = (38, 58, 47)
 PAPER = (251, 251, 247)
 
@@ -522,9 +521,6 @@ class Video:
         d = ImageDraw.Draw(img)
         tracked(d, (PANEL_X, 100), self.eyebrow, font(17, 600), ACCENT, 2.2)
         d.text((PANEL_X, 128), self.kicker, font=font(18, 400), fill=MUTED, anchor="ls")
-        # Wrapped to the panel so a long note never runs under the window.
-        for j, line in enumerate(wrap(self.note, font(16, 400), PANEL_W)):
-            d.text((PANEL_X, H - 72 + 22 * j), line, font=font(16, 400), fill=MUTED, anchor="ls")
         return img
 
     def step_panel(self, i):
@@ -693,24 +689,6 @@ class Video:
         if e > 0:
             faded = fade_alpha(img, e)
             canvas.paste(faded, (PANEL_X, round(top + 16 * (1 - e))), faded)
-        # Progress segments.
-        n = len(self.steps)
-        gap = 6
-        seg = (PANEL_W - gap * (n - 1)) / n
-        y = H - 122
-        d = ImageDraw.Draw(canvas)
-        for k in range(n):
-            x0 = PANEL_X + k * (seg + gap)
-            d.rounded_rectangle((x0, y, x0 + seg, y + 4), radius=2, fill=LINE)
-            if k < i:
-                fill = 1.0
-            elif k == i:
-                span = step["t_end"] - step["t_enter"]
-                fill = clamp((t - step["t_enter"]) / span) if span else 1.0
-            else:
-                fill = 0.0
-            if fill > 0:
-                d.rounded_rectangle((x0, y, x0 + max(4, seg * fill), y + 4), radius=2, fill=ACCENT)
 
     def frame(self, t):
         i = 0
