@@ -136,6 +136,7 @@ const projectTemplates = {
       hevc: "assets/videos/hydro-tracker.hevc.mp4",
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/hydro-tracker.jpg",
+      aspect: "1080 / 1080",
       duration: 53.6,
       chapters: [
         {
@@ -250,62 +251,114 @@ const projectTemplates = {
     learning:
       "Reservations and access rules are enforced in the database, so the number of open slots stays accurate for every member. The receipt scanner reads a photo of a receipt, keeps each item paired with its price, ignores cash and change amounts, and fills in a new deal that the organiser can still edit. Recommendations are based on a student’s preferred categories and past activity, and each one explains why it was suggested.",
     footer:
-      "About the video: it is a screen recording of the real app, built for the web and running on its built-in sample hubs, deals, and student account. Receipt scanning and live database operations are not shown.",
+      "About the video: it is a screen recording of the real app, built for the web and running on its built-in sample data, from signing in to a completed group buy. Three sample classmates join the deal I post so the organiser’s side can be shown. Receipt scanning needs a phone camera, so it is not shown.",
     video: {
       src: "assets/videos/bulk-buying.mp4",
       hevc: "assets/videos/bulk-buying.hevc.mp4",
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/bulk-buying.jpg",
-      duration: 42.3,
+      aspect: "1080 / 1080",
+      duration: 133.8,
       chapters: [
         {
           time: 0,
-          title: "Find a hub",
-          caption:
-            "Browse nearby campus and dorm communities, sorted by distance.",
-          screen: "assets/projects/bulk-live-01.jpg",
-        },
-        {
-          time: 5.2,
-          title: "Join the hub",
-          caption:
-            "Colon Street Hub becomes my current hub, and its count goes from 31 to 32 members.",
-          screen: "assets/projects/bulk-live-02.jpg",
+          title: "Sign in",
+          caption: "Students sign in with their campus email.",
         },
         {
           time: 8.5,
-          title: "Browse the Split Board",
-          caption:
-            "Compare per-share prices, quantities, open slots, and deadlines.",
-          screen: "assets/projects/bulk-live-03.jpg",
+          title: "Find a hub",
+          caption: "Nearby campus and dorm hubs are listed by distance.",
         },
         {
-          time: 16.6,
+          time: 12.8,
+          title: "Join the hub",
+          caption:
+            "Colon Street Hub becomes my current hub, and its count goes from 31 to 32 members.",
+        },
+        {
+          time: 16.5,
+          title: "Set my interests",
+          caption:
+            "In my profile I choose Grocery and Drinks, so matching deals are recommended first.",
+        },
+        {
+          time: 27.8,
+          title: "Get recommendations",
+          caption:
+            "The Split Board opens with picks that match my interests, each with the reason it was picked.",
+        },
+        {
+          time: 32.7,
+          title: "Filter the board",
+          caption:
+            "Filters narrow the board by category, status, or deadline; here, Grocery only.",
+        },
+        {
+          time: 40.6,
           title: "Review a deal",
           caption:
-            "Check my share, the organiser, who has joined, and where to pick it up.",
-          screen: "assets/projects/bulk-live-04.jpg",
+            "The deal shows my share, open slots, the pickup point, and who has already joined.",
         },
         {
-          time: 24.3,
+          time: 48.9,
           title: "Reserve a share",
           caption:
-            "The slot is mine: open slots drop to 2 of 5, and the amount I owe appears.",
-          screen: "assets/projects/bulk-live-05.jpg",
+            "My slot is reserved: open slots drop to 2 of 5, and the amount I owe appears.",
         },
         {
-          time: 28.5,
-          title: "Back on the board",
+          time: 55.1,
+          title: "Post my own deal",
           caption:
-            "The rice sack now shows 2 of 5 slots open for everyone in the hub.",
-          screen: "assets/projects/bulk-live-06.jpg",
+            "I start a bulk buy for my hub: what it is, the total price, the amount, and how many students split it.",
         },
         {
-          time: 32.6,
-          title: "Post a deal",
+          time: 67.8,
+          title: "Review and publish",
           caption:
-            "Describe a new bulk buy, or scan a receipt to fill the form in.",
-          screen: "assets/projects/bulk-live-07.jpg",
+            "The form works out each share, P300 for 5 L, and I add the pickup point and payment method.",
+        },
+        {
+          time: 78.5,
+          title: "Check notifications",
+          caption:
+            "Three hubmates reserved the rest of my deal, and I get a reminder to pay for my rice share.",
+        },
+        {
+          time: 87,
+          title: "Find my deal",
+          caption:
+            "Back on the board, searching “oil” brings up the deal I posted, now full.",
+        },
+        {
+          time: 95.5,
+          title: "Organise the deal",
+          caption:
+            "As organiser I see the full deal and everyone in it, with a button to record each payment.",
+        },
+        {
+          time: 101.6,
+          title: "Record payments",
+          caption:
+            "I mark each classmate paid as their GCash payment arrives, until everyone has paid.",
+        },
+        {
+          time: 106,
+          title: "Buy the goods",
+          caption:
+            "Confirming the purchase locks the reservations and opens a pickup checklist.",
+        },
+        {
+          time: 113.6,
+          title: "Hand out shares",
+          caption:
+            "I tick off each pickup at the gate; once everyone has collected, the deal is Completed.",
+        },
+        {
+          time: 121.7,
+          title: "My history",
+          caption:
+            "My profile keeps the deals I organised and the ones I joined.",
         },
       ],
     },
@@ -330,7 +383,7 @@ const projectTemplates = {
       hevc: "assets/videos/maistra.hevc.mp4",
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/maistra.jpg",
-      duration: 78.5,
+      duration: 93.7,
       chapters: [
         {
           time: 0,
@@ -361,7 +414,7 @@ const projectTemplates = {
           screen: "assets/projects/maistra-real-review-ocr.png",
         },
         {
-          time: 19.3,
+          time: 19.4,
           title: "Fix the misreads",
           caption:
             "Correct each misread character, then keep only Question 1 in this tab.",
@@ -382,28 +435,34 @@ const projectTemplates = {
           screen: "assets/projects/maistra-real-program2-saved.png",
         },
         {
-          time: 44,
+          time: 43.9,
           title: "Run a sample",
           caption:
             "Run Sample compiles the saved code on our Judge0 server over Tailscale. It prints 16, as expected.",
           screen: "assets/projects/maistra-real-grading.png",
         },
         {
-          time: 52.3,
+          time: 57.3,
           title: "Grade against test cases",
           caption:
             "Submit Code runs every Q1 test case on Judge0: square(4) gives 16 and square(-3) gives 9. Score: 100%.",
         },
         {
-          time: 61.9,
+          time: 69.5,
           title: "Grade Program 2",
           caption:
             "The cube program runs against Q2's own test cases: 8 and -27, both accepted.",
         },
         {
-          time: 73.6,
+          time: 82.2,
           title: "Paper graded",
           caption: "Both programs on the handwritten page show 2/2 passed.",
+        },
+        {
+          time: 86.7,
+          title: "Back to the list",
+          caption:
+            "Finish review closes the paper. Its card now reads Graded, with P1 2/2 · P2 2/2.",
         },
       ],
     },
@@ -527,6 +586,7 @@ const projectTemplates = {
       hevc: "assets/videos/openear.hevc.mp4",
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/openear.jpg",
+      aspect: "1080 / 1080",
       duration: 22.3,
       chapters: [
         {
@@ -815,11 +875,16 @@ function renderProjectVideo(project) {
   gallery.replaceChildren();
   gallery.hidden = !project.video;
   if (!project.video) return;
-  const { src, hevc, hevcCodecs, poster, duration, chapters } = project.video;
+  const { src, hevc, hevcCodecs, poster, duration, aspect, chapters } =
+    project.video;
   const events = new AbortController();
   const on = (target, type, handler) =>
     target.addEventListener(type, handler, { signal: events.signal });
   gallery.setAttribute("aria-label", `${project.title} video walkthrough`);
+  // Phone apps are filmed square; the layout gives them a narrower column.
+  const [frameWidth, frameHeight] = (aspect ?? "16 / 9").split("/").map(Number);
+  gallery.dataset.shape = frameWidth === frameHeight ? "square" : "wide";
+  gallery.style.setProperty("--video-aspect", `${frameWidth} / ${frameHeight}`);
 
   const heading = document.createElement("div");
   heading.className = "video-heading";
@@ -855,7 +920,7 @@ function renderProjectVideo(project) {
   video.tabIndex = 0;
   video.setAttribute(
     "aria-label",
-    `${project.title} walkthrough video without sound. The current step is described below the video.`,
+    `${project.title} walkthrough video without sound. The current step is described next to the video.`,
   );
   const overlay = document.createElement("button");
   overlay.type = "button";
@@ -899,27 +964,53 @@ function renderProjectVideo(project) {
   fullscreen.setAttribute("aria-label", "Watch full screen");
   controls.append(play, rail, time, fullscreen);
 
+  // The panel beside the video (below it on phones) says what is happening
+  // in the current step and lists every step.
+  const panel = document.createElement("aside");
+  panel.className = "video-panel";
+  panel.setAttribute("aria-label", "What the video shows");
+  const status = document.createElement("p");
+  status.className = "video-status";
   const caption = document.createElement("p");
   caption.className = "video-caption";
   caption.setAttribute("aria-atomic", "true");
   const stepTitle = document.createElement("strong");
   const stepText = document.createElement("span");
   caption.append(stepTitle, " ", stepText);
+  const stepList = document.createElement("ol");
+  stepList.className = "video-steps";
+  stepList.setAttribute("aria-label", "All steps");
+  const stepButtons = chapters.map((chapter, index) => {
+    const item = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    const number = document.createElement("span");
+    number.textContent = String(index + 1).padStart(2, "0");
+    button.append(number, chapter.title);
+    item.append(button);
+    stepList.append(item);
+    return button;
+  });
   const footer = document.createElement("div");
   footer.className = "video-footer";
-  const status = document.createElement("p");
-  status.className = "video-status";
   const screenLink = document.createElement("a");
   screenLink.className = "text-link";
   screenLink.textContent = "View this screen full size";
   screenLink.target = "_blank";
   screenLink.rel = "noopener noreferrer";
-  footer.append(status, screenLink);
+  footer.append(screenLink);
   const hint = document.createElement("p");
   hint.className = "video-hint";
   hint.textContent =
     "Select a step to jump to it. With the video focused, Space plays or pauses and the arrow keys move between steps.";
-  gallery.append(heading, stage, controls, caption, footer, hint);
+  panel.append(status, caption, stepList, footer, hint);
+  const media = document.createElement("div");
+  media.className = "video-media";
+  media.append(stage, controls);
+  const body = document.createElement("div");
+  body.className = "video-body";
+  body.append(media, panel);
+  gallery.append(heading, body);
 
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let current = -1;
@@ -935,7 +1026,7 @@ function renderProjectVideo(project) {
     if (index === current) return;
     current = index;
     const chapter = chapters[index];
-    stepTitle.textContent = `${String(index + 1).padStart(2, "0")} · ${chapter.title}`;
+    stepTitle.textContent = chapter.title;
     stepText.textContent = chapter.caption;
     status.textContent = `Step ${index + 1} of ${chapters.length}`;
     segments.forEach((segment, i) =>
@@ -944,6 +1035,18 @@ function renderProjectVideo(project) {
         i === index ? "step" : "false",
       ),
     );
+    stepButtons.forEach((button, i) =>
+      button.setAttribute("aria-current", i === index ? "step" : "false"),
+    );
+    // Keep the current step in view inside the list without scrolling the page.
+    const item = stepButtons[index].parentElement;
+    const top = item.offsetTop;
+    if (top < stepList.scrollTop) stepList.scrollTop = top;
+    else if (
+      top + item.offsetHeight >
+      stepList.scrollTop + stepList.clientHeight
+    )
+      stepList.scrollTop = top + item.offsetHeight - stepList.clientHeight;
     screenLink.hidden = !chapter.screen;
     if (chapter.screen) {
       screenLink.href = chapter.screen;
@@ -1007,6 +1110,9 @@ function renderProjectVideo(project) {
   on(play, "click", toggle);
   segments.forEach((segment, index) =>
     on(segment.button, "click", () => seek(index)),
+  );
+  stepButtons.forEach((button, index) =>
+    on(button, "click", () => seek(index)),
   );
   on(fullscreen, "click", () => {
     if (video.requestFullscreen) video.requestFullscreen().catch(() => {});

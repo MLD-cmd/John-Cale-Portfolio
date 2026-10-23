@@ -1,170 +1,564 @@
 [
  {
   "type": "start",
-  "t": 1792745695.548
+  "t": 1792767455.869
  },
  {
   "type": "chapter",
-  "t": 1792745695.548,
-  "title": "Find a hub",
-  "text": "Browse nearby campus and dorm communities, sorted by distance."
+  "t": 1792767455.869,
+  "title": "Sign in",
+  "text": "Students sign in with their campus email."
  },
  {
   "type": "tap",
-  "t": 1792745698.15,
-  "x": 325,
-  "y": 232
+  "t": 1792767457.411,
+  "x": 195,
+  "y": 493
+ },
+ {
+  "type": "tap",
+  "t": 1792767459.685,
+  "x": 195,
+  "y": 561
+ },
+ {
+  "type": "tap",
+  "t": 1792767461.528,
+  "x": 195,
+  "y": 634
  },
  {
   "type": "chapter",
-  "t": 1792745700.371,
+  "t": 1792767464.01,
+  "title": "Find a hub",
+  "text": "Nearby campus and dorm hubs are listed by distance."
+ },
+ {
+  "type": "tap",
+  "t": 1792767466.212,
+  "x": 325,
+  "y": 233
+ },
+ {
+  "type": "chapter",
+  "t": 1792767468.277,
   "title": "Join the hub",
   "text": "Colon Street Hub becomes my current hub, and its count goes from 31 to 32 members."
  },
  {
   "type": "tap",
-  "t": 1792745701.874,
-  "x": 189,
+  "t": 1792767470.079,
+  "x": 357,
+  "y": 32
+ },
+ {
+  "type": "chapter",
+  "t": 1792767471.97,
+  "title": "Set my interests",
+  "text": "In my profile I choose Grocery and Drinks, so matching deals are recommended first."
+ },
+ {
+  "type": "swipe",
+  "t": 1792767472.876,
+  "from": {
+   "x": 195,
+   "y": 735
+  },
+  "to": {
+   "x": 195,
+   "y": 385
+  },
+  "ms": 1.2030000686645508
+ },
+ {
+  "type": "tap",
+  "t": 1792767475.182,
+  "x": 137,
+  "y": 340
+ },
+ {
+  "type": "tap",
+  "t": 1792767476.492,
+  "x": 107,
+  "y": 378
+ },
+ {
+  "type": "tap",
+  "t": 1792767477.106,
+  "x": 101,
+  "y": 421
+ },
+ {
+  "type": "tap",
+  "t": 1792767477.924,
+  "x": 288,
+  "y": 489
+ },
+ {
+  "type": "tap",
+  "t": 1792767479.604,
+  "x": 28,
+  "y": 32
+ },
+ {
+  "type": "tap",
+  "t": 1792767481.018,
+  "x": 187,
   "y": 165
  },
  {
   "type": "chapter",
-  "t": 1792745703.688,
-  "title": "Browse the Split Board",
-  "text": "Compare per-share prices, quantities, open slots, and deadlines."
- },
- {
-  "type": "swipe",
-  "t": 1792745704.897,
-  "from": {
-   "x": 195,
-   "y": 665
-  },
-  "to": {
-   "x": 195,
-   "y": 455
-  },
-  "ms": 1.1649999618530273
- },
- {
-  "type": "swipe",
-  "t": 1792745707.472,
-  "from": {
-   "x": 195,
-   "y": 315
-  },
-  "to": {
-   "x": 195,
-   "y": 525
-  },
-  "ms": 1.123000144958496
+  "t": 1792767483.286,
+  "title": "Get recommendations",
+  "text": "The Split Board opens with picks that match my interests, each with the reason it was picked."
  },
  {
   "type": "tap",
-  "t": 1792745709.797,
-  "x": 175,
-  "y": 523
+  "t": 1792767486.489,
+  "x": 317,
+  "y": 336
  },
  {
   "type": "chapter",
-  "t": 1792745711.706,
-  "title": "Review a deal",
-  "text": "Check my share, the organiser, who has joined, and where to pick it up."
- },
- {
-  "type": "swipe",
-  "t": 1792745712.912,
-  "from": {
-   "x": 195,
-   "y": 635
-  },
-  "to": {
-   "x": 195,
-   "y": 485
-  },
-  "ms": 1.1170001029968262
- },
- {
-  "type": "swipe",
-  "t": 1792745715.441,
-  "from": {
-   "x": 195,
-   "y": 345
-  },
-  "to": {
-   "x": 195,
-   "y": 495
-  },
-  "ms": 1.1050000190734863
+  "t": 1792767488.178,
+  "title": "Filter the board",
+  "text": "Filters narrow the board by category, status, or deadline; here, Grocery only."
  },
  {
   "type": "tap",
-  "t": 1792745717.651,
+  "t": 1792767488.981,
+  "x": 195,
+  "y": 593
+ },
+ {
+  "type": "tap",
+  "t": 1792767490.09,
+  "x": 45,
+  "y": 620
+ },
+ {
+  "type": "tap",
+  "t": 1792767491.005,
+  "x": 195,
+  "y": 798
+ },
+ {
+  "type": "tap",
+  "t": 1792767494.096,
+  "x": 195,
+  "y": 500
+ },
+ {
+  "type": "chapter",
+  "t": 1792767496.089,
+  "title": "Review a deal",
+  "text": "The deal shows my share, open slots, the pickup point, and who has already joined."
+ },
+ {
+  "type": "swipe",
+  "t": 1792767497.695,
+  "from": {
+   "x": 195,
+   "y": 640
+  },
+  "to": {
+   "x": 195,
+   "y": 480
+  },
+  "ms": 1.1019999980926514
+ },
+ {
+  "type": "swipe",
+  "t": 1792767500.307,
+  "from": {
+   "x": 195,
+   "y": 340
+  },
+  "to": {
+   "x": 195,
+   "y": 500
+  },
+  "ms": 1.0880000591278076
+ },
+ {
+  "type": "tap",
+  "t": 1792767502.499,
   "x": 195,
   "y": 806
  },
  {
   "type": "chapter",
-  "t": 1792745719.46,
+  "t": 1792767504.37,
   "title": "Reserve a share",
-  "text": "The slot is mine: open slots drop to 2 of 5, and the amount I owe appears."
+  "text": "My slot is reserved: open slots drop to 2 of 5, and the amount I owe appears."
  },
  {
   "type": "tap",
-  "t": 1792745721.864,
-  "x": 29,
-  "y": 31
+  "t": 1792767506.971,
+  "x": 28,
+  "y": 32
+ },
+ {
+  "type": "tap",
+  "t": 1792767508.586,
+  "x": 299,
+  "y": 797
  },
  {
   "type": "chapter",
-  "t": 1792745723.681,
-  "title": "Back on the board",
-  "text": "The rice sack now shows 2 of 5 slots open for everyone in the hub."
+  "t": 1792767510.564,
+  "title": "Post my own deal",
+  "text": "I start a bulk buy for my hub: what it is, the total price, the amount, and how many students split it."
  },
  {
   "type": "tap",
-  "t": 1792745725.883,
-  "x": 301,
-  "y": 800
- },
- {
-  "type": "chapter",
-  "t": 1792745727.791,
-  "title": "Post a deal",
-  "text": "Describe a new bulk buy, or scan a receipt to fill the form in."
- },
- {
-  "type": "tap",
-  "t": 1792745728.993,
+  "t": 1792767511.467,
   "x": 195,
-  "y": 447
- },
- {
-  "type": "type",
-  "t": 1792745729.72,
-  "text": "Cooking oil 5L × 4"
- },
- {
-  "type": "tap",
-  "t": 1792745732.198,
-  "x": 78,
-  "y": 691
+  "y": 448
  },
  {
   "type": "swipe",
-  "t": 1792745733.215,
+  "t": 1792767513.673,
   "from": {
    "x": 195,
-   "y": 695
+   "y": 775
   },
   "to": {
    "x": 195,
-   "y": 505
+   "y": 425
   },
-  "ms": 1.1790001392364502
+  "ms": 1.188999891281128
+ },
+ {
+  "type": "swipe",
+  "t": 1792767515.497,
+  "from": {
+   "x": 195,
+   "y": 775
+  },
+  "to": {
+   "x": 195,
+   "y": 425
+  },
+  "ms": 1.13100004196167
+ },
+ {
+  "type": "tap",
+  "t": 1792767517.231,
+  "x": 195,
+  "y": 170
+ },
+ {
+  "type": "tap",
+  "t": 1792767518.307,
+  "x": 195,
+  "y": 234
+ },
+ {
+  "type": "tap",
+  "t": 1792767519.224,
+  "x": 195,
+  "y": 303
+ },
+ {
+  "type": "tap",
+  "t": 1792767520.14,
+  "x": 195,
+  "y": 363
+ },
+ {
+  "type": "tap",
+  "t": 1792767520.948,
+  "x": 195,
+  "y": 395
+ },
+ {
+  "type": "chapter",
+  "t": 1792767523.261,
+  "title": "Review and publish",
+  "text": "The form works out each share, P300 for 5 L, and I add the pickup point and payment method."
+ },
+ {
+  "type": "tap",
+  "t": 1792767523.261,
+  "x": 195,
+  "y": 634
+ },
+ {
+  "type": "swipe",
+  "t": 1792767525.051,
+  "from": {
+   "x": 195,
+   "y": 825
+  },
+  "to": {
+   "x": 195,
+   "y": 375
+  },
+  "ms": 1.1599998474121094
+ },
+ {
+  "type": "swipe",
+  "t": 1792767526.844,
+  "from": {
+   "x": 195,
+   "y": 825
+  },
+  "to": {
+   "x": 195,
+   "y": 375
+  },
+  "ms": 1.0679998397827148
+ },
+ {
+  "type": "tap",
+  "t": 1792767528.516,
+  "x": 195,
+  "y": 120
+ },
+ {
+  "type": "tap",
+  "t": 1792767531.303,
+  "x": 195,
+  "y": 788
+ },
+ {
+  "type": "chapter",
+  "t": 1792767533.978,
+  "title": "Check notifications",
+  "text": "Three hubmates reserved the rest of my deal, and I get a reminder to pay for my rice share."
+ },
+ {
+  "type": "tap",
+  "t": 1792767535.478,
+  "x": 28,
+  "y": 32
+ },
+ {
+  "type": "tap",
+  "t": 1792767537.09,
+  "x": 213,
+  "y": 32
+ },
+ {
+  "type": "chapter",
+  "t": 1792767542.456,
+  "title": "Find my deal",
+  "text": "Back on the board, searching \u201coil\u201d brings up the deal I posted, now full."
+ },
+ {
+  "type": "tap",
+  "t": 1792767542.756,
+  "x": 28,
+  "y": 32
+ },
+ {
+  "type": "tap",
+  "t": 1792767544.273,
+  "x": 187,
+  "y": 165
+ },
+ {
+  "type": "tap",
+  "t": 1792767546.3,
+  "x": 140,
+  "y": 337
+ },
+ {
+  "type": "tap",
+  "t": 1792767548.905,
+  "x": 195,
+  "y": 470
+ },
+ {
+  "type": "chapter",
+  "t": 1792767550.972,
+  "title": "Organise the deal",
+  "text": "As organiser I see the full deal and everyone in it, with a button to record each payment."
+ },
+ {
+  "type": "swipe",
+  "t": 1792767552.778,
+  "from": {
+   "x": 195,
+   "y": 750
+  },
+  "to": {
+   "x": 195,
+   "y": 450
+  },
+  "ms": 1.1319999694824219
+ },
+ {
+  "type": "swipe",
+  "t": 1792767554.535,
+  "from": {
+   "x": 195,
+   "y": 750
+  },
+  "to": {
+   "x": 195,
+   "y": 450
+  },
+  "ms": 1.0249998569488525
+ },
+ {
+  "type": "chapter",
+  "t": 1792767557.071,
+  "title": "Record payments",
+  "text": "I mark each classmate paid as their GCash payment arrives, until everyone has paid."
+ },
+ {
+  "type": "tap",
+  "t": 1792767557.673,
+  "x": 110,
+  "y": 253
+ },
+ {
+  "type": "tap",
+  "t": 1792767558.785,
+  "x": 110,
+  "y": 366
+ },
+ {
+  "type": "tap",
+  "t": 1792767559.891,
+  "x": 110,
+  "y": 479
+ },
+ {
+  "type": "chapter",
+  "t": 1792767561.446,
+  "title": "Buy the goods",
+  "text": "Confirming the purchase locks the reservations and opens a pickup checklist."
+ },
+ {
+  "type": "tap",
+  "t": 1792767562.048,
+  "x": 195,
+  "y": 746
+ },
+ {
+  "type": "tap",
+  "t": 1792767563.657,
+  "x": 270,
+  "y": 468
+ },
+ {
+  "type": "swipe",
+  "t": 1792767565.472,
+  "from": {
+   "x": 195,
+   "y": 250
+  },
+  "to": {
+   "x": 195,
+   "y": 550
+  },
+  "ms": 1.1380000114440918
+ },
+ {
+  "type": "swipe",
+  "t": 1792767567.235,
+  "from": {
+   "x": 195,
+   "y": 725
+  },
+  "to": {
+   "x": 195,
+   "y": 475
+  },
+  "ms": 1.0410001277923584
+ },
+ {
+  "type": "chapter",
+  "t": 1792767569.02,
+  "title": "Hand out shares",
+  "text": "I tick off each pickup at the gate; once everyone has collected, the deal is Completed."
+ },
+ {
+  "type": "tap",
+  "t": 1792767569.821,
+  "x": 285,
+  "y": 322
+ },
+ {
+  "type": "tap",
+  "t": 1792767570.933,
+  "x": 285,
+  "y": 514
+ },
+ {
+  "type": "tap",
+  "t": 1792767572.044,
+  "x": 285,
+  "y": 707
+ },
+ {
+  "type": "swipe",
+  "t": 1792767573.56,
+  "from": {
+   "x": 195,
+   "y": 100
+  },
+  "to": {
+   "x": 195,
+   "y": 700
+  },
+  "ms": 1.133000135421753
+ },
+ {
+  "type": "chapter",
+  "t": 1792767577.157,
+  "title": "My history",
+  "text": "My profile keeps the deals I organised and the ones I joined."
+ },
+ {
+  "type": "tap",
+  "t": 1792767577.157,
+  "x": 28,
+  "y": 32
+ },
+ {
+  "type": "tap",
+  "t": 1792767578.563,
+  "x": 28,
+  "y": 32
+ },
+ {
+  "type": "tap",
+  "t": 1792767579.974,
+  "x": 357,
+  "y": 32
+ },
+ {
+  "type": "swipe",
+  "t": 1792767581.793,
+  "from": {
+   "x": 195,
+   "y": 775
+  },
+  "to": {
+   "x": 195,
+   "y": 425
+  },
+  "ms": 1.133000135421753
+ },
+ {
+  "type": "swipe",
+  "t": 1792767584.942,
+  "from": {
+   "x": 195,
+   "y": 725
+  },
+  "to": {
+   "x": 195,
+   "y": 475
+  },
+  "ms": 1.1180000305175781
  },
  {
   "type": "end",
-  "t": 1792745737.098
+  "t": 1792767588.924
  }
 ]

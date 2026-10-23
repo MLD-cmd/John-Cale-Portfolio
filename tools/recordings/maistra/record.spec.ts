@@ -325,6 +325,17 @@ test('record the mAIstra review flow', async ({ page }) => {
   await page.waitForTimeout(500);
   zoom(await box(dialog.locator('.grading-programs')).then(pad));
   await page.waitForTimeout(2800);
+
+  chapter('Back to the list', 'Finish review closes the paper. Its card now reads Graded, with P1 2/2 · P2 2/2.');
+  zoom(null, 700);
+  await page.waitForTimeout(500);
+  await click(page, dialog.getByRole('button', { name: 'Finish review' }), 1000);
+  await expect(dialog).toBeHidden();
+  await page.waitForTimeout(900);
+  const graded = page.locator('.submission-card').filter({ hasText: '01:50' });
+  await moveTo(page, ...(Object.values(await center(graded)) as [number, number]), 900);
+  zoom(await box(graded).then(pad));
+  await page.waitForTimeout(3200);
   log('end');
   await page.waitForTimeout(300);
   await cdp.send('Page.stopScreencast');

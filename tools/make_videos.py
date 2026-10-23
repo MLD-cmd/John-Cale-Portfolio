@@ -35,6 +35,15 @@ OUT = ROOT / "assets" / "videos"
 FONT_FILE = ROOT / "assets" / "instrument-sans.ttf"
 
 W, H, FPS = 1600, 900, 30
+# Phone apps are filmed in a square frame, so the phone is large beside the
+# site's caption panel; desktop apps keep 16:9.
+WIDE, SQUARE = (1600, 900), (1080, 1080)
+
+
+def frame_size(size):
+    """Set the frame size for the video about to be built."""
+    global W, H
+    W, H = size
 BG = (21, 27, 24)
 TEXT = (239, 238, 229)
 MUTED = (175, 186, 176)
@@ -43,12 +52,15 @@ INK = (38, 58, 47)
 PAPER = (251, 251, 247)
 
 # The app fills the frame, inside these margins, when the camera is at rest.
-# Windows leave a strip at the top for the step label.
-PAD_X, PAD_Y = 64, 40
+# Windows and phones leave a strip at the top for the step label.
+PAD_X = 64
 TOP, BOTTOM = 84, 36
 FULL = (0.0, 0.0, 1.0, 1.0)
-# Scene camera: centre x, centre y (scene pixels) and zoom.
-HOME = (W / 2, H / 2, 1.0)
+
+
+def home():
+    """The resting scene camera: centre x, centre y (scene pixels) and zoom."""
+    return (W / 2, H / 2, 1.0)
 # The background reaches this far past the frame, so pulling back never shows an edge.
 BG_MARGIN = 0.2
 
@@ -204,7 +216,7 @@ def blit(canvas, src, box, cam, mask=None, resample=Image.BICUBIC):
 def scene_cam(dev, rect):
     """The scene camera that frames `rect` (fractions of the device's content)."""
     if dev.kind == "phone" or rect == FULL:
-        return HOME
+        return home()
     x0, y0, x1, y1 = dev.content_box
     bx0, bx1 = x0 + rect[0] * (x1 - x0), x0 + rect[2] * (x1 - x0)
     by0, by1 = y0 + rect[1] * (y1 - y0), y0 + rect[3] * (y1 - y0)
@@ -230,7 +242,7 @@ def spring_track(events, duration, start):
     track = np.zeros((n, 3))
     state = np.array([start[0], start[1], math.log(start[2])])
     vel = np.zeros(3)
-    target = np.array([HOME[0], HOME[1], 0.0])
+    target = np.array([W / 2, H / 2, 0.0])
     k = 0
     for f in range(n):
         t = f / FPS
@@ -255,7 +267,10 @@ class Phone:
     kind = "phone"
     zmax = 1.0
 
-    def __init__(self, aspect, height=H - 2 * PAD_Y - 24, center=(W / 2, H / 2), inset=0):
+    def __init__(self, aspect, height=None, center=None, inset=0):
+        # Below the strip the step label uses, like the windows.
+        height = height or H - TOP - BOTTOM - 24
+        center = center or (W / 2, (TOP + H - BOTTOM) / 2)
         bezel = 12
         self.inset = inset
         self.sh = round(height)
@@ -321,13 +336,15 @@ class Window:
     def __init__(
         self,
         ref,
-        max_size=(W - 2 * PAD_X, H - TOP - BOTTOM),
-        center=(W / 2, (TOP + H - BOTTOM) / 2),
+        max_size=None,
+        center=None,
         bar=None,
         title="",
         radius=12,
         fill=(236, 236, 232),
     ):
+        max_size = max_size or (W - 2 * PAD_X, H - TOP - BOTTOM)
+        center = center or (W / 2, (TOP + H - BOTTOM) / 2)
         self.ref = ref
         rw, rh = ref
         tb = 38 if bar else 0
@@ -871,6 +888,7 @@ class Video:
             f'      hevc: "assets/videos/{self.id}.hevc.mp4",',
             f'      hevcCodecs: "{hevc_codecs(OUT / f"{self.id}.hevc.mp4")}",',
             f'      poster: "assets/videos/{self.id}.jpg",',
+            *([f'      aspect: "{W} / {H}",'] if W * 9 != H * 16 else []),
             f"      duration: {int(self.duration * FPS) / FPS:.1f},",
             "      chapters: [",
         ]
@@ -1019,6 +1037,7 @@ class PhoneRecording(Recording):
 
 def hydro():
     # The captures carry a thin emulator border; trim it.
+    frame_size(SQUARE)
     phone = Phone(2390 / 1070, inset=5)
     steps = [
         S("hydro-splash.png", "Open the app", "The splash screen restores a saved session before the first screen.", hold=2.3),
@@ -1044,17 +1063,18 @@ def hydro():
 
 def bulk():
     # A real recording of the app's sample-data web build (tools/recordings/bulk).
+    frame_size(SQUARE)
     phone = Phone(844 / 390)
-    screens = [f"bulk-live-{n:02d}.jpg" for n in range(1, 8)]
     return PhoneRecording(
         "bulk-buying", "Bulk Buying Companion", "Screen recording",
         "The real app on its built-in sample data  ·  no live backend",
         (24, 58, 54), ROOT / "tools" / "recordings" / "bulk", phone,
-        poster_chapter=2, screens=screens,
+        poster_chapter=4,
     )
 
 
 def openear():
+    frame_size(SQUARE)
     phone = Phone(932 / 430)
     steps = [
         S("openear-login.png", "Sign in", "The welcome screen keeps controls large and works with screen readers.", tap=(0.5, 0.67)),
@@ -1071,6 +1091,7 @@ def openear():
 
 def maistra():
     # A real screen recording of the web app (tools/recordings/maistra).
+    frame_size(WIDE)
     window = Window((1440, 1000), bar="light", title="mAIstra  ·  Teacher workspace")
     screens = [
         "maistra-real-question-bank.png", "maistra-real-submissions.png", "maistra-real-details.png",
@@ -1090,19 +1111,22 @@ def maistra():
             (4, 0.0, [0.4, 0.38, 0.84, 0.69], 1.0),    # in on the code being corrected
             (5, 0.0, [0.38, 0.22, 0.9, 0.58], 0.9),    # program tabs and question picker
             (6, 3.9, None, 0.7),                       # back out for Continue to grading
-            (7, 4.8, [0.1, 0.27, 0.7, 0.73], 1.0),     # Accepted, and what it printed
-            (7, 7.8, None, 0.7),                       # back out for Submit Code
-            (8, 5.9, [0.37, 0.53, 0.9, 0.85], 1.0),    # outputs, expected values, score
-            (8, 9.3, None, 0.7),                       # back out for the Program 2 tab
-            (9, 7.9, [0.37, 0.53, 0.9, 0.85], 1.0),    # the cube program's results
-            (9, 11.3, None, 0.7),
+            (7, 9.9, [0.1, 0.27, 0.7, 0.73], 1.0),     # Accepted, and what it printed
+            (7, 12.9, None, 0.7),                      # back out for Submit Code
+            (8, 8.4, [0.37, 0.53, 0.9, 0.85], 1.0),    # outputs, expected values, score
+            (8, 11.8, None, 0.7),                      # back out for the Program 2 tab
+            (9, 8.9, [0.37, 0.53, 0.9, 0.85], 1.0),    # the cube program's results
+            (9, 12.35, None, 0.7),
             (10, 1.6, [0.1, 0.25, 0.4, 0.34], 1.0),    # both programs: 2/2 passed
+            (11, 0.0, None, 0.7),                      # back out for Finish review
+            (11, 3.5, [0.096, 0.3, 0.299, 0.609], 1.0),  # the paper's card: Graded, P1 2/2 · P2 2/2
         ],
     )
 
 
 def meshunwarp():
     # Window captures of the real app processing my test papers.
+    frame_size(WIDE)
     win = Window((1372, 870), radius=12)
     # Wide for the before/after shots; in only on the gate score and the text.
     steps = [
@@ -1123,6 +1147,7 @@ def meshunwarp():
 
 
 def fitsync():
+    frame_size(WIDE)
     canvas = Window((1100, 785), bar="dark", title="FitSync  ·  Figma prototype map")
     phone = Phone(733 / 340)
     steps = [
@@ -1232,6 +1257,7 @@ def takeaway_card(t):
 
 
 def ml():
+    frame_size(WIDE)
     card = Window(ML_REF, radius=18, fill=PAPER)
     # The notebook's charts are small images, so zooms stay gentle.
     card.zmax = 1.4
