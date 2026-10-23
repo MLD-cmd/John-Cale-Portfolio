@@ -1,0 +1,9 @@
+Simple Icons 16.35.0
+Source: https://github.com/simple-icons/simple-icons
+License: CC0-1.0
+Brand names and marks belong to their respective owners.
+
+Additional SVGs: Devicon (MIT), https://github.com/devicons/devicon
+Groq and KanbanFlow icons: favicons linked by their official websites.
+
+OpenCV, NumPy, PyTorch, and Apple marks: Devicon (MIT), https://github.com/devicons/devicon. Apple mark identifies the Apple Vision platform. EasyOCR uses a generic, locally authored OCR symbol rather than an official product logo.

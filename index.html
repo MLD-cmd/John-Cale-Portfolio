@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f6f0" />
+    <meta
+      name="description"
+      content="John Cale Nombrado — a Computer Science student exploring web development, mobile applications, and artificial intelligence."
+    />
+    <title>John Cale Nombrado — Portfolio</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="assets/instrument-sans.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css?v=20261023-video-2" />
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("jcn-theme") === "dark" ? "dark" : "light";
+      } catch {
+        /* Storage can be unavailable in private browsing; keep the current theme. */
+      }
+      {
+        // Start the name entrance once the heading font has loaded (at most 1.2s),
+        // so a font swap can't make the name jump while the mascot pulls it.
+        const html = document.documentElement;
+        const startIntro = () => html.classList.remove("intro-waiting");
+        html.classList.add("intro-waiting");
+        setTimeout(startIntro, 1200);
+        document.addEventListener("DOMContentLoaded", () => {
+          document.fonts?.load('600 1em "Instrument Sans"').then(startIntro, startIntro);
+        });
+      }
+    </script>
+    <link rel="stylesheet" href="editorial.css?v=20261023-video-1" />
+    <script src="app.js?v=20261023-video-6" defer></script>
+  </head>
+  <body class="editorial-portfolio">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner wrap">
+        <a href="#home" class="wordmark" aria-label="John Cale Nombrado, home"
+          >JCN<span>.</span></a
+        >
+        <div class="header-controls">
+          <nav class="navigation" id="navigation" aria-label="Main navigation">
+            <a href="#projects">Work</a>
+            <a href="#designs">Designs</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <button
+            class="icon-button theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+            title="Switch to dark theme"
+          >
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+              />
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.4 14.3A8.8 8.8 0 0 1 9.7 3.6 8.8 8.8 0 1 0 20.4 14.3Z"
+              />
+            </svg>
+          </button>
+          <button
+            class="menu-toggle icon-button"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="navigation"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero wrap" id="home" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="hero-name-scene">
+            <div class="name-pull-group">
+              <h1
+                id="hero-title"
+                class="hero-enter"
+                aria-label="John Cale Nombrado"
+              >
+                <span class="name-first">John Cale</span>
+                <span class="name-last">Nombrad<span class="name-perch">o              <button
+                class="mascot-track"
+                type="button"
+                aria-label="Replay name entrance"
+                title="Replay name entrance"
+              >
+                <svg
+                  class="name-mascot"
+                  viewBox="0 0 80 68"
+                  width="80"
+                  height="68"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <g class="mascot-body">
+                    <g fill="currentColor">
+                      <!-- Legs come first so the body covers their tops. -->
+                      <path
+                        class="mascot-leg-left"
+                        d="M28 51Q23 64 30 64H36V52Z"
+                      />
+                      <path
+                        class="mascot-leg-right"
+                        d="M46 51V64H53Q59 64 54 51Z"
+                      />
+                      <!-- While pulling, the right arm reaches round from behind
+                           the body, so both hands hold the name. -->
+                      <path
+                        class="mascot-far-arm"
+                        d="M28 39Q19 39 14 43L6 43Q2 43 3 48Q3 52 8 51L18 50Q24 50 30 47Z"
+                      />
+                      <path
+                        d="M20 30C20 14 29 8 41 8S62 16 62 31V46C62 56 53 60 41 60S20 54 20 44Z"
+                      />
+                      <path
+                        class="mascot-grip"
+                        d="M25 31Q16 31 11 35L3 35Q-1 35 0 40Q0 44 5 43L15 42Q21 42 27 39Z"
+                      />
+                      <!-- The right arm is the left arm mirrored, so both match. -->
+                      <g class="mascot-wave">
+                        <path
+                          d="M57 31Q66 31 71 35L79 35Q83 35 82 40Q82 44 77 43L67 42Q61 42 55 39Z"
+                        />
+                      </g>
+                    </g>
+                    <g class="mascot-face">
+                      <g class="mascot-eyes">
+                        <ellipse cx="33" cy="29" rx="2.5" ry="3.5" />
+                        <ellipse cx="48" cy="29" rx="2.5" ry="3.5" />
+                      </g>
+                      <path
+                        d="M35 40Q41 46 47 40"
+                        fill="none"
+                        stroke="var(--mascot-face)"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                    <!-- Bent typing arms: elbows out, hands behind the lid. -->
+                    <path
+                      class="mascot-type-arm mascot-type-arm-left"
+                      d="M23 35Q13 43 26 50"
+                    />
+                    <path
+                      class="mascot-type-arm mascot-type-arm-right"
+                      d="M59 35Q69 43 56 50"
+                    />
+                    <!-- The laptop on its lap; visitors see the back of the lid.
+                         The keyboard is narrower than the lid so it reads as
+                         sitting behind it, on the mascot's side. -->
+                    <g class="mascot-laptop">
+                      <g class="laptop-lid">
+                        <rect x="23" y="35" width="36" height="21" rx="3" />
+                        <circle class="laptop-logo" cx="41" cy="45.5" r="2.6" />
+                      </g>
+                      <rect
+                        class="laptop-deck"
+                        x="26"
+                        y="55"
+                        width="30"
+                        height="3.4"
+                        rx="1.7"
+                      />
+                    </g>
+                  </g>
+                </svg>
+                <span class="mascot-bubble" aria-hidden="true">
+                  <strong>Hi, welcome!</strong>
+                  <span>Have a look around.</span>
+                </span>
+              </button></span></span>
+              </h1>
+
+            </div>
+          </div>
+          <p class="hero-role hero-enter">
+            Learning to build thoughtful<br /><span class="aspiring-role"
+              >mobile and web experiences.</span
+            >
+          </p>
+          <p class="hero-description hero-enter">
+            I am a Computer Science student at the University of San
+            Jose–Recoletos, building my skills through coursework, mobile apps,
+            and team projects. I’m currently looking for an OJT placement where
+            I can keep learning and take on new challenges.
+          </p>
+          <div class="hero-actions hero-enter">
+            <a href="#projects" class="button button-primary"
+              >See my work
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h15m-6-6 6 6-6 6" /></svg
+            ></a>
+            <button
+              class="button button-secondary cv-download"
+              type="button"
+              disabled
+              aria-describedby="cv-status"
+            >
+              Download CV
+            </button>
+          </div>
+          <p class="cv-status" id="cv-status">CV available soon.</p>
+        </div>
+      </section>
+
+      <section
+        class="approach-section section"
+        aria-labelledby="approach-title"
+      >
+        <h2 id="approach-title">How I work<span class="accent">.</span></h2>
+        <div
+          class="work-methods"
+          tabindex="0"
+          aria-label="Decisions behind my projects"
+        >
+          <article>
+            <h3>Plan for corrections</h3>
+            <div>
+              <p>
+                I account for edits, cancellations, and repeat actions.
+                Hydro-Tracker caches records and tracks deletions; mAIstra asks
+                before replacing teacher corrections and ignores extraction
+                results for a closed submission.
+              </p>
+              <span class="method-context">Hydro-Tracker · mAIstra</span>
+            </div>
+          </article>
+          <article>
+            <h3>Keep uncertain results reviewable</h3>
+            <div>
+              <p>
+                I use layout and C-code structure to associate right-margin
+                writing with the main program. When those signals are unclear,
+                mAIstra preserves the original order for the teacher to review.
+              </p>
+              <span class="method-context">mAIstra</span>
+            </div>
+          </article>
+          <article>
+            <h3>Separate rules from the screen</h3>
+            <div>
+              <p>
+                Hydro-Tracker’s record updates and reminder schedules have
+                focused checks. MeshUnwarp runs processing in a worker, leaving
+                the interface free to report progress, cancel work, or explain a
+                failure.
+              </p>
+              <span class="method-context">Hydro-Tracker · MeshUnwarp</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="projects section wrap"
+        id="projects"
+        aria-labelledby="projects-title"
+      >
+        <div class="projects-heading">
+          <h2 id="projects-title">
+            Selected projects<span class="accent">.</span>
+          </h2>
+          <p class="section-intro">
+            Coursework, independent builds, and team projects. Explore the
+            screens and the work behind them.
+          </p>
+        </div>
+        <div class="project-grid">
+          <article class="featured-project work-feature">
+            <button
+              class="project-visual app-gallery"
+              type="button"
+              data-project="featured"
+              aria-label="View Hydro-Tracker project and video walkthrough"
+            >
+              <span class="visual-caption">HYDRO-TRACKER</span>
+              <span class="app-screens" aria-hidden="true"
+                ><img
+                  src="assets/projects/hydro-dashboard.png"
+                  alt=""
+                  width="1080"
+                  height="2400" /><img
+                  src="assets/projects/hydro-stats.png"
+                  alt=""
+                  width="1080"
+                  height="2400"
+                  loading="lazy"
+              /></span>
+              <span class="visual-bottom"
+                ><span>Daily logging &amp; progress</span></span
+              >
+            </button>
+            <div class="featured-content">
+              <p class="eyebrow accent">Mobile application development</p>
+              <h3>Hydro-Tracker</h3>
+              <p>
+                A daily hydration companion: log a drink, follow a goal, and
+                look back at your progress.
+              </p>
+              <p class="project-evidence">
+                <strong>My work:</strong> Built the Flutter screens,
+                drink-logging flow, reminders, and Supabase data storage.
+              </p>
+              <div class="tags" aria-label="Hydro-Tracker technologies">
+                <span>Flutter</span><span>Dart</span><span>Supabase</span>
+              </div>
+              <button
+                class="text-link project-link"
+                type="button"
+                data-project="featured"
+              >
+                Read the case study
+              </button>
+            </div>
+          </article>
+          <article
+            class="featured-project work-feature bulk-feature"
+            aria-labelledby="bulk-title"
+          >
+            <button
+              class="project-visual app-gallery"
+              type="button"
+              data-project="bulk"
+              aria-label="View Bulk Buying Companion video walkthrough and contribution"
+            >
+              <span class="visual-caption">BULK BUYING COMPANION</span>
+              <span class="app-screens" aria-hidden="true"
+                ><img
+                  src="assets/projects/bulk-board.png"
+                  alt=""
+                  width="390"
+                  height="844"
+                  loading="lazy" /><img
+                  src="assets/projects/bulk-deal.png"
+                  alt=""
+                  width="390"
+                  height="844"
+                  loading="lazy"
+              /></span>
+              <span class="visual-bottom"
+                ><span>Shared purchases &amp; clear cost splitting</span></span
+              >
+            </button>
+            <div class="featured-content">
+              <p class="eyebrow accent">Group mobile application project</p>
+              <h3 id="bulk-title">Bulk Buying Companion</h3>
+              <p>
+                A campus group-buying app where students split the cost of bulk
+                purchases, reserve a share, and coordinate pickup.
+              </p>
+              <p class="project-evidence">
+                <strong>My work:</strong> Cost splitting, reservation and status
+                rules, receipt scanning, deal recommendations, and interface
+                improvements.
+              </p>
+              <div class="tags" aria-label="Bulk Buying Companion technologies">
+                <span>Flutter</span><span>Dart</span><span>Supabase</span>
+              </div>
+              <button
+                class="text-link project-link"
+                type="button"
+                data-project="bulk"
+              >
+                Read the case study
+              </button>
+            </div>
+          </article>
+          <article
+            class="thesis-project work-feature"
+            aria-labelledby="maistra-title"
+          >
+            <div class="thesis-visual">
+              <button
+                class="thesis-screenshot"
+                type="button"
+                data-project="maistra"
+                aria-label="View mAIstra video walkthrough and case study"
+              >
+                <img
+                  src="assets/projects/maistra-card.png"
+                  alt="mAIstra review step: my handwritten test page beside the OCR text, which misread square as sgvare"
+                  width="1180"
+                  height="880"
+                  loading="lazy"
+                />
+                <span>Explore the interface </span>
+              </button>
+              <p class="thesis-visual-note">
+                Actual Angular interface · my handwritten test page and the
+                text our OCR read from it.
+              </p>
+            </div>
+            <div class="thesis-copy">
+              <p class="eyebrow accent">Group thesis project</p>
+              <h3 id="maistra-title">mAIstra</h3>
+              <p>
+                A group thesis project that turns handwritten C assignments into
+                editable code for teachers to review before checking answers
+                against test cases.
+              </p>
+              <p class="thesis-role">
+                <strong>My focus:</strong> OCR processing, right-margin code
+                continuation, and teacher-review safeguards.
+              </p>
+              <div class="tags" aria-label="mAIstra technologies">
+                <span>Angular</span><span>FastAPI</span><span>Python</span
+                ><span>OpenCV</span><span>Supabase</span><span>Judge0</span>
+              </div>
+              <button
+                class="text-link thesis-link"
+                type="button"
+                data-project="maistra"
+              >
+                Read the case study
+              </button>
+            </div>
+          </article>
+          <article class="featured-project work-feature openear-feature">
+            <button
+              class="project-visual app-gallery"
+              type="button"
+              data-project="openear"
+              aria-label="View OpenEar video walkthrough and contribution"
+            >
+              <span class="visual-caption">OPENEAR</span>
+              <span class="app-screens" aria-hidden="true"
+                ><img
+                  src="assets/projects/openear-login.png"
+                  alt=""
+                  loading="lazy" /><img
+                  src="assets/projects/openear-notes.png"
+                  alt=""
+                  loading="lazy"
+              /></span>
+              <span class="visual-bottom"><span>Voice-guided study</span></span>
+            </button>
+            <div class="featured-content">
+              <p class="eyebrow accent">
+                Software Engineering I · Team of three
+              </p>
+              <h3>OpenEar</h3>
+              <p>
+                A study app designed for visually impaired learners, with spoken
+                notes, voice navigation, and quizzes.
+              </p>
+              <p class="project-evidence">
+                <strong>My work:</strong> Co-developed the app, improved speech
+                feedback and navigation, and added question lookup based on
+                uploaded notes.
+              </p>
+              <div class="tags" aria-label="OpenEar technologies">
+                <span>Flutter</span><span>Dart</span><span>Firebase</span>
+              </div>
+              <button
+                class="text-link project-link"
+                type="button"
+                data-project="openear"
+              >
+                Read the case study
+              </button>
+            </div>
+          </article>
+          <article class="small-project">
+            <button
+              class="small-visual desktop-screenshot-visual"
+              type="button"
+              data-project="mesh"
+              aria-label="View MeshUnwarp project and interface"
+            >
+              <img
+                src="assets/projects/meshunwarp-run-clean-scan.jpg"
+                alt="MeshUnwarp after a real run: my warped test page beside its dewarped Clean Scan output"
+                width="1372"
+                height="870"
+                loading="lazy"
+              /><span class="small-slot">04</span>
+            </button>
+            <div>
+              <p class="eyebrow">Graphics &amp; visual computing</p>
+              <h3>MeshUnwarp</h3>
+              <p>
+                A desktop workflow for straightening document images, cleaning
+                scans, and extracting text with primary and fallback OCR
+                engines.
+              </p>
+              <button
+                class="text-link compact-link"
+                type="button"
+                data-project="mesh"
+              >
+                View project
+              </button>
+            </div>
+          </article>
+          <article class="small-project">
+            <button
+              class="small-visual desktop-screenshot-visual"
+              type="button"
+              data-project="ml"
+              aria-label="View Student Grade Prediction study and results"
+            >
+              <img
+                src="assets/projects/student-grade-model-comparison.png"
+                alt="Comparison chart for Naive Bayes, a neural network, and Random Forest"
+                loading="lazy"
+              /><span class="small-slot">04</span>
+            </button>
+            <div>
+              <p class="eyebrow">Academic machine learning study</p>
+              <h3>Student Grade Prediction</h3>
+              <p>
+                Compared three classification models and examined how features,
+                data splits, and class imbalance affected the results.
+              </p>
+              <button
+                class="text-link compact-link"
+                type="button"
+                data-project="ml"
+              >
+                View study
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="designs-section section wrap"
+        id="designs"
+        aria-labelledby="designs-title"
+      >
+        <div class="section-top">
+          <p class="eyebrow">02 / UI/UX Design</p>
+          <span class="section-note">Figma / Mobile interface</span>
+        </div>
+        <h2 id="designs-title">
+          Interface design<span class="accent">.</span>
+        </h2>
+        <p class="section-intro">
+          Before the code: exploring how a fitness app could feel and flow.
+        </p>
+        <article class="design-showcase" aria-labelledby="fitsync-title">
+          <button
+            class="design-preview"
+            type="button"
+            data-project="fitsync"
+            aria-label="View FitSync interface design and Figma details"
+          >
+            <span class="eyebrow">FitSync / Mobile interface</span>
+            <img
+              src="assets/projects/fitsync-cardio.png"
+              alt="FitSync cardio progress interface designed in Figma"
+              width="196"
+              height="429"
+              loading="lazy"
+            />
+            <span class="design-preview-caption">View design details </span>
+          </button>
+          <div class="design-copy">
+            <p class="eyebrow accent">Solo / Figma design concept</p>
+            <h3 id="fitsync-title">FitSync</h3>
+            <p>
+              A mobile fitness interface exploring workout progress, meal
+              planning, and everyday navigation.
+            </p>
+            <dl class="design-summary">
+              <div>
+                <dt>My role</dt>
+                <dd>Interface design &amp; navigation flows</dd>
+              </div>
+              <div>
+                <dt>Design focus</dt>
+                <dd>
+                  Clear progress metrics, consistent components, and
+                  approachable mobile screens
+                </dd>
+              </div>
+            </dl>
+            <div class="tags" aria-label="FitSync design tools and focus">
+              <span>Figma</span><span>UI design</span><span>Screen flows</span>
+            </div>
+            <button class="text-link" type="button" data-project="fitsync">
+              Explore the design
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <div class="about-skills wrap">
+        <section class="about-section" id="about" aria-labelledby="about-title">
+          <p class="eyebrow">03 / A little about me</p>
+          <h2 id="about-title">
+            A student,<br />still learning<span class="accent">.</span>
+          </h2>
+          <p>
+            I’m studying Computer Science at the University of San
+            Jose–Recoletos. Mobile Application Development 1–3 gave me a place
+            to practice building interfaces and connecting them to app logic and
+            data.
+          </p>
+          <p>
+            I’m interested in mobile development and front-end work. I enjoy
+            working through a screen’s layout, navigation, and the details that
+            make it easier to use.
+          </p>
+          <p>
+            Team projects are also teaching me how to explain decisions, use
+            feedback, and work with other people’s code. I’m currently studying
+            C# and Information Assurance and Security.
+          </p>
+          <div class="about-links">
+            <a class="text-link" href="#coursework">My coursework</a
+            ><a class="text-link" href="#certificates">Certificate</a>
+          </div>
+        </section>
+        <section
+          class="skills-section"
+          id="skills"
+          aria-labelledby="skills-title"
+        >
+          <p class="eyebrow">04 / Technical background</p>
+          <h2 id="skills-title">
+            Technical skills<span class="accent">.</span>
+          </h2>
+
+          <div class="skill-group">
+            <div class="skill-label">
+              <span>01</span>
+              <h3>Programming languages</h3>
+            </div>
+            <div class="skill-chips">
+              <span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/c.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />C</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/java.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Java</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/python.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Python</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/javascript.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />JavaScript</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/dart.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Dart</span
+              ><span class="learning-chip"
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/csharp.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />C#<small class="tool-kind">Learning</small></span
+              >
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">
+              <span>02</span>
+              <h3>Frameworks &amp; libraries</h3>
+            </div>
+            <div class="skill-chips">
+              <span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/react.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />React JS<small class="tool-kind">Library</small></span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/angular.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Angular<small class="tool-kind">Framework</small></span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/flutter.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Flutter<small class="tool-kind">Framework</small></span
+              >
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">
+              <span>03</span>
+              <h3>Markup &amp; styling</h3>
+            </div>
+            <div class="skill-chips">
+              <span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/html5.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />HTML</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/css.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />CSS</span
+              >
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">
+              <span>04</span>
+              <h3>Computer vision</h3>
+            </div>
+            <div class="skill-chips">
+              <span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/opencv.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />OpenCV<small class="tool-kind">Library</small></span
+              >
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">
+              <span>05</span>
+              <h3>Notebooks</h3>
+            </div>
+            <div class="skill-chips">
+              <span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/googlecolab.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Google Colab</span
+              >
+            </div>
+          </div>
+          <div class="skill-group backend-skills">
+            <div class="skill-label">
+              <span>06</span>
+              <h3>Backend</h3>
+            </div>
+            <div class="skill-chips">
+              <span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/fastapi.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Python / FastAPI</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/supabase.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Supabase</span
+              >
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">
+              <span>07</span>
+              <h3>Design &amp; workflow</h3>
+            </div>
+            <div class="skill-chips">
+              <span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/figma.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Figma</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/canva.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Canva</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/kanbanflow.png"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />KanbanFlow</span
+              >
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">
+              <span>08</span>
+              <h3>Development &amp; build tools</h3>
+            </div>
+            <div class="skill-chips">
+              <span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/git.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Git</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/github.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />GitHub</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/vscode.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Visual Studio Code</span
+              ><span
+                ><img
+                  class="tool-logo"
+                  src="assets/toolkit/vite.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                />Vite<small class="tool-kind">Build tool</small></span
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section
+        class="coursework section wrap"
+        id="coursework"
+        aria-labelledby="coursework-title"
+      >
+        <div class="section-top">
+          <p class="eyebrow">05 / Academic foundations</p>
+          <span class="section-note">Selected relevant coursework</span>
+        </div>
+        <h2 id="coursework-title">
+          What I'm learning<span class="accent">.</span>
+        </h2>
+        <div class="current-course">
+          <span class="square-dot" aria-hidden="true"></span>
+          <div>
+            <span class="eyebrow">Currently taking</span>
+            <p>Professional Elective 3 <span>— C#</span></p>
+            <p>Information Assurance and Security 1 <span>— IAS 1</span></p>
+          </div>
+        </div>
+        <div class="course-grid">
+          <div>
+            <h3>Computer science</h3>
+            <ul>
+              <li>Data Structures and Algorithms</li>
+              <li>Analysis and Design of Algorithms</li>
+              <li>Object Oriented Programming</li>
+              <li>Operating Systems</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Software &amp; interaction</h3>
+            <ul>
+              <li>Software Engineering 1 &amp; 2</li>
+              <li>Web Development</li>
+              <li>Mobile Application Development 1–3</li>
+              <li>Information Management</li>
+              <li>Human Computer Interaction</li>
+            </ul>
+          </div>
+          <div>
+            <h3>AI &amp; visual computing</h3>
+            <ul>
+              <li>Intelligent Systems</li>
+              <li>Machine Learning</li>
+              <li>Natural Language Processing</li>
+              <li>Graphics and Visual Computing</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="certificates section wrap"
+        id="certificates"
+        aria-labelledby="certificates-title"
+      >
+        <div class="section-top">
+          <p class="eyebrow">06 / Milestones along the way</p>
+          <span class="section-note">Certificates &amp; assessments</span>
+        </div>
+        <h2 id="certificates-title">
+          Certificate<span class="accent">.</span>
+        </h2>
+        <article class="certificate-card">
+          <button
+            class="certificate-preview"
+            type="button"
+            data-certificate
+            aria-haspopup="dialog"
+            aria-label="View my TOPCIT certificate"
+          >
+            <img
+              src="assets/certificates/topcit-certificate.png"
+              alt="Preview of my TOPCIT certificate"
+              width="848"
+              height="1200"
+              loading="lazy"
+            /><span>Click to view certificate </span>
+          </button>
+          <div class="certificate-copy">
+            <p class="eyebrow accent">IITP / TOPCIT</p>
+            <h3>TOPCIT Certificate <span>Level 2</span></h3>
+            <p class="certificate-date">
+              Test date: <time datetime="2026-07-23">July 23, 2026</time>
+            </p>
+            <p>
+              Test of Practical Competency in ICT, covering software
+              development, data management, system architecture and information
+              security, and IT business.
+            </p>
+            <button
+              class="text-link"
+              type="button"
+              data-certificate
+              aria-haspopup="dialog"
+            >
+              View certificate
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <section
+        class="contact wrap"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="contact-copy">
+          <p class="eyebrow">07 / The next conversation</p>
+          <h2 id="contact-title">Get in touch<span class="accent">.</span></h2>
+        </div>
+        <div class="contact-details">
+          <p>
+            I’m currently looking for an OJT placement. If your team has an
+            opening, or you have a question about my work, I’d be glad to hear
+            from you.
+          </p>
+          <div class="contact-links">
+            <a
+              class="text-link contact-email"
+              href="mailto:johncalenombrado32@gmail.com"
+              aria-label="Email John Cale Nombrado"
+              ><span class="contact-link-label">Email</span
+              ><span class="contact-link-value"
+                >johncalenombrado32@gmail.com</span
+              ></a
+            ><a
+              class="text-link contact-github"
+              href="https://github.com/MLD-cmd"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="John Cale Nombrado on GitHub, opens in a new tab"
+              ><span class="contact-link-label">GitHub</span
+              ><span class="contact-link-value">@MLD-cmd</span></a
+            >
+          </div>
+          <address class="contact-address">
+            <span class="contact-link-label">Location</span
+            ><span>Lapu-Lapu City, Cebu</span>
+          </address>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer wrap">
+      <a href="#home" class="footer-name"
+        >John Cale Nombrado<span class="accent">.</span></a
+      ><span>Computer Science · Cebu, Philippines</span
+      ><a href="#home" class="back-top"
+        >Back to top <span aria-hidden="true">↑</span></a
+      >
+    </footer>
+
+    <dialog
+      id="project-dialog"
+      class="project-dialog"
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-description"
+    >
+      <div class="dialog-top">
+        <span class="eyebrow">Project details</span
+        ><button
+          class="icon-button dialog-close"
+          type="button"
+          aria-label="Close project details"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M6 18 18 6" />
+          </svg>
+        </button>
+      </div>
+      <p class="dialog-number accent" aria-hidden="true">01</p>
+      <h2 id="dialog-title">Project details</h2>
+      <p id="dialog-description" class="dialog-description">
+        Project video and overview.
+      </p>
+      <div
+        id="dialog-gallery"
+        class="project-video"
+        role="region"
+        aria-label="Project video walkthrough"
+        hidden
+      ></div>
+      <section
+        id="dialog-workflow"
+        class="code-workflow"
+        aria-label="How the project works"
+        hidden
+      ></section>
+      <dl class="project-outline">
+        <div>
+          <dt>What it does</dt>
+          <dd id="dialog-idea"></dd>
+        </div>
+        <div>
+          <dt>My contribution</dt>
+          <dd id="dialog-contribution"></dd>
+        </div>
+        <div>
+          <dt>Built with</dt>
+          <dd id="dialog-stack"></dd>
+        </div>
+        <div>
+          <dt>How it works</dt>
+          <dd id="dialog-learning"></dd>
+        </div>
+      </dl>
+      <a
+        id="dialog-design-link"
+        class="text-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        hidden
+        >View Figma design
+      </a>
+      <p class="dialog-footer">Notes about the project.</p>
+    </dialog>
+    <dialog
+      id="certificate-dialog"
+      class="certificate-dialog"
+      aria-labelledby="certificate-dialog-title"
+    >
+      <div class="certificate-dialog-top">
+        <div>
+          <p class="eyebrow">Certificate</p>
+          <h2 id="certificate-dialog-title">TOPCIT · Level 2</h2>
+        </div>
+        <button
+          class="icon-button certificate-close"
+          type="button"
+          aria-label="Close certificate viewer"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M6 18 18 6" />
+          </svg>
+        </button>
+      </div>
+      <img
+        class="certificate-full"
+        src="assets/certificates/topcit-certificate.png"
+        alt="Full TOPCIT certificate for John Cale Nombrado"
+        width="848"
+        height="1200"
+        loading="lazy"
+      />
+      <a
+        class="text-link certificate-download"
+        href="assets/certificates/topcit-certificate.pdf"
+        download="John-Cale-Nombrado-TOPCIT.pdf"
+        >Download original PDF <span aria-hidden="true">↓</span></a
+      >
+    </dialog>
+  </body>
+</html>

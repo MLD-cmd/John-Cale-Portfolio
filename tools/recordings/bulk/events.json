@@ -1,0 +1,170 @@
+[
+ {
+  "type": "start",
+  "t": 1792745695.548
+ },
+ {
+  "type": "chapter",
+  "t": 1792745695.548,
+  "title": "Find a hub",
+  "text": "Browse nearby campus and dorm communities, sorted by distance."
+ },
+ {
+  "type": "tap",
+  "t": 1792745698.15,
+  "x": 325,
+  "y": 232
+ },
+ {
+  "type": "chapter",
+  "t": 1792745700.371,
+  "title": "Join the hub",
+  "text": "Colon Street Hub becomes my current hub, and its count goes from 31 to 32 members."
+ },
+ {
+  "type": "tap",
+  "t": 1792745701.874,
+  "x": 189,
+  "y": 165
+ },
+ {
+  "type": "chapter",
+  "t": 1792745703.688,
+  "title": "Browse the Split Board",
+  "text": "Compare per-share prices, quantities, open slots, and deadlines."
+ },
+ {
+  "type": "swipe",
+  "t": 1792745704.897,
+  "from": {
+   "x": 195,
+   "y": 665
+  },
+  "to": {
+   "x": 195,
+   "y": 455
+  },
+  "ms": 1.1649999618530273
+ },
+ {
+  "type": "swipe",
+  "t": 1792745707.472,
+  "from": {
+   "x": 195,
+   "y": 315
+  },
+  "to": {
+   "x": 195,
+   "y": 525
+  },
+  "ms": 1.123000144958496
+ },
+ {
+  "type": "tap",
+  "t": 1792745709.797,
+  "x": 175,
+  "y": 523
+ },
+ {
+  "type": "chapter",
+  "t": 1792745711.706,
+  "title": "Review a deal",
+  "text": "Check my share, the organiser, who has joined, and where to pick it up."
+ },
+ {
+  "type": "swipe",
+  "t": 1792745712.912,
+  "from": {
+   "x": 195,
+   "y": 635
+  },
+  "to": {
+   "x": 195,
+   "y": 485
+  },
+  "ms": 1.1170001029968262
+ },
+ {
+  "type": "swipe",
+  "t": 1792745715.441,
+  "from": {
+   "x": 195,
+   "y": 345
+  },
+  "to": {
+   "x": 195,
+   "y": 495
+  },
+  "ms": 1.1050000190734863
+ },
+ {
+  "type": "tap",
+  "t": 1792745717.651,
+  "x": 195,
+  "y": 806
+ },
+ {
+  "type": "chapter",
+  "t": 1792745719.46,
+  "title": "Reserve a share",
+  "text": "The slot is mine: open slots drop to 2 of 5, and the amount I owe appears."
+ },
+ {
+  "type": "tap",
+  "t": 1792745721.864,
+  "x": 29,
+  "y": 31
+ },
+ {
+  "type": "chapter",
+  "t": 1792745723.681,
+  "title": "Back on the board",
+  "text": "The rice sack now shows 2 of 5 slots open for everyone in the hub."
+ },
+ {
+  "type": "tap",
+  "t": 1792745725.883,
+  "x": 301,
+  "y": 800
+ },
+ {
+  "type": "chapter",
+  "t": 1792745727.791,
+  "title": "Post a deal",
+  "text": "Describe a new bulk buy, or scan a receipt to fill the form in."
+ },
+ {
+  "type": "tap",
+  "t": 1792745728.993,
+  "x": 195,
+  "y": 447
+ },
+ {
+  "type": "type",
+  "t": 1792745729.72,
+  "text": "Cooking oil 5L × 4"
+ },
+ {
+  "type": "tap",
+  "t": 1792745732.198,
+  "x": 78,
+  "y": 691
+ },
+ {
+  "type": "swipe",
+  "t": 1792745733.215,
+  "from": {
+   "x": 195,
+   "y": 695
+  },
+  "to": {
+   "x": 195,
+   "y": 505
+  },
+  "ms": 1.1790001392364502
+ },
+ {
+  "type": "end",
+  "t": 1792745737.098
+ }
+]

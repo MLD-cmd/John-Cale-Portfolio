@@ -1,0 +1,1869 @@
+/* An editorial layer for the static portfolio. Interaction styles stay in styles.css. */
+.editorial-portfolio {
+  font-size: 16px;
+  line-height: 1.75;
+}
+.editorial-portfolio .wrap {
+  width: min(1200px, calc(100% - 96px));
+}
+.editorial-portfolio .header-inner {
+  height: 80px;
+}
+.editorial-portfolio .navigation {
+  gap: 30px;
+}
+.editorial-portfolio .navigation a {
+  font-size: 14px;
+}
+.editorial-portfolio .eyebrow {
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1.6;
+}
+.editorial-portfolio .hero {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 72px;
+  min-height: 650px;
+  padding: 70px 0 82px;
+  align-items: center;
+}
+.editorial-portfolio h1 {
+  font-size: clamp(66px, 7.8vw, 112px);
+  line-height: 0.94;
+  margin: 30px 0;
+  letter-spacing: -0.045em;
+}
+.editorial-portfolio .hero-role {
+  font-size: 21px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.editorial-portfolio .aspiring-role {
+  font-size: inherit;
+  color: var(--text);
+}
+.editorial-portfolio .hero-description {
+  font-size: 16px;
+  line-height: 1.85;
+  max-width: 520px;
+  margin-top: 24px;
+}
+.editorial-portfolio .hero-actions {
+  margin-top: 30px;
+  gap: 28px;
+}
+.editorial-portfolio .button,
+.editorial-portfolio .text-link {
+  font-size: 14px;
+}
+.editorial-portfolio .button {
+  padding: 14px 20px;
+}
+.editorial-portfolio .section {
+  padding-block: 80px;
+}
+.editorial-portfolio .projects {
+  border-top: 1px solid var(--line);
+}
+.editorial-portfolio .section-top {
+  margin-bottom: 18px;
+}
+.editorial-portfolio h2 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1.12;
+}
+.editorial-portfolio .section-note {
+  font-size: 13px;
+}
+.editorial-portfolio .section-intro {
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 700px;
+  margin-top: 18px;
+}
+.editorial-portfolio .work-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+  padding: 46px 0;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+}
+.editorial-portfolio .featured-content h3,
+.editorial-portfolio .thesis-copy h3 {
+  font-family: var(--display);
+  font-size: 42px;
+  line-height: 1.15;
+  margin: 12px 0 18px;
+}
+.editorial-portfolio .featured-content > p:not(.eyebrow),
+.editorial-portfolio .thesis-copy > p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: none;
+  margin-top: 14px;
+}
+.editorial-portfolio .featured-content > .project-evidence,
+.editorial-portfolio .thesis-role {
+  border: 0;
+  padding: 0;
+  font-size: 15px !important;
+}
+.editorial-portfolio .tags {
+  gap: 6px 14px;
+  margin-top: 20px;
+}
+.editorial-portfolio .tags span {
+  border: 0;
+  padding: 0;
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.editorial-portfolio .project-link,
+.editorial-portfolio .thesis-link {
+  margin-top: 26px;
+}
+.editorial-portfolio .app-gallery {
+  height: 490px;
+  padding: 24px;
+  background-image: none;
+  background: var(--surface-soft);
+  border: 0;
+}
+.editorial-portfolio .app-screens {
+  height: 368px;
+  gap: 24px;
+  margin: 20px 0;
+  align-items: center;
+}
+.editorial-portfolio .app-screens img {
+  height: 100%;
+  width: auto;
+  max-width: 45%;
+  object-fit: contain;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  transform: none;
+  box-shadow: 0 7px 24px #00000010;
+}
+.editorial-portfolio .visual-caption,
+.editorial-portfolio .visual-bottom {
+  font-family: var(--body);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.editorial-portfolio .thesis-screenshot {
+  border: 0;
+  background: var(--surface-soft);
+  padding: 16px;
+}
+.editorial-portfolio .thesis-screenshot img {
+  height: 360px;
+  width: 100%;
+  object-fit: contain;
+}
+.editorial-portfolio .thesis-screenshot > span {
+  border: 0;
+  font-size: 13px;
+  padding: 12px 0 0;
+}
+.editorial-portfolio .thesis-visual {
+  max-width: none;
+}
+.editorial-portfolio .thesis-visual-note {
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+.editorial-portfolio .other-projects {
+  grid-template-columns: 1fr 1fr;
+  gap: 42px;
+  margin-top: 46px;
+}
+.editorial-portfolio .small-project {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 22px;
+  min-width: 0;
+}
+.editorial-portfolio .small-project + .small-project {
+  padding: 0;
+  border: 0;
+}
+.editorial-portfolio .small-visual {
+  height: 270px;
+  padding: 18px;
+  border: 0;
+  background: var(--surface-soft);
+}
+.editorial-portfolio .small-visual img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.editorial-portfolio .small-slot {
+  display: none;
+}
+.editorial-portfolio .small-project h3 {
+  font-size: 25px;
+}
+.editorial-portfolio .small-project p:not(.eyebrow) {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-top: 12px;
+}
+.editorial-portfolio .small-project .eyebrow {
+  font-size: 12px;
+}
+.editorial-portfolio .compact-link {
+  margin-top: 18px;
+}
+.editorial-portfolio .designs-section {
+  border-top: 1px solid var(--line);
+}
+.editorial-portfolio .design-showcase {
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 64px;
+  margin-top: 38px;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.editorial-portfolio .design-preview {
+  border: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 26px;
+  background: var(--surface-soft);
+}
+.editorial-portfolio .design-preview > .eyebrow,
+.editorial-portfolio .design-preview-caption {
+  width: 100%;
+}
+.editorial-portfolio .design-preview img {
+  height: 380px;
+  border: 0;
+  border-radius: 4px;
+}
+.editorial-portfolio .design-copy h3 {
+  font-family: var(--display);
+  font-size: 42px;
+}
+.editorial-portfolio .design-copy > p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.editorial-portfolio .design-summary {
+  font-size: 14px;
+}
+.editorial-portfolio .about-skills {
+  display: block;
+  padding-block: 74px;
+  border-block: 1px solid var(--line);
+}
+.editorial-portfolio .about-section {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  column-gap: 80px;
+  align-items: start;
+  padding-bottom: 68px;
+}
+.editorial-portfolio .about-section > .eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+}
+.editorial-portfolio .about-section h2 {
+  grid-column: 1;
+  grid-row: 2 / 5;
+  font-size: 48px;
+  margin-top: 18px;
+}
+.editorial-portfolio .about-section > p:not(.eyebrow) {
+  grid-column: 2;
+  font-size: 16px;
+  max-width: none;
+  margin: 0 0 16px;
+}
+.editorial-portfolio .about-section > p:nth-of-type(2) {
+  grid-row: 1 / 3;
+}
+.about-links {
+  grid-column: 2;
+  display: flex;
+  gap: 28px;
+  margin-top: 6px;
+}
+.editorial-portfolio .skills-section {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 38px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  padding: 58px 0 0;
+}
+.editorial-portfolio .skills-section > .eyebrow,
+.editorial-portfolio .skills-section > h2,
+.editorial-portfolio .skills-intro {
+  grid-column: 1 / -1;
+}
+.editorial-portfolio .skills-section > h2 {
+  font-size: 48px;
+  margin: 16px 0 0;
+}
+.editorial-portfolio .skills-intro {
+  font-size: 16px;
+  max-width: 720px;
+  margin: 18px 0 24px;
+}
+.editorial-portfolio .skill-group {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.editorial-portfolio .skill-label {
+  align-items: baseline;
+  gap: 10px;
+}
+.editorial-portfolio .skill-label h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+.editorial-portfolio .skill-chips {
+  padding: 0;
+  gap: 10px 18px;
+  margin-top: 18px;
+}
+.editorial-portfolio .skill-chips > span {
+  border: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+.editorial-portfolio .tool-kind {
+  font-size: 11px;
+  margin-left: 4px;
+  color: var(--muted);
+}
+.editorial-portfolio .skill-context {
+  font-size: 13px;
+  line-height: 1.8;
+  padding: 0;
+  margin-top: 14px;
+}
+.editorial-portfolio .course-grid {
+  gap: 42px;
+}
+.editorial-portfolio .course-grid h3 {
+  font-size: 18px;
+}
+.editorial-portfolio .course-grid li {
+  font-size: 15px;
+  line-height: 1.9;
+}
+.editorial-portfolio .current-course {
+  background: none;
+  border: 0;
+  border-left: 3px solid var(--accent);
+  padding: 0 22px;
+  margin: 30px 0;
+}
+.editorial-portfolio .current-course > .square-dot {
+  display: none;
+}
+.editorial-portfolio .certificates {
+  border-top: 1px solid var(--line);
+}
+.editorial-portfolio .certificate-card {
+  padding: 0;
+  border: 0;
+  background: none;
+  gap: 50px;
+  margin-top: 30px;
+  grid-template-columns: 200px 1fr;
+}
+.editorial-portfolio .certificate-preview {
+  background: var(--surface-soft);
+}
+.editorial-portfolio .certificate-copy > p {
+  font-size: 15px;
+}
+.editorial-portfolio .contact {
+  border-top: 1px solid var(--line);
+  padding-block: 76px;
+  gap: 60px;
+}
+.editorial-portfolio .contact h2 {
+  font-size: 60px;
+}
+.editorial-portfolio .contact-details {
+  max-width: 460px;
+  padding: 0;
+}
+.editorial-portfolio .contact-details > p {
+  font-size: 16px;
+}
+.editorial-portfolio .contact-spark {
+  display: none;
+}
+.editorial-portfolio .contact-links .contact-link-value {
+  font-size: 15px;
+}
+.editorial-portfolio .site-footer {
+  font-size: 13px;
+}
+#dialog-design-link[hidden] {
+  display: none !important;
+}
+.editorial-portfolio .project-dialog [hidden] {
+  display: none !important;
+}
+.editorial-portfolio .project-outline dd {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.editorial-portfolio .dialog-footer {
+  font-size: 13px;
+  line-height: 1.8;
+}
+@media (max-width: 1000px) {
+  .editorial-portfolio .wrap {
+    width: calc(100% - 56px);
+  }
+  .editorial-portfolio .hero {
+    gap: 36px;
+    min-height: 580px;
+  }
+  .editorial-portfolio h1 {
+    font-size: clamp(62px, 8vw, 90px);
+  }
+  .editorial-portfolio .work-feature,
+  .editorial-portfolio .design-showcase {
+    gap: 32px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  }
+  .editorial-portfolio .about-section {
+    column-gap: 40px;
+  }
+  .editorial-portfolio .skills-section {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .editorial-portfolio .app-gallery {
+    height: 440px;
+    padding: 20px;
+  }
+  .editorial-portfolio .app-screens {
+    height: 320px;
+    gap: 18px;
+  }
+}
+@media (max-width: 700px) {
+  .editorial-portfolio .wrap {
+    width: calc(100% - 40px);
+  }
+  .editorial-portfolio .header-inner {
+    height: 72px;
+  }
+  .editorial-portfolio .hero {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 38px 0 50px;
+    min-height: 0;
+  }
+  .editorial-portfolio h1 {
+    font-size: clamp(58px, 12vw, 84px);
+    margin: 24px 0;
+  }
+  .editorial-portfolio .hero-role {
+    font-size: 19px;
+  }
+  .editorial-portfolio .hero-description {
+    font-size: 16px;
+  }
+  .editorial-portfolio .hero-actions {
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .editorial-portfolio .section {
+    padding-block: 50px;
+  }
+  .editorial-portfolio .section-top {
+    align-items: flex-start;
+  }
+  .editorial-portfolio .section-note {
+    display: none;
+  }
+  .editorial-portfolio .work-feature,
+  .editorial-portfolio .design-showcase {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-block: 34px;
+  }
+  .editorial-portfolio .app-gallery {
+    height: 420px;
+    padding: 20px;
+  }
+  .editorial-portfolio .app-screens {
+    height: 306px;
+    gap: 20px;
+  }
+  .editorial-portfolio .thesis-screenshot img {
+    height: auto;
+    max-height: 400px;
+  }
+  .editorial-portfolio .other-projects {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    margin-top: 34px;
+  }
+  .editorial-portfolio .small-visual {
+    height: 250px;
+  }
+  .editorial-portfolio .design-showcase {
+    padding: 0;
+  }
+  .editorial-portfolio .about-skills {
+    padding-block: 50px;
+  }
+  .editorial-portfolio .about-section {
+    display: block;
+    padding-bottom: 40px;
+  }
+  .editorial-portfolio .about-section h2 {
+    font-size: 40px;
+    margin: 18px 0 26px;
+  }
+  .editorial-portfolio .skills-section {
+    display: block;
+    padding-top: 40px;
+  }
+  .editorial-portfolio .skills-section > h2 {
+    font-size: 40px;
+  }
+  .editorial-portfolio .course-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .editorial-portfolio .certificate-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .editorial-portfolio .certificate-preview {
+    max-width: 210px;
+  }
+  .editorial-portfolio .contact {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding-block: 50px;
+  }
+  .editorial-portfolio .contact h2 {
+    font-size: 48px;
+  }
+  .editorial-portfolio .contact-details {
+    max-width: none;
+  }
+  .editorial-portfolio .site-footer {
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: start;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .editorial-portfolio * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Explain the work once; individual projects below provide the evidence. */
+.work-methods {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin: 38px 0 6px;
+  padding: 28px 0;
+  border-block: 1px solid var(--line);
+}
+.work-methods h3 {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.work-methods p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.editorial-portfolio .hero-actions {
+  flex-direction: row;
+  align-items: center;
+}
+@media (max-width: 800px) {
+  .work-methods {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .work-methods article {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+  }
+  .work-methods h3 {
+    margin: 0;
+  }
+}
+@media (max-width: 500px) {
+  .work-methods article {
+    display: block;
+  }
+  .work-methods h3 {
+    margin-bottom: 8px;
+  }
+}
+
+/* Paper, ink, and quiet display surfaces: no moving background effects. */
+:root {
+  --bg: #151b18;
+  --header: #151b18;
+  --surface: #222c26;
+  --surface-soft: #1b241e;
+  --text: #efeee5;
+  --muted: #afbab0;
+  --accent: #bed8c2;
+  --accent-ink: #17231b;
+  --line: #49574b;
+  --line-soft: #303e34;
+  --paper-grain: rgba(230, 238, 221, 0.025);
+  --board-hydro: #1d302e;
+  --board-openear: #273027;
+  --board-design: #302c23;
+}
+:root[data-theme="light"] {
+  --bg: #f5f3ec;
+  --header: #f5f3ec;
+  --surface: #e9e9df;
+  --surface-soft: #eeeee5;
+  --text: #263a2f;
+  --muted: #546457;
+  --accent: #365f45;
+  --accent-ink: #fff;
+  --line: #b7c0b0;
+  --line-soft: #d9dfd2;
+  --paper-grain: rgba(59, 72, 45, 0.035);
+  --board-hydro: #e5eeea;
+  --board-openear: #e8ecdf;
+  --board-design: #eee7da;
+}
+.editorial-portfolio {
+  background-color: var(--bg);
+  background-image: none;
+}
+.editorial-portfolio .site-header {
+  background: var(--header);
+}
+.editorial-portfolio .approach-section {
+  padding-block: 54px 0;
+  border-top: 1px solid var(--line);
+}
+.editorial-portfolio .approach-section h2 {
+  margin-top: 16px;
+  font-size: clamp(32px, 3.5vw, 44px);
+}
+.editorial-portfolio .work-methods {
+  border-top: 0;
+  margin-top: 12px;
+  padding: 26px 0 40px;
+}
+.editorial-portfolio .projects {
+  border-top: 0;
+  padding-top: 62px;
+}
+.projects-heading {
+  text-align: center;
+  margin: 0 auto 16px;
+  max-width: 760px;
+}
+.projects-heading h2 {
+  margin-top: 14px;
+}
+.editorial-portfolio .projects-heading .section-intro {
+  margin: 18px auto 0;
+  max-width: 620px;
+}
+.editorial-portfolio .app-gallery {
+  background: var(--board-hydro);
+  border: 1px solid var(--line-soft);
+}
+.editorial-portfolio .openear-feature .app-gallery {
+  background: var(--board-openear);
+}
+.editorial-portfolio .thesis-screenshot,
+.editorial-portfolio .small-visual {
+  background: var(--surface-soft);
+  border: 1px solid var(--line-soft);
+}
+.editorial-portfolio .design-preview {
+  background: var(--board-design);
+  border: 1px solid var(--line-soft);
+}
+.editorial-portfolio .app-screens img {
+  box-shadow: 0 8px 22px #0000000d;
+}
+.editorial-portfolio .project-visual:hover,
+.editorial-portfolio .thesis-screenshot:hover,
+.editorial-portfolio .small-visual:hover,
+.editorial-portfolio .design-preview:hover {
+  border-color: var(--accent);
+}
+.editorial-portfolio .project-dialog,
+.editorial-portfolio .certificate-dialog {
+  background: var(--bg);
+}
+
+@media (max-width: 700px) {
+  .editorial-portfolio .approach-section {
+    padding-top: 40px;
+  }
+  .editorial-portfolio .work-methods {
+    padding-bottom: 30px;
+  }
+  .editorial-portfolio .projects {
+    padding-top: 42px;
+  }
+  .projects-heading {
+    margin-bottom: 0;
+  }
+  .editorial-portfolio .projects-heading h2 {
+    font-size: clamp(32px, 8.8vw, 44px);
+  }
+}
+
+/* Plain actions and readable case-study details. */
+.editorial-portfolio .text-link {
+  gap: 0;
+  padding-bottom: 8px;
+}
+.editorial-portfolio .text-link:hover {
+  border-color: var(--text);
+}
+.editorial-portfolio .contact-links .text-link {
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+.editorial-portfolio .contact-links .contact-link-value {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  font-size: 15px;
+  color: var(--text);
+}
+.editorial-portfolio .project-outline > div {
+  padding-block: 22px;
+  gap: 24px;
+}
+.editorial-portfolio .project-outline dd {
+  max-width: 65ch;
+  line-height: 1.85;
+}
+.editorial-portfolio .dialog-footer {
+  border-top: 1px solid var(--line-soft);
+  padding-top: 18px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .editorial-portfolio .project-outline > div {
+    gap: 8px;
+    padding-block: 18px;
+  }
+}
+
+/* Quiet solid surfaces; the screenshots supply the visual detail. */
+:root {
+  --approach-surface: #1c2721;
+  --mascot: #bdd4ad;
+  --mascot-face: #19251e;
+}
+:root[data-theme="light"] {
+  --approach-surface: #e9ede3;
+  --mascot: #456548;
+  --mascot-face: #f5f3ec;
+}
+.editorial-portfolio .hero-enter {
+  animation: none;
+}
+.editorial-portfolio h1 {
+  letter-spacing: -0.035em;
+  margin-top: 0;
+}
+.editorial-portfolio .name-first {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  white-space: nowrap;
+}
+
+.mascot-face {
+  fill: var(--mascot-face);
+}
+
+.editorial-portfolio .approach-section {
+  background: var(--approach-surface);
+  border-block: 1px solid var(--line-soft);
+  padding: 54px max(48px, calc((100% - 1200px) / 2)) 46px;
+  margin: 0;
+}
+.editorial-portfolio .approach-section h2 {
+  margin: 0 0 30px;
+  font-size: clamp(32px, 3.5vw, 44px);
+}
+.editorial-portfolio .work-methods {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.editorial-portfolio .work-methods article {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.7fr) minmax(0, 1.3fr);
+  gap: 52px;
+  padding: 25px 0;
+  border-top: 1px solid var(--line);
+}
+.editorial-portfolio .work-methods h3 {
+  font-size: 19px;
+  line-height: 1.5;
+  max-width: 27ch;
+  margin: 0;
+  font-weight: 700;
+}
+.editorial-portfolio .work-methods p {
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 72ch;
+  margin: 0;
+}
+.method-context {
+  display: block;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--accent);
+  font-weight: 700;
+  margin-top: 13px;
+}
+.editorial-portfolio .contact {
+  background: var(--approach-surface);
+  padding: 48px;
+  margin-bottom: 36px;
+  border: 0;
+}
+.editorial-portfolio ::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+@media (max-width: 1000px) {
+  .editorial-portfolio .approach-section {
+    padding-inline: 28px;
+  }
+  .editorial-portfolio .work-methods article {
+    gap: 30px;
+  }
+}
+@media (max-width: 700px) {
+  .editorial-portfolio .approach-section {
+    padding: 36px 20px;
+  }
+  .editorial-portfolio .work-methods article {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 22px 0;
+  }
+  .editorial-portfolio .work-methods h3 {
+    max-width: none;
+    font-size: 18px;
+  }
+  .editorial-portfolio .work-methods p {
+    font-size: 14px;
+  }
+  .editorial-portfolio .contact {
+    padding: 30px 22px;
+  }
+  .editorial-portfolio .name-first {
+    gap: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+}
+
+/* The name and its gripping mascot move as one object through a fixed window.
+   Beats: the mascot drops in, reaches into the window's soft left edge and grabs
+   the name, walks it into place, lets go, then hops onto the final "o" and waves.
+   Finally it sits down, opens a laptop and keeps typing, glancing up at visitors.
+   The resting styles are that final seated pose (also what reduced motion shows);
+   the entrance animations hold the earlier poses until each part's turn.
+   Change the timing with the beat variables below. */
+.hero-name-scene {
+  --pet-size: 78px;
+  --reveal-fade: calc(var(--pet-size) * 0.4);
+  --grab: 0.3s; /* the arm reaches for the name */
+  --pull: 0.62s; /* the name starts moving */
+  --pull-time: 1.8s;
+  --hop: calc(var(--pull) + var(--pull-time)); /* name settled; crouch to hop */
+  --sit: calc(var(--hop) + 2.25s); /* after the wave: sit, open the laptop */
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 10px;
+  padding-bottom: 20px;
+  /* Only the left edge is a window; the welcome bubble can spill out freely. */
+  clip-path: inset(-100vh -100vw -100vh 0);
+}
+/* Letters fade in across the edge instead of being sliced by it: a strip of
+   page colour that slides out of the window once the name has settled. */
+.hero-name-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 2;
+  width: var(--reveal-fade);
+  background: linear-gradient(90deg, var(--bg), transparent);
+  pointer-events: none;
+  translate: calc(-1 * var(--reveal-fade)) 0;
+  animation: lift-fog 0.55s ease-out calc(var(--hop) - 0.55s) both;
+}
+.name-pull-group {
+  position: relative;
+  padding-right: calc(var(--pet-size) - 10px);
+  transform: none;
+  animation: carry-name var(--pull-time) cubic-bezier(0.37, 0, 0.25, 1)
+    var(--pull) both;
+}
+/* The letters stay invisible until the mascot reaches for them, so the tip of
+   the "o" doesn't sit alone at the edge before the mascot has arrived. */
+.editorial-portfolio .hero-name-scene h1 {
+  margin: 0;
+  letter-spacing: -0.035em;
+  clip-path: none;
+  animation: ink-in 0.3s ease-out var(--grab) both;
+}
+.editorial-portfolio .name-first {
+  display: block;
+  white-space: nowrap;
+}
+.mascot-track {
+  position: absolute;
+  bottom: -14px;
+  right: 0;
+  width: var(--pet-size);
+  height: auto;
+  pointer-events: auto;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--mascot);
+  animation: hop-across 0.5s cubic-bezier(0.35, 0.1, 0.45, 1)
+    calc(var(--hop) + 0.15s) both;
+}
+.name-mascot {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--mascot);
+  overflow: visible;
+  transform-origin: 50% 100%;
+  animation:
+    drop-in 0.26s ease-in,
+    waddle 0.26s ease-in-out calc(var(--pull) + 0.105s) 6,
+    hop-arc 0.5s calc(var(--hop) + 0.15s);
+}
+.mascot-body {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  translate: 0 6px; /* seated on the "o" */
+  animation:
+    land-squash 0.3s ease-out 0.2s,
+    tug 0.3s ease-in-out calc(var(--pull) - 0.08s),
+    lean-back var(--pull-time) ease-in-out var(--pull),
+    hop-squash 1s ease-in-out var(--hop),
+    sit-down 0.4s cubic-bezier(0.3, 0, 0.3, 1) var(--sit) both,
+    sit-squash 0.35s ease-out calc(var(--sit) + 0.3s);
+}
+/* The grabbing and waving arms are put away once the laptop comes out. */
+.mascot-grip {
+  transform-box: fill-box;
+  transform-origin: 100% 50%;
+  rotate: -50deg;
+  opacity: 0;
+  animation:
+    reach-and-grab 0.34s var(--grab) forwards,
+    let-go 0.32s ease-out calc(var(--hop) - 0.06s) forwards,
+    put-away 0.22s ease-in calc(var(--sit) + 0.12s) both;
+}
+.mascot-eyes {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  translate: 0 2px; /* looking down at the screen */
+  animation:
+    eyes-to-screen 0.3s ease-in-out calc(var(--sit) + 0.45s) both,
+    blink 0.22s ease-in-out calc(var(--hop) + 0.95s),
+    glance-up 7s ease-in-out calc(var(--sit) + 1.5s) infinite;
+}
+/* The right arm hangs at its side, goes round behind the body while both
+   hands drag the name (.mascot-far-arm), comes back for the hop, swings up
+   just before the wave, and is put away with the other arm when it sits. */
+/* The head turns toward the name while it pulls. */
+.mascot-face {
+  animation: look-at-name calc(var(--hop) - var(--grab) + 0.12s) ease-in-out
+    var(--grab);
+}
+.mascot-wave {
+  transform-box: view-box;
+  transform-origin: 55px 37.5px; /* its shoulder, mirroring the left arm */
+  rotate: 50deg; /* hanging, like the left arm at -50deg */
+  opacity: 0;
+  animation:
+    raise-hand 0.3s cubic-bezier(0.3, 1.4, 0.5, 1) calc(var(--hop) + 0.85s)
+      forwards,
+    greeting-wave 0.5s ease-in-out calc(var(--hop) + 1.15s) 2,
+    put-away 0.22s ease-in calc(var(--sit) + 0.12s) both,
+    hide-while-pulling calc(var(--hop) - var(--grab) + 0.1s) var(--grab);
+}
+/* Seen past the body, so it is a shade darker, like a far arm. */
+.mascot-far-arm {
+  fill: color-mix(in srgb, currentColor 78%, #000);
+  transform-box: view-box;
+  transform-origin: 29px 44px; /* its shoulder, hidden behind the body */
+  opacity: 0;
+  animation:
+    far-arm-reach 0.34s ease-out var(--grab) forwards,
+    far-arm-release 0.2s ease-in calc(var(--hop) - 0.06s) forwards;
+}
+/* Alternating feet: the right foot lifts half a step after the left. Once
+   seated, the legs dangle over the letter, outlined in the page colour so
+   they read against it. */
+.mascot-leg-left,
+.mascot-leg-right {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  stroke: var(--bg);
+  stroke-width: 3px;
+  paint-order: stroke;
+}
+.mascot-leg-left {
+  animation:
+    step 0.26s ease-in-out calc(var(--pull) + 0.04s) 6,
+    dangle 1.8s ease-in-out calc(var(--sit) + 0.5s) infinite;
+}
+.mascot-leg-right {
+  animation:
+    step 0.26s ease-in-out calc(var(--pull) + 0.17s) 6,
+    dangle 1.8s ease-in-out calc(var(--sit) + 1.4s) infinite;
+}
+.mascot-type-arm {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 6px;
+  stroke-linecap: round;
+}
+.mascot-type-arm-left {
+  animation:
+    arm-to-keys 0.25s ease-out calc(var(--sit) + 0.2s) both,
+    type-left 2.4s ease-in-out calc(var(--sit) + 0.8s) infinite;
+}
+.mascot-type-arm-right {
+  animation:
+    arm-to-keys 0.25s ease-out calc(var(--sit) + 0.2s) both,
+    type-right 2.4s ease-in-out calc(var(--sit) + 0.8s) infinite;
+}
+/* Nobody sees the mascot behind an open dialog; pausing its loops keeps the
+   project videos smooth. */
+body:has(dialog[open]) .hero-name-scene * {
+  animation-play-state: paused;
+}
+.mascot-laptop {
+  fill: var(--mascot-face);
+  animation: laptop-up 0.3s cubic-bezier(0.3, 1.3, 0.5, 1)
+    calc(var(--sit) + 0.1s) both;
+}
+.laptop-lid {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: lid-open 0.35s cubic-bezier(0.3, 1.4, 0.5, 1)
+    calc(var(--sit) + 0.3s) both;
+}
+.laptop-logo {
+  fill: var(--mascot);
+  opacity: 0.6;
+}
+.laptop-deck {
+  stroke: var(--mascot);
+  stroke-width: 0.8px;
+}
+/* The welcome bubble pops out beside its head as it waves, stays while it
+   sits down and opens the laptop, then fades away. */
+.mascot-bubble {
+  position: absolute;
+  left: 76%;
+  bottom: 74%;
+  z-index: 3;
+  display: grid;
+  width: max-content;
+  max-width: 190px;
+  padding: 9px 14px 10px;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 500 14px/1.4 var(--body);
+  letter-spacing: 0;
+  text-align: left;
+  white-space: normal;
+  pointer-events: none;
+  transform-origin: 0 100%;
+  opacity: 0;
+  animation: bubble-say 4.4s ease-out calc(var(--hop) + 1s) both;
+}
+.mascot-bubble strong {
+  font-weight: 650;
+}
+@keyframes bubble-say {
+  0% {
+    opacity: 0;
+    scale: 0.6;
+    translate: -4px 6px;
+  }
+  7% {
+    opacity: 1;
+    scale: 1.04;
+    translate: 0 0;
+  }
+  11%,
+  88% {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0;
+    scale: 0.96;
+    translate: 0 -4px;
+  }
+}
+@keyframes lift-fog {
+  from {
+    translate: 0 0;
+  }
+}
+@keyframes ink-in {
+  from {
+    color: transparent;
+  }
+}
+@keyframes carry-name {
+  from {
+    transform: translateX(calc(-100% + var(--pet-size)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes drop-in {
+  from {
+    translate: 0 calc(var(--pet-size) * -0.2);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+}
+@keyframes land-squash {
+  35% {
+    scale: 1.08 0.9;
+  }
+  70% {
+    scale: 0.98 1.03;
+  }
+}
+@keyframes reach-and-grab {
+  0% {
+    rotate: -50deg;
+    animation-timing-function: ease-in-out;
+  }
+  65% {
+    rotate: 10deg;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+@keyframes tug {
+  40% {
+    scale: 1.06 0.93;
+  }
+}
+@keyframes lean-back {
+  14% {
+    rotate: 6deg;
+  }
+  82% {
+    rotate: 5deg;
+  }
+}
+@keyframes step {
+  50% {
+    translate: 0 -3px;
+  }
+}
+@keyframes waddle {
+  25% {
+    rotate: 1.5deg;
+  }
+  75% {
+    rotate: -1.5deg;
+  }
+}
+@keyframes look-at-name {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  12%,
+  88% {
+    translate: -4px 0;
+  }
+}
+@keyframes let-go {
+  from {
+    rotate: 0deg;
+  }
+  55% {
+    rotate: -62deg;
+  }
+  to {
+    rotate: -50deg;
+  }
+}
+/* Crouch, stretch on take-off, round out at the top, squash on landing. */
+@keyframes hop-squash {
+  15% {
+    scale: 1.1 0.86;
+  }
+  22% {
+    scale: 0.92 1.1;
+  }
+  40% {
+    scale: 1 1;
+  }
+  62% {
+    scale: 0.96 1.05;
+  }
+  72% {
+    scale: 1.12 0.86;
+  }
+  84% {
+    scale: 0.97 1.04;
+  }
+}
+/* The track moves in a straight line; hop-arc lifts the mascot off it. */
+@keyframes hop-across {
+  from {
+    translate: calc(var(--pet-size) * 0.82) 0.43em;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+@keyframes hop-arc {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+    animation-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
+  }
+  50% {
+    translate: 0 -0.32em;
+    rotate: -9deg;
+    animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
+  }
+}
+@keyframes blink {
+  45% {
+    scale: 1 0.1;
+  }
+}
+/* After the wave: sit down, swap arms, open the laptop and start typing. */
+@keyframes sit-down {
+  from {
+    translate: 0 0;
+  }
+}
+@keyframes sit-squash {
+  40% {
+    scale: 1.05 0.94;
+  }
+}
+@keyframes put-away {
+  from {
+    opacity: 1;
+    translate: 0 0;
+  }
+  to {
+    opacity: 0;
+    translate: 0 4px;
+  }
+}
+@keyframes arm-to-keys {
+  from {
+    opacity: 0;
+    translate: 0 -3px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes laptop-up {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+}
+@keyframes lid-open {
+  from {
+    scale: 1 0.06;
+  }
+}
+@keyframes eyes-to-screen {
+  from {
+    translate: 0 0;
+  }
+}
+/* A short burst of alternating taps, then a pause, on a loop. */
+@keyframes type-left {
+  0%,
+  7%,
+  14%,
+  21%,
+  28%,
+  35%,
+  100% {
+    translate: 0 0;
+  }
+  3.5%,
+  17.5%,
+  31.5% {
+    translate: 0 1.6px;
+  }
+}
+@keyframes type-right {
+  0%,
+  7%,
+  14%,
+  21%,
+  28%,
+  35%,
+  42%,
+  100% {
+    translate: 0 0;
+  }
+  10.5%,
+  24.5%,
+  38.5% {
+    translate: 0 1.6px;
+  }
+}
+/* Every few seconds it looks up from the screen at the visitor and blinks. */
+@keyframes glance-up {
+  0% {
+    translate: 0 2px;
+    scale: 1 1;
+  }
+  58% {
+    translate: 0 2px;
+  }
+  63% {
+    translate: 0 -0.5px;
+  }
+  70% {
+    scale: 1 1;
+  }
+  72% {
+    scale: 1 0.1;
+  }
+  74% {
+    scale: 1 1;
+  }
+  82% {
+    translate: 0 -0.5px;
+  }
+  88% {
+    translate: 0 2px;
+  }
+  100% {
+    translate: 0 2px;
+    scale: 1 1;
+  }
+}
+@keyframes dangle {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  30% {
+    rotate: 9deg;
+  }
+  70% {
+    rotate: -7deg;
+  }
+}
+@keyframes far-arm-reach {
+  from {
+    opacity: 0;
+    rotate: -45deg;
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    rotate: 0deg;
+  }
+}
+@keyframes far-arm-release {
+  from {
+    opacity: 1;
+    rotate: 0deg;
+  }
+  to {
+    opacity: 0;
+    rotate: -40deg;
+  }
+}
+/* Fades the hanging arm out while it reaches round to hold the name. */
+@keyframes hide-while-pulling {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  8%,
+  92% {
+    opacity: 0;
+  }
+}
+@keyframes raise-hand {
+  from {
+    rotate: 50deg;
+  }
+  to {
+    rotate: -60deg;
+  }
+}
+@keyframes greeting-wave {
+  0%,
+  100% {
+    rotate: -60deg;
+  }
+  25% {
+    rotate: -78deg;
+  }
+  75% {
+    rotate: -44deg;
+  }
+}
+/* Contact information is body-sized text, with explicit label and value rows. */
+.editorial-portfolio .contact {
+  grid-template-columns: 1fr 1.15fr;
+  gap: 40px;
+  padding: 36px;
+}
+.editorial-portfolio .contact h2 {
+  font-size: clamp(34px, 4vw, 46px);
+}
+.editorial-portfolio .contact-details {
+  min-width: 0;
+  max-width: none;
+}
+.editorial-portfolio .contact-details > p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+.editorial-portfolio .contact-links {
+  gap: 18px;
+  margin-top: 20px;
+}
+.editorial-portfolio .contact-links a.text-link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 0 0 12px;
+  width: 100%;
+}
+.editorial-portfolio .contact-links a.text-link .contact-link-label {
+  font-family: var(--body);
+  font-size: 12px;
+  letter-spacing: 0;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.editorial-portfolio .contact-links a.text-link .contact-link-value {
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  color: var(--text);
+}
+@media (max-width: 1000px) {
+  .hero-name-scene {
+    --pet-size: 66px;
+  }
+}
+@media (max-width: 700px) {
+  .hero-name-scene {
+    --pet-size: 54px;
+  }
+  .mascot-bubble {
+    left: 66%;
+    /* Never wider than the space left beside the mascot, so it can't push
+       the page sideways on narrow phones. */
+    max-width: min(128px, calc(36vw - 8px));
+    padding: 7px 9px 8px;
+    border-radius: 12px 12px 12px 4px;
+    font-size: 12px;
+  }
+  .editorial-portfolio .hero-name-scene h1 {
+    font-size: clamp(43px, 13.5vw, 62px);
+  }
+  .editorial-portfolio .contact {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 28px 22px;
+  }
+  .editorial-portfolio .contact-links a.text-link .contact-link-value {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-name-scene,
+  .hero-name-scene::before,
+  .hero-name-scene * {
+    animation: none !important;
+  }
+}
+
+.hero-name-scene.restarting,
+.hero-name-scene.restarting::before,
+.hero-name-scene.restarting * {
+  animation: none !important;
+}
+/* Held until the display font is ready (see the script in index.html's head),
+   so the name can't change width partway through the pull. */
+.intro-waiting .hero-name-scene,
+.intro-waiting .hero-name-scene::before,
+.intro-waiting .hero-name-scene * {
+  animation-play-state: paused !important;
+}
+.mascot-track:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* A stable light backing preserves every logo in both themes. */
+.editorial-portfolio .tool-logo {
+  width: 26px;
+  height: 26px;
+  padding: 4px;
+  box-sizing: border-box;
+  border: 1px solid #c5cbbb;
+  border-radius: 3px;
+  background: #f7f6f0;
+  filter: none;
+  opacity: 1;
+}
+.editorial-portfolio .skill-chips > span {
+  gap: 8px;
+  min-height: 36px;
+}
+.editorial-portfolio a:focus-visible,
+.editorial-portfolio button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.contact-address {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.8;
+  font-style: normal;
+  color: var(--muted);
+  margin-top: 20px;
+}
+.editorial-portfolio .contact-address .contact-link-label {
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--text);
+}
+
+/* Three concise decisions across; a compact, artifact-led project index below. */
+.editorial-portfolio .work-methods {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.editorial-portfolio .work-methods article {
+  display: block;
+  border-top: 1px solid var(--line);
+  padding: 22px 0 0;
+  min-width: 0;
+}
+.editorial-portfolio .work-methods h3 {
+  font-size: 18px;
+  line-height: 1.45;
+  max-width: 25ch;
+  margin-bottom: 14px;
+}
+.editorial-portfolio .work-methods p {
+  font-size: 14px;
+  line-height: 1.85;
+}
+.editorial-portfolio .project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 44px 36px;
+  margin-top: 34px;
+}
+.editorial-portfolio .project-grid > article {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+  min-width: 0;
+  padding: 0 0 26px;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+.editorial-portfolio .project-grid h3 {
+  font-family: var(--display);
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 8px 0 12px;
+}
+.editorial-portfolio .project-grid .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.055em;
+}
+.editorial-portfolio .project-grid .featured-content > p:not(.eyebrow),
+.editorial-portfolio .project-grid .thesis-copy > p:not(.eyebrow),
+.editorial-portfolio .project-grid .small-project p:not(.eyebrow) {
+  font-size: 14px;
+  line-height: 1.75;
+  margin-top: 10px;
+}
+.editorial-portfolio .project-grid .project-evidence,
+.editorial-portfolio .project-grid .thesis-role {
+  font-size: 13px !important;
+  line-height: 1.7;
+}
+.editorial-portfolio .project-grid .tags {
+  margin-top: 14px;
+}
+.editorial-portfolio .project-grid .project-link,
+.editorial-portfolio .project-grid .thesis-link,
+.editorial-portfolio .project-grid .compact-link {
+  margin-top: 18px;
+}
+.editorial-portfolio .project-grid .app-gallery {
+  height: 340px;
+  padding: 18px;
+}
+.editorial-portfolio .project-grid .app-screens {
+  height: 248px;
+  margin: 14px 0;
+  gap: 28px;
+}
+.editorial-portfolio .project-grid .visual-caption,
+.editorial-portfolio .project-grid .visual-bottom {
+  font-size: 11px;
+}
+.editorial-portfolio .project-grid .thesis-screenshot {
+  height: 340px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.editorial-portfolio .project-grid .thesis-screenshot img {
+  height: 275px;
+  object-fit: contain;
+}
+.editorial-portfolio .project-grid .thesis-visual-note {
+  display: none;
+}
+.editorial-portfolio .project-grid .small-visual {
+  height: 300px;
+  margin: 0;
+}
+.editorial-portfolio .project-grid .small-project + .small-project {
+  padding: 0 0 26px;
+  border-left: 0;
+  border-top: 0;
+}
+@media (max-width: 800px) {
+  .editorial-portfolio .work-methods {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 86%;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+    padding-bottom: 16px;
+  }
+  .editorial-portfolio .work-methods article {
+    scroll-snap-align: start;
+  }
+  .editorial-portfolio .project-grid {
+    gap: 34px 24px;
+  }
+  .editorial-portfolio .project-grid h3 {
+    font-size: 28px;
+  }
+  .editorial-portfolio .project-grid .app-gallery {
+    height: 300px;
+  }
+  .editorial-portfolio .project-grid .app-screens {
+    height: 210px;
+    gap: 16px;
+  }
+}
+@media (max-width: 650px) {
+  .editorial-portfolio .project-grid {
+    grid-template-columns: 1fr;
+    margin-top: 26px;
+  }
+  .editorial-portfolio .project-grid .app-gallery {
+    height: 330px;
+  }
+  .editorial-portfolio .project-grid .app-screens {
+    height: 240px;
+    gap: 26px;
+  }
+  .editorial-portfolio .project-grid .thesis-screenshot {
+    height: 280px;
+  }
+  .editorial-portfolio .project-grid .thesis-screenshot img {
+    height: 220px;
+  }
+  .editorial-portfolio .project-grid .small-visual {
+    height: 250px;
+  }
+}
+
+.editorial-portfolio .cv-download:disabled {
+  cursor: not-allowed;
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--line);
+  opacity: 1;
+}
+.editorial-portfolio .cv-download:disabled:hover {
+  transform: none;
+  background: transparent;
+}
+.cv-status {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+
+
+/* These two final project entries do not need another separator below them. */
+.editorial-portfolio .project-grid > .small-project,
+.editorial-portfolio .project-grid > .small-project + .small-project {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Editorial typography: one clean sans, semibold for headings. */
+@font-face {
+  font-family: Instrument Sans;
+  src: url("assets/instrument-sans.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --display: "Instrument Sans", sans-serif;
+  --body: "Instrument Sans", sans-serif;
+}
+.editorial-portfolio h1,
+.editorial-portfolio h2,
+.editorial-portfolio .project-grid h3,
+.editorial-portfolio .design-copy h3 {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.editorial-portfolio .hero-name-scene h1 {
+  font-size: clamp(64px, 7.4vw, 104px);
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+}
+.editorial-portfolio .wordmark {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.05em;
+}
+.editorial-portfolio .name-period {
+  letter-spacing: 0;
+}
+.mascot-track {
+  bottom: -11px;
+}
+.name-pull-group {
+  padding-right: calc(var(--pet-size) - 7px);
+}
+.editorial-portfolio .section-intro,
+.editorial-portfolio .hero-description {
+  font-size: 17px;
+}
+@media (max-width: 700px) {
+  .editorial-portfolio .hero-name-scene h1 {
+    font-size: clamp(41px, 12.4vw, 65px);
+  }
+  .editorial-portfolio .hero-description {
+    font-size: 16px;
+  }
+  .mascot-track {
+    bottom: -8px;
+  }
+}
+
+/* The final letter anchors the landing, independent of font or viewport size. */
+.name-last { display:block; white-space:nowrap; }
+.name-perch { position:relative; display:inline-block; letter-spacing:0; }
+/* hop-across (with the other mascot motion above) carries it here from beside the letter. */
+.name-perch .mascot-track {
+  font-size:inherit; line-height:1; right:auto; left:50%; bottom:.56em;
+  transform:translateX(-50%);
+}
