@@ -130,109 +130,95 @@ const projectTemplates = {
     learning:
       "Each logged drink immediately updates the daily total and the progress ring. Users can correct earlier entries from their history and change their daily goal and reminder schedule in settings. Weather information can be used to adjust the goal, and the AI coach sends its requests through a backend function instead of directly from the app.",
     footer:
-      "About the video: it animates real screens captured from the app with a demo account, covering registration, logging, statistics, settings, and history.",
+      "About the video: it is a screen recording of the real app built for the web. Its Supabase project has since been removed, so sign-in is skipped and data stays on the device; the AI coach is my own coach function running locally with my Groq key, and Smart Goal uses live weather.",
     video: {
       src: "assets/videos/hydro-tracker.mp4",
       hevc: "assets/videos/hydro-tracker.hevc.mp4",
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/hydro-tracker.jpg",
       aspect: "1080 / 1080",
-      duration: 53.6,
+      duration: 116.3,
       chapters: [
         {
           time: 0,
           title: "Open the app",
           caption:
-            "The splash screen restores a saved session before the first screen.",
-          screen: "assets/projects/hydro-splash.png",
+            "The splash screen loads my saved settings before the first screen.",
         },
         {
-          time: 2.8,
-          title: "Create an account",
+          time: 3.1,
+          title: "First-run tour",
           caption:
-            "New users register with a name, email, and confirmed password.",
-          screen: "assets/projects/hydro-sign_up.png",
+            "Three short pages introduce drink logging, Splash the hydration buddy, and badges, streaks and smart goals.",
         },
         {
-          time: 6.5,
-          title: "Sign in",
-          caption: "Returning users sign in with their email and password.",
-          screen: "assets/projects/hydro-sign_in.png",
-        },
-        {
-          time: 10.3,
-          title: "Start the day",
+          time: 10.9,
+          title: "Meet the AI coach",
           caption:
-            "The dashboard compares today's intake with a personalised daily goal.",
-          screen: "assets/projects/hydro-home_empty.png",
+            "Splash shows a tip from the AI coach: my Groq-powered function, written for this exact moment of the day.",
         },
         {
-          time: 13.8,
+          time: 20.6,
           title: "Log a drink",
           caption: "Pick a drink type and an amount, then add it to the day.",
-          screen: "assets/projects/hydro-log_sheet.png",
         },
         {
-          time: 17.5,
+          time: 24.6,
           title: "Unlock an achievement",
           caption: "The first logged drink earns the First Sip badge.",
-          screen: "assets/projects/hydro-achievement.png",
         },
         {
-          time: 20.7,
-          title: "Watch the ring fill",
+          time: 29.7,
+          title: "Mix in other drinks",
           caption:
-            "Drinks count by how hydrating they are: 750 ml of water, juice, and coffee adds 613 ml.",
-          screen: "assets/projects/hydro-dash.png",
+            "Juice and coffee count by how hydrating they are: 1,000 ml of drinks adds 825 ml to the day.",
         },
         {
-          time: 25.3,
-          title: "See today's mix",
-          caption: "Scrolling down shows each drink's share of the day.",
-          screen: "assets/projects/hydro-home_mix.png",
+          time: 45,
+          title: "See today’s mix",
+          caption: "Scrolling down shows each drink’s share of the day.",
         },
         {
-          time: 28.9,
-          title: "Today by hour",
+          time: 53.6,
+          title: "Check the stats",
           caption:
-            "Statistics show when each drink was logged through the day.",
-          screen: "assets/projects/hydro-stats_today.png",
+            "Statistics show the day hour by hour, the last seven days, and the last 30.",
         },
         {
-          time: 32.5,
-          title: "Weekly statistics",
-          caption: "Compare the last seven days with the daily goal.",
-          screen: "assets/projects/hydro-stats_week.png",
-        },
-        {
-          time: 35.6,
-          title: "Monthly statistics",
-          caption: "Switch to 30 days to review a longer range.",
-          screen: "assets/projects/hydro-stats_month.png",
-        },
-        {
-          time: 38.7,
+          time: 63.5,
           title: "Profile and goals",
-          caption: "Adjust the daily goal, body weight, and activity level.",
-          screen: "assets/projects/hydro-settings.png",
+          caption:
+            "Settings hold the daily goal, a goal worked out from weight and activity, and Smart Goal.",
         },
         {
-          time: 42.4,
+          time: 75.3,
+          title: "Smart Goal",
+          caption:
+            "Smart Goal reads the live temperature for my city and raises the goal on hot days.",
+        },
+        {
+          time: 83.9,
           title: "Reminders and theme",
-          caption: "Set reminder hours, quiet hours, and an environment theme.",
-          screen: "assets/projects/hydro-settings_reminders.png",
+          caption:
+            "Reminder hours and quiet hours are set here, and an environment theme recolours the app.",
         },
         {
-          time: 46.2,
+          time: 94.5,
           title: "Browse the history",
-          caption: "Each day lists its drinks, ready to edit or delete.",
-          screen: "assets/projects/hydro-history.png",
+          caption:
+            "The Hydration Log shows each day on a calendar and lists its drinks, ready to edit or delete.",
         },
         {
-          time: 50,
+          time: 98.9,
           title: "Edit an entry",
-          caption: "Correct a saved drink's amount, type, or time.",
-          screen: "assets/projects/hydro-edit_entry.png",
+          caption:
+            "I change the coffee to tea, which hydrates better, so the day rises from 825 ml to 900 ml.",
+        },
+        {
+          time: 110.7,
+          title: "Back to today",
+          caption:
+            "Back on Home, the ring and the coach’s tip reflect the updated day.",
         },
       ],
     },
@@ -580,52 +566,61 @@ const projectTemplates = {
     learning:
       "Users upload or select study material, then choose to listen to their notes or take a quiz. The app speaks feedback for each action, and users can navigate by voice or touch. When a user asks a question about their notes, the app searches the saved material using keyword and approximate text matching.",
     footer:
-      "About the video: it animates the app’s screens with sample notes and quiz content. It does not show a live voice or sign-in session.",
+      "About the video: it is a screen recording of the real app built for the web, with a short notes file I wrote. Sign-in uses our Firebase project and voice input needs a microphone, so neither is shown, and the video has no sound.",
     video: {
       src: "assets/videos/openear.mp4",
       hevc: "assets/videos/openear.hevc.mp4",
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/openear.jpg",
       aspect: "1080 / 1080",
-      duration: 22.3,
+      duration: 87.3,
       chapters: [
         {
           time: 0,
-          title: "Sign in",
-          caption:
-            "The welcome screen keeps controls large and works with screen readers.",
-          screen: "assets/projects/openear-login.png",
-        },
-        {
-          time: 3.8,
           title: "Choose an activity",
           caption:
-            "Large buttons lead to notes, quizzes, progress, and uploads.",
-          screen: "assets/projects/openear-home.png",
+            "Large, high-contrast buttons lead to notes, quizzes, progress, and uploads, and each one is announced aloud.",
         },
         {
-          time: 7.5,
+          time: 5.6,
+          title: "Upload study notes",
+          caption:
+            "A notes file is checked as it loads, and the app says whether it has enough content to quiz on.",
+        },
+        {
+          time: 15,
           title: "Listen to notes",
-          caption: "Pick a saved note and play it aloud with text-to-speech.",
-          screen: "assets/projects/openear-notes.png",
+          caption:
+            "Tapping a saved note reads it aloud with text-to-speech; the video has no sound.",
         },
         {
-          time: 11.4,
+          time: 21.8,
+          title: "Ask about the notes",
+          caption:
+            "Questions about a note are asked by voice; the microphone is not available in this recording.",
+        },
+        {
+          time: 31.3,
           title: "Start a quiz",
-          caption: "Quizzes are built from the same saved notes.",
-          screen: "assets/projects/openear-home.png",
+          caption:
+            "Only notes with enough content are offered; this one makes 8 questions.",
         },
         {
-          time: 14.1,
-          title: "Select quiz material",
-          caption: "The app checks which notes have enough content to quiz on.",
-          screen: "assets/projects/openear-quiz-select.png",
+          time: 36.7,
+          title: "Answer questions",
+          caption:
+            "Each question is a sentence from the notes with a word missing; answers are tapped or spoken.",
         },
         {
-          time: 17.9,
-          title: "Answer a question",
-          caption: "Tap an answer, or say it with the voice-input button.",
-          screen: "assets/projects/openear-quiz.png",
+          time: 71.6,
+          title: "See the results",
+          caption: "The score is read out and saved to my progress.",
+        },
+        {
+          time: 82.7,
+          title: "Track progress",
+          caption:
+            "The Progress screen keeps each quiz score so I can see how my studying is going.",
         },
       ],
     },

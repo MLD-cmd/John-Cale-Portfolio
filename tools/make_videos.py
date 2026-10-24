@@ -1036,29 +1036,16 @@ class PhoneRecording(Recording):
 
 
 def hydro():
-    # The captures carry a thin emulator border; trim it.
+    # A real recording of the app's offline web build (tools/recordings/hydro),
+    # with the AI coach running locally on my Groq key.
     frame_size(SQUARE)
-    phone = Phone(2390 / 1070, inset=5)
-    steps = [
-        S("hydro-splash.png", "Open the app", "The splash screen restores a saved session before the first screen.", hold=2.3),
-        S("hydro-sign_up.png", "Create an account", "New users register with a name, email, and confirmed password.", tap=(0.73, 0.838)),
-        S("hydro-sign_in.png", "Sign in", "Returning users sign in with their email and password.", enter="push", tap=(0.5, 0.641)),
-        S("hydro-home_empty.png", "Start the day", "The dashboard compares today's intake with a personalised daily goal.", hold=3.0),
-        S("hydro-log_sheet.png", "Log a drink", "Pick a drink type and an amount, then add it to the day.", enter="sheet", opt=0.505, tap=(0.5, 0.949)),
-        S("hydro-achievement.png", "Unlock an achievement", "The first logged drink earns the First Sip badge.", enter="dialog", opt=(0.13, 0.3, 0.87, 0.7), tap=(0.5, 0.645), hold=2.8),
-        S("hydro-dash.png", "Watch the ring fill", "Drinks count by how hydrating they are: 750 ml of water, juice, and coffee adds 613 ml.", hold=3.6),
-        S("hydro-home_mix.png", "See today's mix", "Scrolling down shows each drink's share of the day.", enter="stitch", opt=dict(band=(127 / 2390, 2077 / 2390), d=1260 / 2390), tap=(0.5, 0.933)),
-        S("hydro-stats_today.png", "Today by hour", "Statistics show when each drink was logged through the day.", enter="tab", tap=(0.5, 0.25)),
-        S("hydro-stats_week.png", "Weekly statistics", "Compare the last seven days with the daily goal.", enter="tab", tap=(0.79, 0.25), hold=2.8),
-        S("hydro-stats_month.png", "Monthly statistics", "Switch to 30 days to review a longer range.", enter="tab", tap=(0.81, 0.933), hold=2.8),
-        S("hydro-settings.png", "Profile and goals", "Adjust the daily goal, body weight, and activity level.", enter="tab", hold=3.0),
-        S("hydro-settings_reminders.png", "Reminders and theme", "Set reminder hours, quiet hours, and an environment theme.", enter="scroll", opt=(105 / 2390, 2101 / 2390), tap=(0.5, 0.778)),
-        S("hydro-history.png", "Browse the history", "Each day lists its drinks, ready to edit or delete.", enter="push", tap=(0.74, 0.637)),
-        S("hydro-edit_entry.png", "Edit an entry", "Correct a saved drink's amount, type, or time.", enter="sheet", opt=0.558, tap=(0.5, 0.949), hold=3.0),
-    ]
-    for s in steps:
-        s["dev"] = phone
-    return Video("hydro-tracker", "Hydro-Tracker", "App walkthrough", "Captured app screens  ·  demo account", (28, 70, 66), steps, poster_step=6)
+    phone = Phone(915 / 412)
+    return PhoneRecording(
+        "hydro-tracker", "Hydro-Tracker", "Screen recording",
+        "The real app on device storage  ·  live AI coach and weather",
+        (28, 70, 66), ROOT / "tools" / "recordings" / "hydro", phone,
+        poster_chapter=2,
+    )
 
 
 def bulk():
@@ -1074,19 +1061,15 @@ def bulk():
 
 
 def openear():
+    # A real recording of the app's offline web build (tools/recordings/openear).
     frame_size(SQUARE)
     phone = Phone(932 / 430)
-    steps = [
-        S("openear-login.png", "Sign in", "The welcome screen keeps controls large and works with screen readers.", tap=(0.5, 0.67)),
-        S("openear-home.png", "Choose an activity", "Large buttons lead to notes, quizzes, progress, and uploads.", tap=(0.45, 0.231)),
-        S("openear-notes.png", "Listen to notes", "Pick a saved note and play it aloud with text-to-speech.", enter="push", taps=[(1.3, 0.87, 0.108)], tap=(0.063, 0.029), hold=3.4),
-        S("openear-home.png", "Start a quiz", "Quizzes are built from the same saved notes.", enter="pop", tap=(0.45, 0.306), hold=2.2),
-        S("openear-quiz-select.png", "Select quiz material", "The app checks which notes have enough content to quiz on.", enter="push", tap=(0.5, 0.126)),
-        S("openear-quiz.png", "Answer a question", "Tap an answer, or say it with the voice-input button.", enter="push", taps=[(1.6, 0.5, 0.368)], hold=3.8),
-    ]
-    for s in steps:
-        s["dev"] = phone
-    return Video("openear", "OpenEar", "App walkthrough", "Captured app screens  ·  synthetic demo notes", (36, 58, 46), steps, poster_step=1)
+    return PhoneRecording(
+        "openear", "OpenEar", "Screen recording",
+        "The real app on device storage  ·  sign-in and voice input not shown",
+        (36, 58, 46), ROOT / "tools" / "recordings" / "openear", phone,
+        poster_chapter=6,
+    )
 
 
 def maistra():

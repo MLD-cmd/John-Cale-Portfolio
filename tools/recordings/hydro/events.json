@@ -1,0 +1,359 @@
+[
+ {
+  "type": "start",
+  "t": 1792824582.692
+ },
+ {
+  "type": "chapter",
+  "t": 1792824582.692,
+  "title": "Open the app",
+  "text": "The splash screen loads my saved settings before the first screen."
+ },
+ {
+  "type": "chapter",
+  "t": 1792824585.359,
+  "title": "First-run tour",
+  "text": "Three short pages introduce drink logging, Splash the hydration buddy, and badges, streaks and smart goals."
+ },
+ {
+  "type": "tap",
+  "t": 1792824586.962,
+  "x": 206,
+  "y": 861
+ },
+ {
+  "type": "tap",
+  "t": 1792824588.688,
+  "x": 206,
+  "y": 861
+ },
+ {
+  "type": "tap",
+  "t": 1792824590.396,
+  "x": 206,
+  "y": 861
+ },
+ {
+  "type": "chapter",
+  "t": 1792824593.201,
+  "title": "Meet the AI coach",
+  "text": "Splash shows a tip from the AI coach: my Groq-powered function, written for this exact moment of the day."
+ },
+ {
+  "type": "swipe",
+  "t": 1792824597.42,
+  "from": {
+   "x": 206,
+   "y": 725
+  },
+  "to": {
+   "x": 206,
+   "y": 475
+  },
+  "ms": 2.3339998722076416
+ },
+ {
+  "type": "tap",
+  "t": 1792824600.859,
+  "x": 206,
+  "y": 755
+ },
+ {
+  "type": "chapter",
+  "t": 1792824602.854,
+  "title": "Log a drink",
+  "text": "Pick a drink type and an amount, then add it to the day."
+ },
+ {
+  "type": "tap",
+  "t": 1792824604.257,
+  "x": 206,
+  "y": 869
+ },
+ {
+  "type": "chapter",
+  "t": 1792824606.883,
+  "title": "Unlock an achievement",
+  "text": "The first logged drink earns the First Sip badge."
+ },
+ {
+  "type": "tap",
+  "t": 1792824608.484,
+  "x": 206,
+  "y": 591
+ },
+ {
+  "type": "tap",
+  "t": 1792824610.105,
+  "x": 206,
+  "y": 725
+ },
+ {
+  "type": "chapter",
+  "t": 1792824611.952,
+  "title": "Mix in other drinks",
+  "text": "Juice and coffee count by how hydrating they are: 1,000 ml of drinks adds 825 ml to the day."
+ },
+ {
+  "type": "tap",
+  "t": 1792824612.753,
+  "x": 206,
+  "y": 623
+ },
+ {
+  "type": "tap",
+  "t": 1792824613.68,
+  "x": 270,
+  "y": 763
+ },
+ {
+  "type": "tap",
+  "t": 1792824614.593,
+  "x": 206,
+  "y": 869
+ },
+ {
+  "type": "tap",
+  "t": 1792824617.138,
+  "x": 206,
+  "y": 725
+ },
+ {
+  "type": "tap",
+  "t": 1792824618.769,
+  "x": 358,
+  "y": 623
+ },
+ {
+  "type": "tap",
+  "t": 1792824619.703,
+  "x": 206,
+  "y": 869
+ },
+ {
+  "type": "swipe",
+  "t": 1792824622.197,
+  "from": {
+   "x": 206,
+   "y": 175
+  },
+  "to": {
+   "x": 206,
+   "y": 625
+  },
+  "ms": 2.759000062942505
+ },
+ {
+  "type": "chapter",
+  "t": 1792824627.268,
+  "title": "See today’s mix",
+  "text": "Scrolling down shows each drink’s share of the day."
+ },
+ {
+  "type": "swipe",
+  "t": 1792824630.296,
+  "from": {
+   "x": 206,
+   "y": 775
+  },
+  "to": {
+   "x": 206,
+   "y": 425
+  },
+  "ms": 2.2109999656677246
+ },
+ {
+  "type": "chapter",
+  "t": 1792824635.935,
+  "title": "Check the stats",
+  "text": "Statistics show the day hour by hour, the last seven days, and the last 30."
+ },
+ {
+  "type": "tap",
+  "t": 1792824635.935,
+  "x": 206,
+  "y": 870
+ },
+ {
+  "type": "tap",
+  "t": 1792824637.749,
+  "x": 84,
+  "y": 177
+ },
+ {
+  "type": "tap",
+  "t": 1792824640.539,
+  "x": 206,
+  "y": 177
+ },
+ {
+  "type": "tap",
+  "t": 1792824642.966,
+  "x": 327,
+  "y": 177
+ },
+ {
+  "type": "chapter",
+  "t": 1792824645.769,
+  "title": "Profile and goals",
+  "text": "Settings hold the daily goal, a goal worked out from weight and activity, and Smart Goal."
+ },
+ {
+  "type": "tap",
+  "t": 1792824645.769,
+  "x": 335,
+  "y": 870
+ },
+ {
+  "type": "swipe",
+  "t": 1792824648.218,
+  "from": {
+   "x": 206,
+   "y": 775
+  },
+  "to": {
+   "x": 206,
+   "y": 425
+  },
+  "ms": 2.136000156402588
+ },
+ {
+  "type": "tap",
+  "t": 1792824652.339,
+  "x": 206,
+  "y": 168
+ },
+ {
+  "type": "tap",
+  "t": 1792824653.8,
+  "x": 294,
+  "y": 215
+ },
+ {
+  "type": "tap",
+  "t": 1792824655.621,
+  "x": 338,
+  "y": 299
+ },
+ {
+  "type": "chapter",
+  "t": 1792824657.638,
+  "title": "Smart Goal",
+  "text": "Smart Goal reads the live temperature for my city and raises the goal on hot days."
+ },
+ {
+  "type": "tap",
+  "t": 1792824658.239,
+  "x": 345,
+  "y": 381
+ },
+ {
+  "type": "swipe",
+  "t": 1792824661.676,
+  "from": {
+   "x": 206,
+   "y": 775
+  },
+  "to": {
+   "x": 206,
+   "y": 425
+  },
+  "ms": 2.4639999866485596
+ },
+ {
+  "type": "chapter",
+  "t": 1792824666.176,
+  "title": "Reminders and theme",
+  "text": "Reminder hours and quiet hours are set here, and an environment theme recolours the app."
+ },
+ {
+  "type": "tap",
+  "t": 1792824667.779,
+  "x": 206,
+  "y": 645
+ },
+ {
+  "type": "swipe",
+  "t": 1792824670.469,
+  "from": {
+   "x": 206,
+   "y": 725
+  },
+  "to": {
+   "x": 206,
+   "y": 475
+  },
+  "ms": 2.303999900817871
+ },
+ {
+  "type": "tap",
+  "t": 1792824674.469,
+  "x": 206,
+  "y": 571
+ },
+ {
+  "type": "chapter",
+  "t": 1792824676.761,
+  "title": "Browse the history",
+  "text": "The Hydration Log shows each day on a calendar and lists its drinks, ready to edit or delete."
+ },
+ {
+  "type": "tap",
+  "t": 1792824679.363,
+  "x": 318,
+  "y": 676
+ },
+ {
+  "type": "chapter",
+  "t": 1792824681.223,
+  "title": "Edit an entry",
+  "text": "I change the coffee to tea, which hydrates better, so the day rises from 825 ml to 900 ml."
+ },
+ {
+  "type": "tap",
+  "t": 1792824682.427,
+  "x": 150,
+  "y": 746
+ },
+ {
+  "type": "tap",
+  "t": 1792824683.675,
+  "x": 206,
+  "y": 869
+ },
+ {
+  "type": "tap",
+  "t": 1792824686.127,
+  "x": 28,
+  "y": 29
+ },
+ {
+  "type": "tap",
+  "t": 1792824687.733,
+  "x": 76,
+  "y": 870
+ },
+ {
+  "type": "swipe",
+  "t": 1792824689.977,
+  "from": {
+   "x": 206,
+   "y": 100
+  },
+  "to": {
+   "x": 206,
+   "y": 700
+  },
+  "ms": 2.378000020980835
+ },
+ {
+  "type": "chapter",
+  "t": 1792824692.959,
+  "title": "Back to today",
+  "text": "Back on Home, the ring and the coach’s tip reflect the updated day."
+ },
+ {
+  "type": "end",
+  "t": 1792824698.214
+ }
+]

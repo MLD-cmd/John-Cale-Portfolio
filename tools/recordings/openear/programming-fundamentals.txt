@@ -1,0 +1,5 @@
+Programming Fundamentals.
+A variable is a named storage location that holds a value while a program runs.
+A loop repeats a block of code until its condition is no longer true.
+A function is a reusable block of code that performs one task and can return a result.
+Debugging refers to the process of finding and fixing errors, which are also called bugs.
