@@ -11,6 +11,11 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:4330',
     viewport: { width: 430, height: 932 },
     deviceScaleFactor: 2,
+    // Headless Chromium draws with a software renderer by default, and the
+    // app's animations drop frames there; this uses the Mac's GPU instead.
+    headless: true,
+    channel: 'chromium',
+    launchOptions: { args: ['--use-angle=metal', '--enable-gpu', '--ignore-gpu-blocklist'] },
   },
   webServer: {
     command: `npx --yes http-server@14.1.1 ${process.env['OPENEAR_WEB']} -p 4330 -a 127.0.0.1 -c-1 --silent`,

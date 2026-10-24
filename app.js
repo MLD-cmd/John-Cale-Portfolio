@@ -137,7 +137,7 @@ const projectTemplates = {
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/hydro-tracker.jpg",
       aspect: "1080 / 1080",
-      duration: 116.3,
+      duration: 108.6,
       chapters: [
         {
           time: 0,
@@ -146,76 +146,76 @@ const projectTemplates = {
             "The splash screen loads my saved settings before the first screen.",
         },
         {
-          time: 3.1,
+          time: 3,
           title: "First-run tour",
           caption:
             "Three short pages introduce drink logging, Splash the hydration buddy, and badges, streaks and smart goals.",
         },
         {
-          time: 10.9,
+          time: 10.7,
           title: "Meet the AI coach",
           caption:
             "Splash shows a tip from the AI coach: my Groq-powered function, written for this exact moment of the day.",
         },
         {
-          time: 20.6,
+          time: 18.9,
           title: "Log a drink",
           caption: "Pick a drink type and an amount, then add it to the day.",
         },
         {
-          time: 24.6,
+          time: 22.8,
           title: "Unlock an achievement",
           caption: "The first logged drink earns the First Sip badge.",
         },
         {
-          time: 29.7,
+          time: 27.6,
           title: "Mix in other drinks",
           caption:
             "Juice and coffee count by how hydrating they are: 1,000 ml of drinks adds 825 ml to the day.",
         },
         {
-          time: 45,
+          time: 40.9,
           title: "See today’s mix",
           caption: "Scrolling down shows each drink’s share of the day.",
         },
         {
-          time: 53.6,
+          time: 48.7,
           title: "Check the stats",
           caption:
             "Statistics show the day hour by hour, the last seven days, and the last 30.",
         },
         {
-          time: 63.5,
+          time: 58.2,
           title: "Profile and goals",
           caption:
             "Settings hold the daily goal, a goal worked out from weight and activity, and Smart Goal.",
         },
         {
-          time: 75.3,
+          time: 67.8,
           title: "Smart Goal",
           caption:
             "Smart Goal reads the live temperature for my city and raises the goal on hot days.",
         },
         {
-          time: 83.9,
+          time: 75,
           title: "Reminders and theme",
           caption:
             "Reminder hours and quiet hours are set here, and an environment theme recolours the app.",
         },
         {
-          time: 94.5,
+          time: 87.9,
           title: "Browse the history",
           caption:
             "The Hydration Log shows each day on a calendar and lists its drinks, ready to edit or delete.",
         },
         {
-          time: 98.9,
+          time: 92.3,
           title: "Edit an entry",
           caption:
             "I change the coffee to tea, which hydrates better, so the day rises from 825 ml to 900 ml.",
         },
         {
-          time: 110.7,
+          time: 103.2,
           title: "Back to today",
           caption:
             "Back on Home, the ring and the coach’s tip reflect the updated day.",
@@ -244,7 +244,7 @@ const projectTemplates = {
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/bulk-buying.jpg",
       aspect: "1080 / 1080",
-      duration: 133.8,
+      duration: 145.0,
       chapters: [
         {
           time: 0,
@@ -257,91 +257,91 @@ const projectTemplates = {
           caption: "Nearby campus and dorm hubs are listed by distance.",
         },
         {
-          time: 12.8,
+          time: 12.7,
           title: "Join the hub",
           caption:
             "Colon Street Hub becomes my current hub, and its count goes from 31 to 32 members.",
         },
         {
-          time: 16.5,
+          time: 16.3,
           title: "Set my interests",
           caption:
             "In my profile I choose Grocery and Drinks, so matching deals are recommended first.",
         },
         {
-          time: 27.8,
+          time: 25.2,
           title: "Get recommendations",
           caption:
             "The Split Board opens with picks that match my interests, each with the reason it was picked.",
         },
         {
-          time: 32.7,
+          time: 30,
           title: "Filter the board",
           caption:
             "Filters narrow the board by category, status, or deadline; here, Grocery only.",
         },
         {
-          time: 40.6,
+          time: 37.8,
           title: "Review a deal",
           caption:
             "The deal shows my share, open slots, the pickup point, and who has already joined.",
         },
         {
-          time: 48.9,
+          time: 46.2,
           title: "Reserve a share",
           caption:
             "My slot is reserved: open slots drop to 2 of 5, and the amount I owe appears.",
         },
         {
-          time: 55.1,
+          time: 52.3,
           title: "Post my own deal",
           caption:
             "I start a bulk buy for my hub: what it is, the total price, the amount, and how many students split it.",
         },
         {
-          time: 67.8,
+          time: 66.8,
           title: "Review and publish",
           caption:
             "The form works out each share, P300 for 5 L, and I add the pickup point and payment method.",
         },
         {
-          time: 78.5,
+          time: 86.3,
           title: "Check notifications",
           caption:
             "Three hubmates reserved the rest of my deal, and I get a reminder to pay for my rice share.",
         },
         {
-          time: 87,
+          time: 95,
           title: "Find my deal",
           caption:
             "Back on the board, searching “oil” brings up the deal I posted, now full.",
         },
         {
-          time: 95.5,
+          time: 103.1,
           title: "Organise the deal",
           caption:
             "As organiser I see the full deal and everyone in it, with a button to record each payment.",
         },
         {
-          time: 101.6,
+          time: 109.3,
           title: "Record payments",
           caption:
             "I mark each classmate paid as their GCash payment arrives, until everyone has paid.",
         },
         {
-          time: 106,
+          time: 113.7,
           title: "Buy the goods",
           caption:
             "Confirming the purchase locks the reservations and opens a pickup checklist.",
         },
         {
-          time: 113.6,
+          time: 119.6,
           title: "Hand out shares",
           caption:
             "I tick off each pickup at the gate; once everyone has collected, the deal is Completed.",
         },
         {
-          time: 121.7,
+          time: 132.8,
           title: "My history",
           caption:
             "My profile keeps the deals I organised and the ones I joined.",
@@ -612,7 +612,7 @@ const projectTemplates = {
             "Each question is a sentence from the notes with a word missing; answers are tapped or spoken.",
         },
         {
-          time: 71.6,
+          time: 71.7,
           title: "See the results",
           caption: "The score is read out and saved to my progress.",
         },

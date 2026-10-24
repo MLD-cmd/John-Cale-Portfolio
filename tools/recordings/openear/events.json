@@ -1,232 +1,232 @@
 [
  {
   "type": "start",
-  "t": 1792823104.758
+  "t": 1792827524.821
  },
  {
   "type": "chapter",
-  "t": 1792823104.759,
+  "t": 1792827524.821,
   "title": "Choose an activity",
   "text": "Large, high-contrast buttons lead to notes, quizzes, progress, and uploads, and each one is announced aloud."
  },
  {
   "type": "tap",
-  "t": 1792823107.961,
+  "t": 1792827528.024,
   "x": 215,
   "y": 402
  },
  {
   "type": "chapter",
-  "t": 1792823109.975,
+  "t": 1792827530.048,
   "title": "Upload study notes",
   "text": "A notes file is checked as it loads, and the app says whether it has enough content to quiz on."
  },
  {
   "type": "tap",
-  "t": 1792823111.181,
+  "t": 1792827531.254,
   "x": 215,
   "y": 488
  },
  {
   "type": "tap",
-  "t": 1792823114.914,
+  "t": 1792827534.997,
   "x": 27,
   "y": 27
  },
  {
   "type": "tap",
-  "t": 1792823117.128,
+  "t": 1792827537.214,
   "x": 215,
   "y": 216
  },
  {
   "type": "chapter",
-  "t": 1792823119.334,
+  "t": 1792827539.432,
   "title": "Listen to notes",
   "text": "Tapping a saved note reads it aloud with text-to-speech; the video has no sound."
  },
  {
   "type": "tap",
-  "t": 1792823120.337,
+  "t": 1792827540.435,
   "x": 180,
   "y": 100
  },
  {
   "type": "tap",
-  "t": 1792823124.148,
+  "t": 1792827544.248,
   "x": 215,
   "y": 897
  },
  {
   "type": "chapter",
-  "t": 1792823126.159,
+  "t": 1792827546.261,
   "title": "Ask about the notes",
   "text": "Questions about a note are asked by voice; the microphone is not available in this recording."
  },
  {
   "type": "tap",
-  "t": 1792823129.161,
+  "t": 1792827549.263,
   "x": 215,
   "y": 589
  },
  {
   "type": "tap",
-  "t": 1792823130.593,
+  "t": 1792827550.681,
   "x": 27,
   "y": 27
  },
  {
   "type": "tap",
-  "t": 1792823133.02,
+  "t": 1792827553.094,
   "x": 215,
   "y": 286
  },
  {
   "type": "chapter",
-  "t": 1792823135.632,
+  "t": 1792827555.706,
   "title": "Start a quiz",
   "text": "Only notes with enough content are offered; this one makes 8 questions."
  },
  {
   "type": "tap",
-  "t": 1792823137.834,
+  "t": 1792827557.909,
   "x": 215,
   "y": 110
  },
  {
   "type": "chapter",
-  "t": 1792823141.046,
+  "t": 1792827561.123,
   "title": "Answer questions",
   "text": "Each question is a sentence from the notes with a word missing; answers are tapped or spoken."
  },
  {
   "type": "tap",
-  "t": 1792823142.657,
+  "t": 1792827562.733,
+  "x": 215,
+  "y": 579.5
+ },
+ {
+  "type": "tap",
+  "t": 1792827564.448,
+  "x": 215,
+  "y": 857.5
+ },
+ {
+  "type": "tap",
+  "t": 1792827566.864,
   "x": 215,
   "y": 710.5
  },
  {
   "type": "tap",
-  "t": 1792823144.37,
+  "t": 1792827568.581,
   "x": 215,
   "y": 857.5
  },
  {
   "type": "tap",
-  "t": 1792823146.787,
+  "t": 1792827571.003,
+  "x": 215,
+  "y": 448.5
+ },
+ {
+  "type": "tap",
+  "t": 1792827572.721,
+  "x": 215,
+  "y": 857.5
+ },
+ {
+  "type": "tap",
+  "t": 1792827575.134,
   "x": 215,
   "y": 317.5
  },
  {
   "type": "tap",
-  "t": 1792823148.508,
+  "t": 1792827576.849,
   "x": 215,
   "y": 857.5
  },
  {
   "type": "tap",
-  "t": 1792823150.92,
-  "x": 215,
-  "y": 579.5
- },
- {
-  "type": "tap",
-  "t": 1792823152.632,
-  "x": 215,
-  "y": 857.5
- },
- {
-  "type": "tap",
-  "t": 1792823155.047,
-  "x": 215,
-  "y": 579.5
- },
- {
-  "type": "tap",
-  "t": 1792823156.767,
-  "x": 215,
-  "y": 857.5
- },
- {
-  "type": "tap",
-  "t": 1792823159.183,
+  "t": 1792827579.281,
   "x": 215,
   "y": 322.5
  },
  {
   "type": "tap",
-  "t": 1792823160.898,
+  "t": 1792827580.998,
   "x": 215,
   "y": 892.5
  },
  {
   "type": "tap",
-  "t": 1792823163.312,
+  "t": 1792827583.433,
   "x": 215,
   "y": 322.5
  },
  {
   "type": "tap",
-  "t": 1792823165.026,
+  "t": 1792827585.149,
   "x": 215,
   "y": 867.5
  },
  {
   "type": "tap",
-  "t": 1792823167.441,
+  "t": 1792827587.564,
   "x": 215,
   "y": 322.5
  },
  {
   "type": "tap",
-  "t": 1792823169.153,
+  "t": 1792827589.272,
   "x": 215,
   "y": 892.5
  },
  {
   "type": "tap",
-  "t": 1792823171.567,
+  "t": 1792827591.683,
   "x": 215,
   "y": 335
  },
  {
   "type": "tap",
-  "t": 1792823173.283,
+  "t": 1792827593.394,
   "x": 215,
   "y": 892.5
  },
  {
   "type": "chapter",
-  "t": 1792823175.997,
+  "t": 1792827596.101,
   "title": "See the results",
   "text": "The score is read out and saved to my progress."
  },
  {
   "type": "tap",
-  "t": 1792823179.599,
+  "t": 1792827599.705,
   "x": 300,
   "y": 591
  },
  {
   "type": "tap",
-  "t": 1792823181.808,
+  "t": 1792827601.914,
   "x": 27,
   "y": 27
  },
  {
   "type": "tap",
-  "t": 1792823184.445,
+  "t": 1792827604.528,
   "x": 215,
   "y": 344
  },
  {
   "type": "chapter",
-  "t": 1792823187.058,
+  "t": 1792827607.14,
   "title": "Track progress",
   "text": "The Progress screen keeps each quiz score so I can see how my studying is going."
  },
  {
   "type": "end",
-  "t": 1792823191.261
+  "t": 1792827611.343
  }
 ]

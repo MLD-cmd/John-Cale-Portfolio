@@ -1,138 +1,138 @@
 [
  {
   "type": "start",
-  "t": 1792824582.692
+  "t": 1792828179.741
  },
  {
   "type": "chapter",
-  "t": 1792824582.692,
+  "t": 1792828179.741,
   "title": "Open the app",
   "text": "The splash screen loads my saved settings before the first screen."
  },
  {
   "type": "chapter",
-  "t": 1792824585.359,
+  "t": 1792828182.344,
   "title": "First-run tour",
   "text": "Three short pages introduce drink logging, Splash the hydration buddy, and badges, streaks and smart goals."
  },
  {
   "type": "tap",
-  "t": 1792824586.962,
+  "t": 1792828183.953,
   "x": 206,
-  "y": 861
+  "y": 860.5
  },
  {
   "type": "tap",
-  "t": 1792824588.688,
+  "t": 1792828185.677,
   "x": 206,
-  "y": 861
+  "y": 860.5
  },
  {
   "type": "tap",
-  "t": 1792824590.396,
+  "t": 1792828187.387,
   "x": 206,
-  "y": 861
+  "y": 860.5
  },
  {
   "type": "chapter",
-  "t": 1792824593.201,
+  "t": 1792828190.019,
   "title": "Meet the AI coach",
   "text": "Splash shows a tip from the AI coach: my Groq-powered function, written for this exact moment of the day."
  },
  {
   "type": "swipe",
-  "t": 1792824597.42,
+  "t": 1792828194.235,
   "from": {
    "x": 206,
-   "y": 725
+   "y": 665
   },
   "to": {
    "x": 206,
-   "y": 475
+   "y": 535
   },
-  "ms": 2.3339998722076416
+  "ms": 1.6040000915527344
  },
  {
   "type": "tap",
-  "t": 1792824600.859,
+  "t": 1792828196.449,
   "x": 206,
-  "y": 755
+  "y": 757
  },
  {
   "type": "chapter",
-  "t": 1792824602.854,
+  "t": 1792828198.265,
   "title": "Log a drink",
   "text": "Pick a drink type and an amount, then add it to the day."
  },
  {
   "type": "tap",
-  "t": 1792824604.257,
+  "t": 1792828199.703,
   "x": 206,
   "y": 869
  },
  {
   "type": "chapter",
-  "t": 1792824606.883,
+  "t": 1792828202.144,
   "title": "Unlock an achievement",
   "text": "The first logged drink earns the First Sip badge."
  },
  {
   "type": "tap",
-  "t": 1792824608.484,
+  "t": 1792828203.747,
   "x": 206,
   "y": 591
  },
  {
   "type": "tap",
-  "t": 1792824610.105,
+  "t": 1792828205.354,
   "x": 206,
-  "y": 725
+  "y": 728
  },
  {
   "type": "chapter",
-  "t": 1792824611.952,
+  "t": 1792828206.961,
   "title": "Mix in other drinks",
   "text": "Juice and coffee count by how hydrating they are: 1,000 ml of drinks adds 825 ml to the day."
  },
  {
   "type": "tap",
-  "t": 1792824612.753,
+  "t": 1792828207.767,
   "x": 206,
-  "y": 623
+  "y": 623.5
  },
  {
   "type": "tap",
-  "t": 1792824613.68,
-  "x": 270,
-  "y": 763
+  "t": 1792828208.68,
+  "x": 270.5350646972656,
+  "y": 762.5
  },
  {
   "type": "tap",
-  "t": 1792824614.593,
+  "t": 1792828209.588,
   "x": 206,
   "y": 869
  },
  {
   "type": "tap",
-  "t": 1792824617.138,
+  "t": 1792828211.798,
   "x": 206,
-  "y": 725
+  "y": 730
  },
  {
   "type": "tap",
-  "t": 1792824618.769,
+  "t": 1792828213.404,
   "x": 358,
-  "y": 623
+  "y": 623.5
  },
  {
   "type": "tap",
-  "t": 1792824619.703,
+  "t": 1792828214.309,
   "x": 206,
   "y": 869
  },
  {
   "type": "swipe",
-  "t": 1792824622.197,
+  "t": 1792828216.533,
   "from": {
    "x": 206,
    "y": 175
@@ -141,17 +141,17 @@
    "x": 206,
    "y": 625
   },
-  "ms": 2.759000062942505
+  "ms": 1.6059999465942383
  },
  {
   "type": "chapter",
-  "t": 1792824627.268,
+  "t": 1792828220.243,
   "title": "See today’s mix",
   "text": "Scrolling down shows each drink’s share of the day."
  },
  {
   "type": "swipe",
-  "t": 1792824630.296,
+  "t": 1792828223.25,
   "from": {
    "x": 206,
    "y": 775
@@ -160,121 +160,96 @@
    "x": 206,
    "y": 425
   },
-  "ms": 2.2109999656677246
+  "ms": 1.6019999980926514
  },
  {
   "type": "chapter",
-  "t": 1792824635.935,
+  "t": 1792828228.056,
   "title": "Check the stats",
   "text": "Statistics show the day hour by hour, the last seven days, and the last 30."
  },
  {
   "type": "tap",
-  "t": 1792824635.935,
+  "t": 1792828228.06,
   "x": 206,
-  "y": 870
+  "y": 871
  },
  {
   "type": "tap",
-  "t": 1792824637.749,
-  "x": 84,
+  "t": 1792828229.868,
+  "x": 84.6640625,
   "y": 177
  },
  {
   "type": "tap",
-  "t": 1792824640.539,
-  "x": 206,
+  "t": 1792828232.48,
+  "x": 205.99738311767578,
   "y": 177
  },
  {
   "type": "tap",
-  "t": 1792824642.966,
-  "x": 327,
+  "t": 1792828234.894,
+  "x": 327.3307189941406,
   "y": 177
  },
  {
   "type": "chapter",
-  "t": 1792824645.769,
+  "t": 1792828237.499,
   "title": "Profile and goals",
   "text": "Settings hold the daily goal, a goal worked out from weight and activity, and Smart Goal."
  },
  {
   "type": "tap",
-  "t": 1792824645.769,
-  "x": 335,
-  "y": 870
+  "t": 1792828237.503,
+  "x": 335.3333435058594,
+  "y": 871
  },
  {
   "type": "swipe",
-  "t": 1792824648.218,
+  "t": 1792828239.933,
   "from": {
    "x": 206,
-   "y": 775
+   "y": 665
   },
   "to": {
    "x": 206,
-   "y": 425
+   "y": 535
   },
-  "ms": 2.136000156402588
+  "ms": 1.616999864578247
  },
  {
   "type": "tap",
-  "t": 1792824652.339,
-  "x": 206,
-  "y": 168
+  "t": 1792828242.156,
+  "x": 210,
+  "y": 467.5
  },
  {
   "type": "tap",
-  "t": 1792824653.8,
-  "x": 294,
-  "y": 215
+  "t": 1792828243.53,
+  "x": 294.9156188964844,
+  "y": 435.5
  },
  {
   "type": "tap",
-  "t": 1792824655.621,
-  "x": 338,
-  "y": 299
+  "t": 1792828245.339,
+  "x": 338.5389099121094,
+  "y": 519
  },
  {
   "type": "chapter",
-  "t": 1792824657.638,
+  "t": 1792828247.145,
   "title": "Smart Goal",
   "text": "Smart Goal reads the live temperature for my city and raises the goal on hot days."
  },
  {
   "type": "tap",
-  "t": 1792824658.239,
+  "t": 1792828247.751,
   "x": 345,
-  "y": 381
+  "y": 599
  },
  {
   "type": "swipe",
-  "t": 1792824661.676,
-  "from": {
-   "x": 206,
-   "y": 775
-  },
-  "to": {
-   "x": 206,
-   "y": 425
-  },
-  "ms": 2.4639999866485596
- },
- {
-  "type": "chapter",
-  "t": 1792824666.176,
-  "title": "Reminders and theme",
-  "text": "Reminder hours and quiet hours are set here, and an environment theme recolours the app."
- },
- {
-  "type": "tap",
-  "t": 1792824667.779,
-  "x": 206,
-  "y": 645
- },
- {
-  "type": "swipe",
-  "t": 1792824670.469,
+  "t": 1792828250.966,
   "from": {
    "x": 206,
    "y": 725
@@ -283,59 +258,110 @@
    "x": 206,
    "y": 475
   },
-  "ms": 2.303999900817871
- },
- {
-  "type": "tap",
-  "t": 1792824674.469,
-  "x": 206,
-  "y": 571
+  "ms": 1.6009998321533203
  },
  {
   "type": "chapter",
-  "t": 1792824676.761,
+  "t": 1792828254.371,
+  "title": "Reminders and theme",
+  "text": "Reminder hours and quiet hours are set here, and an environment theme recolours the app."
+ },
+ {
+  "type": "swipe",
+  "t": 1792828255.982,
+  "from": {
+   "x": 206,
+   "y": 665
+  },
+  "to": {
+   "x": 206,
+   "y": 535
+  },
+  "ms": 1.617999792098999
+ },
+ {
+  "type": "tap",
+  "t": 1792828258.204,
+  "x": 205.99480438232422,
+  "y": 802.5
+ },
+ {
+  "type": "swipe",
+  "t": 1792828260.632,
+  "from": {
+   "x": 206,
+   "y": 665
+  },
+  "to": {
+   "x": 206,
+   "y": 535
+  },
+  "ms": 1.6010000705718994
+ },
+ {
+  "type": "swipe",
+  "t": 1792828262.848,
+  "from": {
+   "x": 206,
+   "y": 665
+  },
+  "to": {
+   "x": 206,
+   "y": 535
+  },
+  "ms": 1.6029999256134033
+ },
+ {
+  "type": "tap",
+  "t": 1792828265.055,
+  "x": 206,
+  "y": 750.666748046875
+ },
+ {
+  "type": "chapter",
+  "t": 1792828267.263,
   "title": "Browse the history",
   "text": "The Hydration Log shows each day on a calendar and lists its drinks, ready to edit or delete."
  },
  {
   "type": "tap",
-  "t": 1792824679.363,
+  "t": 1792828269.866,
   "x": 318,
   "y": 676
  },
  {
   "type": "chapter",
-  "t": 1792824681.223,
+  "t": 1792828271.682,
   "title": "Edit an entry",
   "text": "I change the coffee to tea, which hydrates better, so the day rises from 825 ml to 900 ml."
  },
  {
   "type": "tap",
-  "t": 1792824682.427,
-  "x": 150,
+  "t": 1792828272.893,
+  "x": 151.0196876525879,
   "y": 746
  },
  {
   "type": "tap",
-  "t": 1792824683.675,
+  "t": 1792828274.116,
   "x": 206,
   "y": 869
  },
  {
   "type": "tap",
-  "t": 1792824686.127,
+  "t": 1792828276.531,
   "x": 28,
   "y": 29
  },
  {
   "type": "tap",
-  "t": 1792824687.733,
-  "x": 76,
-  "y": 870
+  "t": 1792828278.155,
+  "x": 76.66666603088379,
+  "y": 871
  },
  {
   "type": "swipe",
-  "t": 1792824689.977,
+  "t": 1792828280.381,
   "from": {
    "x": 206,
    "y": 100
@@ -344,16 +370,16 @@
    "x": 206,
    "y": 700
   },
-  "ms": 2.378000020980835
+  "ms": 1.6019999980926514
  },
  {
   "type": "chapter",
-  "t": 1792824692.959,
+  "t": 1792828282.587,
   "title": "Back to today",
   "text": "Back on Home, the ring and the coach’s tip reflect the updated day."
  },
  {
   "type": "end",
-  "t": 1792824698.214
+  "t": 1792828287.589
  }
 ]
