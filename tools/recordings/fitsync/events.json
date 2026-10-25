@@ -1,0 +1,392 @@
+[
+ {
+  "type": "start",
+  "t": 1792887733.959
+ },
+ {
+  "type": "chapter",
+  "t": 1792887733.959,
+  "title": "Log in",
+  "text": "The prototype opens on the FIT SYNC log-in screen: email and password, or Facebook and Gmail."
+ },
+ {
+  "type": "chapter",
+  "t": 1792887736.16,
+  "title": "Create an account",
+  "text": "New users sign up with a username, email, and password, then reach a welcome screen."
+ },
+ {
+  "type": "tap",
+  "t": 1792887736.16,
+  "x": 198,
+  "y": 766
+ },
+ {
+  "type": "tap",
+  "t": 1792887740.393,
+  "x": 196,
+  "y": 494
+ },
+ {
+  "type": "tap",
+  "t": 1792887744.219,
+  "x": 196,
+  "y": 528
+ },
+ {
+  "type": "chapter",
+  "t": 1792887746.736,
+  "title": "Home dashboard",
+  "text": "Home shows today's finished and in-progress workouts, time spent, vitals, and daily activity goals."
+ },
+ {
+  "type": "tap",
+  "t": 1792887748.938,
+  "x": 335,
+  "y": 93
+ },
+ {
+  "type": "tap",
+  "t": 1792887752.571,
+  "x": 336,
+  "y": 123
+ },
+ {
+  "type": "chapter",
+  "t": 1792887755.322,
+  "title": "Daily calendar",
+  "text": "The calendar lists past workouts in a history, opened with one tap."
+ },
+ {
+  "type": "tap",
+  "t": 1792887755.322,
+  "x": 51,
+  "y": 819
+ },
+ {
+  "type": "tap",
+  "t": 1792887757.549,
+  "x": 196,
+  "y": 498
+ },
+ {
+  "type": "tap",
+  "t": 1792887761.013,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "chapter",
+  "t": 1792887762.847,
+  "title": "Pick a workout",
+  "text": "The workouts tab lists exercise categories and videos, with a search bar for exercises."
+ },
+ {
+  "type": "tap",
+  "t": 1792887762.847,
+  "x": 123,
+  "y": 819
+ },
+ {
+  "type": "tap",
+  "t": 1792887765.081,
+  "x": 196,
+  "y": 514
+ },
+ {
+  "type": "tap",
+  "t": 1792887768.318,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887769.851,
+  "x": 123,
+  "y": 819
+ },
+ {
+  "type": "chapter",
+  "t": 1792887772.073,
+  "title": "Set up the exercise",
+  "text": "Each category has a set-up screen: choose the day and add exercises with the plus buttons."
+ },
+ {
+  "type": "tap",
+  "t": 1792887772.073,
+  "x": 165,
+  "y": 165
+ },
+ {
+  "type": "tap",
+  "t": 1792887775.701,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887777.421,
+  "x": 225,
+  "y": 165
+ },
+ {
+  "type": "tap",
+  "t": 1792887781.044,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887782.788,
+  "x": 285,
+  "y": 165
+ },
+ {
+  "type": "tap",
+  "t": 1792887786.412,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887788.148,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "chapter",
+  "t": 1792887789.984,
+  "title": "Track progress",
+  "text": "The stats tab shows a weekly overview, then one progress ring and chart for each workout type."
+ },
+ {
+  "type": "tap",
+  "t": 1792887789.984,
+  "x": 260,
+  "y": 819
+ },
+ {
+  "type": "tap",
+  "t": 1792887793.806,
+  "x": 45,
+  "y": 806
+ },
+ {
+  "type": "tap",
+  "t": 1792887796.024,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887797.646,
+  "x": 135,
+  "y": 806
+ },
+ {
+  "type": "tap",
+  "t": 1792887799.878,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887801.51,
+  "x": 236,
+  "y": 806
+ },
+ {
+  "type": "tap",
+  "t": 1792887803.746,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887805.376,
+  "x": 342,
+  "y": 806
+ },
+ {
+  "type": "tap",
+  "t": 1792887807.611,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887809.243,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "chapter",
+  "t": 1792887811.086,
+  "title": "Plan meals",
+  "text": "The meals tab shows a water reminder and a card for each meal. Each opens its ingredients, prep time, and calories."
+ },
+ {
+  "type": "tap",
+  "t": 1792887811.086,
+  "x": 330,
+  "y": 819
+ },
+ {
+  "type": "tap",
+  "t": 1792887814.704,
+  "x": 294,
+  "y": 330
+ },
+ {
+  "type": "swipe",
+  "t": 1792887817.147,
+  "from": {
+   "x": 196,
+   "y": 675
+  },
+  "to": {
+   "x": 196,
+   "y": 525
+  },
+  "ms": 1.0260000228881836
+ },
+ {
+  "type": "tap",
+  "t": 1792887820.074,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887821.796,
+  "x": 98,
+  "y": 330
+ },
+ {
+  "type": "swipe",
+  "t": 1792887824.227,
+  "from": {
+   "x": 196,
+   "y": 675
+  },
+  "to": {
+   "x": 196,
+   "y": 525
+  },
+  "ms": 1.0109999179840088
+ },
+ {
+  "type": "tap",
+  "t": 1792887827.14,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "chapter",
+  "t": 1792887828.859,
+  "title": "Track protein",
+  "text": "Expanding a meal card shows its nutritional values, and a bar chart tracks protein intake over the past few days."
+ },
+ {
+  "type": "tap",
+  "t": 1792887828.859,
+  "x": 98,
+  "y": 498
+ },
+ {
+  "type": "tap",
+  "t": 1792887830.682,
+  "x": 294,
+  "y": 498
+ },
+ {
+  "type": "swipe",
+  "t": 1792887832.504,
+  "from": {
+   "x": 196,
+   "y": 690
+  },
+  "to": {
+   "x": 196,
+   "y": 510
+  },
+  "ms": 1.0160000324249268
+ },
+ {
+  "type": "swipe",
+  "t": 1792887835.822,
+  "from": {
+   "x": 196,
+   "y": 310
+  },
+  "to": {
+   "x": 196,
+   "y": 490
+  },
+  "ms": 0.999000072479248
+ },
+ {
+  "type": "tap",
+  "t": 1792887837.322,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "chapter",
+  "t": 1792887839.145,
+  "title": "Profile and settings",
+  "text": "The settings tab opens the profile, where an edit form changes the username, email, phone number, and password."
+ },
+ {
+  "type": "tap",
+  "t": 1792887839.145,
+  "x": 190,
+  "y": 819
+ },
+ {
+  "type": "tap",
+  "t": 1792887842.97,
+  "x": 196,
+  "y": 246
+ },
+ {
+  "type": "tap",
+  "t": 1792887847.596,
+  "x": 38,
+  "y": 62
+ },
+ {
+  "type": "tap",
+  "t": 1792887849.426,
+  "x": 190,
+  "y": 819
+ },
+ {
+  "type": "chapter",
+  "t": 1792887852.451,
+  "title": "Log out and sign in",
+  "text": "Log out returns to the log-in screen, where Facebook and Gmail sign-in open their own forms."
+ },
+ {
+  "type": "tap",
+  "t": 1792887852.451,
+  "x": 198,
+  "y": 662
+ },
+ {
+  "type": "tap",
+  "t": 1792887856.277,
+  "x": 154,
+  "y": 650
+ },
+ {
+  "type": "tap",
+  "t": 1792887860.369,
+  "x": 196,
+  "y": 434
+ },
+ {
+  "type": "end",
+  "t": 1792887864.795
+ }
+]

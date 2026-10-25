@@ -30,7 +30,7 @@ Project videos may not play in Safari when you preview with this command; they p
 | `assets/` | Photos, screenshots, icons, certificates, and self-hosted fonts. |
 | `assets/videos/` | Each project's walkthrough video in two formats, `.hevc.mp4` (HEVC, which Safari needs) and `.mp4` (H.264, for browsers without HEVC), plus a poster image (`.jpg`). These are generated; don't edit them by hand. |
 | `tools/make_videos.py` | Builds the project videos from the screenshots in `assets/projects/` and the recordings in `tools/recordings/`. Not loaded by the website. |
-| `tools/recordings/` | Real screen recordings, with the Playwright scripts that made them: mAIstra (its web interface in the team's test harness, graded on Judge0), Bulk Buying (`preview_full.dart`), Hydro-Tracker and OpenEar (offline web builds, `preview_offline.dart`; Hydro-Tracker's AI coach ran locally from `coach-local.ts`). About 230 MB; not loaded by the website. |
+| `tools/recordings/` | Real screen recordings, with the Playwright scripts that made them: mAIstra (its web interface in the team's test harness, graded on Judge0), Bulk Buying (`preview_full.dart`), Hydro-Tracker and OpenEar (offline web builds, `preview_offline.dart`; Hydro-Tracker's AI coach ran locally from `coach-local.ts`), and FitSync (`record.mjs` plays the public Figma prototype through its own links). About 260 MB; not loaded by the website. |
 
 The font `.ttf` files are assets, not code to edit. The `OFL.txt` files contain their open-source licenses. Keep them with the fonts.
 

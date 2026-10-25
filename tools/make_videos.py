@@ -1130,16 +1130,16 @@ def meshunwarp():
 
 
 def fitsync():
-    frame_size(WIDE)
-    canvas = Window((1100, 785), bar="dark", title="FitSync  ·  Figma prototype map")
-    phone = Phone(733 / 340)
-    steps = [
-        S("fitsync-connections.png", "Map the prototype", "Figma links connect the meal plan to its breakfast, lunch, and dinner screens.", dev=canvas, focus=[(0.55, 0.33, 1.6)], dwell=2.8, cursor=False),
-        S("fitsync-meal-plan.png", "Plan meals", "Meal cards sit beside a water reminder and protein tracking.", dev=phone, enter="xfade", tap=(0.24, 0.47), hold=3.4),
-        S("fitsync-breakfast.png", "Open a meal", "Each meal expands into ingredients, prep time, servings, and calories.", dev=phone, enter="push", hold=3.6),
-        S("fitsync-cardio.png", "Track workouts", "The cardio screen pairs a progress ring with a performance chart.", dev=phone, enter="fade", hold=3.4),
-    ]
-    return Video("fitsync", "FitSync", "Figma prototype walkthrough", "Figma design screens  ·  not a shipped app", (58, 52, 38), steps, poster_step=1)
+    # A real recording of the Figma prototype playing in Figma's viewer
+    # (tools/recordings/fitsync). It is a design, not a built app.
+    frame_size(SQUARE)
+    phone = Phone(852 / 393)
+    return PhoneRecording(
+        "fitsync", "FitSync", "Figma prototype, played through",
+        "The prototype's own links  ·  a design, not a shipped app",
+        (58, 52, 38), ROOT / "tools" / "recordings" / "fitsync", phone,
+        poster_chapter=2,
+    )
 
 
 # Student Grade Prediction: charts from the notebook on a paper card.

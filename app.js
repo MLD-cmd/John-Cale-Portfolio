@@ -701,9 +701,9 @@ const projectTemplates = {
     stack:
       "Figma, using reusable components and prototype links between screens.",
     learning:
-      "In the prototype, the meal overview links to the breakfast, lunch, and dinner details. Workout screens present exercise categories and progress, while the account screens cover sign-in and profile settings.",
+      "The prototype connects the whole app: a log-in and sign-up flow, a home dashboard, a calendar, workout set-up screens, progress charts for each workout type, meal cards that open their details, and a profile with an edit form.",
     footer:
-      "About the video: it moves through selected screens and the meal-planning connections. It does not yet cover the complete prototype.",
+      "About the video: it plays the Figma prototype through its own links, from log-in to profile. It is a design, so the data on screen is sample content.",
     designUrl:
       "https://www.figma.com/design/jcp04A19r5D7r49CBZZpa7/FitSync-by-Nombrado?node-id=0-1",
     linkLabel: "View Figma design",
@@ -712,35 +712,74 @@ const projectTemplates = {
       hevc: "assets/videos/fitsync.hevc.mp4",
       hevcCodecs: "hvc1.1.6.L120.90",
       poster: "assets/videos/fitsync.jpg",
-      duration: 16.6,
+      aspect: "1080 / 1080",
+      duration: 131.6,
       chapters: [
         {
           time: 0,
-          title: "Map the prototype",
+          title: "Log in",
           caption:
-            "Figma links connect the meal plan to its breakfast, lunch, and dinner screens.",
-          screen: "assets/projects/fitsync-connections.png",
+            "The prototype opens on the FIT SYNC log-in screen: email and password, or Facebook and Gmail.",
         },
         {
-          time: 4.7,
+          time: 2.6,
+          title: "Create an account",
+          caption:
+            "New users sign up with a username, email, and password, then reach a welcome screen.",
+        },
+        {
+          time: 13.2,
+          title: "Home dashboard",
+          caption:
+            "Home shows today's finished and in-progress workouts, time spent, vitals, and daily activity goals.",
+        },
+        {
+          time: 21.8,
+          title: "Daily calendar",
+          caption:
+            "The calendar lists past workouts in a history, opened with one tap.",
+        },
+        {
+          time: 29.3,
+          title: "Pick a workout",
+          caption:
+            "The workouts tab lists exercise categories and videos, with a search bar for exercises.",
+        },
+        {
+          time: 38.5,
+          title: "Set up the exercise",
+          caption:
+            "Each category has a set-up screen: choose the day and add exercises with the plus buttons.",
+        },
+        {
+          time: 56.4,
+          title: "Track progress",
+          caption:
+            "The stats tab shows a weekly overview, then one progress ring and chart for each workout type.",
+        },
+        {
+          time: 77.5,
           title: "Plan meals",
           caption:
-            "Meal cards sit beside a water reminder and protein tracking.",
-          screen: "assets/projects/fitsync-meal-plan.png",
+            "The meals tab shows a water reminder and a card for each meal. Each opens its ingredients, prep time, and calories.",
         },
         {
-          time: 8.6,
-          title: "Open a meal",
+          time: 95.3,
+          title: "Track protein",
           caption:
-            "Each meal expands into ingredients, prep time, servings, and calories.",
-          screen: "assets/projects/fitsync-breakfast.png",
+            "Expanding a meal card shows its nutritional values, and a bar chart tracks protein intake over the past few days.",
         },
         {
-          time: 12.6,
-          title: "Track workouts",
+          time: 105.6,
+          title: "Profile and settings",
           caption:
-            "The cardio screen pairs a progress ring with a performance chart.",
-          screen: "assets/projects/fitsync-cardio.png",
+            "The settings tab opens the profile, where an edit form changes the username, email, phone number, and password.",
+        },
+        {
+          time: 118.9,
+          title: "Log out and sign in",
+          caption:
+            "Log out returns to the log-in screen, where Facebook and Gmail sign-in open their own forms.",
         },
       ],
     },
