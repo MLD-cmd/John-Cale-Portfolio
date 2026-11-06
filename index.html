@@ -628,7 +628,7 @@
           </p>
           <div class="about-links">
             <a class="text-link" href="#coursework">My coursework</a
-            ><a class="text-link" href="#certificates">Certificate</a>
+            ><a class="text-link" href="#certificates">Certificates</a>
           </div>
         </section>
         <section
@@ -998,13 +998,51 @@
           <span class="section-note">Certificates &amp; assessments</span>
         </div>
         <h2 id="certificates-title">
-          Certificate<span class="accent">.</span>
+          Certificates<span class="accent">.</span>
         </h2>
+        <div class="certificate-list">
         <article class="certificate-card">
           <button
             class="certificate-preview"
             type="button"
-            data-certificate
+            data-certificate="datacamp"
+            aria-haspopup="dialog"
+            aria-label="View my DataCamp AI Engineer certificate"
+          >
+            <img
+              src="assets/certificates/datacamp-ai-engineer-certificate.png"
+              alt="Preview of my DataCamp AI Engineer for Developers Associate certificate"
+              width="1400"
+              height="805"
+              loading="lazy"
+            /><span>Click to view certificate </span>
+          </button>
+          <div class="certificate-copy">
+            <p class="eyebrow accent">DataCamp</p>
+            <h3>AI Engineer for Developers <span>Associate</span></h3>
+            <p class="certificate-date">
+              Certified: <time datetime="2026-11-06">November 6, 2026</time>
+            </p>
+            <p>
+              Professional certification for developers building applications
+              with AI and large language models. Credential ID
+              AIEDA0012590713793.
+            </p>
+            <button
+              class="text-link"
+              type="button"
+              data-certificate="datacamp"
+              aria-haspopup="dialog"
+            >
+              View certificate
+            </button>
+          </div>
+        </article>
+        <article class="certificate-card">
+          <button
+            class="certificate-preview"
+            type="button"
+            data-certificate="topcit"
             aria-haspopup="dialog"
             aria-label="View my TOPCIT certificate"
           >
@@ -1030,13 +1068,14 @@
             <button
               class="text-link"
               type="button"
-              data-certificate
+              data-certificate="topcit"
               aria-haspopup="dialog"
             >
               View certificate
             </button>
           </div>
         </article>
+        </div>
       </section>
 
       <section

@@ -837,9 +837,40 @@ dialog.addEventListener("close", () => {
 
 const certificateDialog = document.querySelector("#certificate-dialog");
 let lastCertificateTrigger = null;
+const certificates = {
+  topcit: {
+    title: "TOPCIT · Level 2",
+    image: "assets/certificates/topcit-certificate.png",
+    alt: "Full TOPCIT certificate for John Cale Nombrado",
+    width: 848,
+    height: 1200,
+    pdf: "assets/certificates/topcit-certificate.pdf",
+    download: "John-Cale-Nombrado-TOPCIT.pdf",
+  },
+  datacamp: {
+    title: "DataCamp · AI Engineer Associate",
+    image: "assets/certificates/datacamp-ai-engineer-certificate.png",
+    alt: "Full DataCamp AI Engineer for Developers Associate certificate for John Cale Nombrado",
+    width: 1400,
+    height: 805,
+    pdf: "assets/certificates/datacamp-ai-engineer-certificate.pdf",
+    download: "John-Cale-Nombrado-DataCamp-AI-Engineer.pdf",
+  },
+};
 document.querySelectorAll("[data-certificate]").forEach((trigger) => {
   trigger.addEventListener("click", () => {
     lastCertificateTrigger = trigger;
+    const cert = certificates[trigger.dataset.certificate] ?? certificates.topcit;
+    certificateDialog.querySelector("#certificate-dialog-title").textContent =
+      cert.title;
+    const full = certificateDialog.querySelector(".certificate-full");
+    full.src = cert.image;
+    full.alt = cert.alt;
+    full.width = cert.width;
+    full.height = cert.height;
+    const download = certificateDialog.querySelector(".certificate-download");
+    download.href = cert.pdf;
+    download.download = cert.download;
     certificateDialog.showModal();
     certificateDialog
       .querySelector(".certificate-close")
