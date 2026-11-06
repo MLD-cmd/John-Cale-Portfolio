@@ -716,6 +716,7 @@
   --paper-grain: rgba(230, 238, 221, 0.025);
   --board-hydro: #1d302e;
   --board-openear: #273027;
+  --board-pulso: #232b33;
   --board-design: #302c23;
 }
 :root[data-theme="light"] {
@@ -732,6 +733,7 @@
   --paper-grain: rgba(59, 72, 45, 0.035);
   --board-hydro: #e5eeea;
   --board-openear: #e8ecdf;
+  --board-pulso: #e4e8ec;
   --board-design: #eee7da;
 }
 .editorial-portfolio {
@@ -1872,6 +1874,33 @@ body:has(dialog[open]) .hero-name-scene * {
 .editorial-portfolio .project-grid > .small-project + .small-project {
   border-bottom: 0;
   padding-bottom: 0;
+}
+
+/* Pulso takes a full row so the two smaller projects stay paired below it. */
+.editorial-portfolio .project-grid > .pulso-feature {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 36px;
+}
+.editorial-portfolio .pulso-feature .app-gallery {
+  flex: 1.2 1 0;
+  min-width: 0;
+  background: var(--board-pulso);
+}
+.editorial-portfolio .pulso-feature .featured-content {
+  flex: 1 1 0;
+  min-width: 0;
+}
+@media (max-width: 650px) {
+  .editorial-portfolio .project-grid > .pulso-feature {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .editorial-portfolio .pulso-feature .app-gallery {
+    flex: none;
+  }
 }
 
 /* Editorial typography: one clean sans, semibold for headings. */

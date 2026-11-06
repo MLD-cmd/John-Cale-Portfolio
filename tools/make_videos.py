@@ -1072,6 +1072,19 @@ def openear():
     )
 
 
+def pulso():
+    # A real recording of the web build on our team's live Supabase project
+    # (tools/recordings/pulso), signed in to my account.
+    frame_size(SQUARE)
+    phone = Phone(844 / 390)
+    return PhoneRecording(
+        "pulso", "Pulso", "Screen recording",
+        "The real app on our live Supabase project  ·  stories need a phone",
+        (34, 44, 62), ROOT / "tools" / "recordings" / "pulso", phone,
+        poster_chapter=3,
+    )
+
+
 def maistra():
     # A real screen recording of the web app (tools/recordings/maistra).
     frame_size(WIDE)
@@ -1288,6 +1301,7 @@ PROJECTS = {
     "bulk": bulk,
     "maistra": maistra,
     "openear": openear,
+    "pulso": pulso,
     "mesh": meshunwarp,
     "ml": ml,
     "fitsync": fitsync,

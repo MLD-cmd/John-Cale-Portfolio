@@ -30,7 +30,7 @@ Project videos may not play in Safari when you preview with this command; they p
 | `assets/` | Photos, screenshots, icons, certificates, and self-hosted fonts. |
 | `assets/videos/` | Each project's walkthrough video in two formats, `.hevc.mp4` (HEVC, which Safari needs) and `.mp4` (H.264, for browsers without HEVC), plus a poster image (`.jpg`). These are generated; don't edit them by hand. |
 | `tools/make_videos.py` | Builds the project videos from the screenshots in `assets/projects/` and the recordings in `tools/recordings/`. Not loaded by the website. |
-| `tools/recordings/` | Real screen recordings, with the Playwright scripts that made them: mAIstra (its web interface in the team's test harness, graded on Judge0), Bulk Buying (`preview_full.dart`), Hydro-Tracker and OpenEar (offline web builds, `preview_offline.dart`; Hydro-Tracker's AI coach ran locally from `coach-local.ts`), and FitSync (`record.mjs` plays the public Figma prototype through its own links). About 260 MB; not loaded by the website. |
+| `tools/recordings/` | Real screen recordings, with the Playwright scripts that made them: mAIstra (its web interface in the team's test harness, graded on Judge0), Bulk Buying (`preview_full.dart`), Hydro-Tracker and OpenEar (offline web builds, `preview_offline.dart`; Hydro-Tracker's AI coach ran locally from `coach-local.ts`), Pulso (its web build on our team's live Supabase project; `sign-in.spec.ts` opens a window for me to sign in first, and `record.spec.ts` really posts to that database), and FitSync (`record.mjs` plays the public Figma prototype through its own links). About 260 MB; not loaded by the website. |
 
 The font `.ttf` files are assets, not code to edit. The `OFL.txt` files contain their open-source licenses. Keep them with the fonts.
 
@@ -40,7 +40,7 @@ The font `.ttf` files are assets, not code to edit. The `OFL.txt` files contain 
 - **Change skills:** search for `Technical skills` in index.html.
 - **Change a project card:** search for its name in index.html.
 - **Change its full preview:** search for its name in app.js under `projectTemplates`.
-- **Change a project video:** edit that project's steps (screens, taps, captions, timing) in `tools/make_videos.py`, then run `python3 tools/make_videos.py hydro` (or `bulk`, `maistra`, `openear`, `mesh`, `ml`, `fitsync`). It needs a Mac (it uses Apple's HEVC encoder), Python with Pillow and NumPy, and ffmpeg. Paste the `video: { ... }` entry it prints over the old one in app.js, so the step buttons match the new video.
+- **Change a project video:** edit that project's steps (screens, taps, captions, timing) in `tools/make_videos.py`, then run `python3 tools/make_videos.py hydro` (or `bulk`, `maistra`, `openear`, `pulso`, `mesh`, `ml`, `fitsync`). It needs a Mac (it uses Apple's HEVC encoder), Python with Pillow and NumPy, and ffmpeg. Paste the `video: { ... }` entry it prints over the old one in app.js, so the step buttons match the new video.
 - **Change colors:** search for `--bg` and `data-theme` in editorial.css. There are separate light and dark values.
 - **Change fonts:** search for `Editorial typography` near the end of editorial.css.
 - **Change the mascot:** search for `name-mascot` in index.html; animation rules start at the comment about the gripping mascot in editorial.css. To speed up or slow down the entrance, change `--grab`, `--pull` and `--pull-time` at the top of those rules; the hop and wave follow automatically. `--sit` sets when it sits down with its laptop and starts typing.

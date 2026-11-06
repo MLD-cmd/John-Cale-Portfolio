@@ -1,0 +1,106 @@
+[
+ {
+  "type": "start",
+  "t": 1793435504.964
+ },
+ {
+  "type": "chapter",
+  "t": 1793435505.009,
+  "title": "Set up my profile",
+  "text": "A new account starts with just an email; Edit Profile sets a display name, a username, and a bio."
+ },
+ {
+  "type": "tap",
+  "t": 1793435506.814,
+  "x": 195,
+  "y": 221
+ },
+ {
+  "type": "tap",
+  "t": 1793435509.026,
+  "x": 195,
+  "y": 288
+ },
+ {
+  "type": "tap",
+  "t": 1793435510.841,
+  "x": 195,
+  "y": 384
+ },
+ {
+  "type": "tap",
+  "t": 1793435512.71,
+  "x": 195,
+  "y": 479
+ },
+ {
+  "type": "tap",
+  "t": 1793435516.213,
+  "x": 343,
+  "y": 28
+ },
+ {
+  "type": "chapter",
+  "t": 1793435519.279,
+  "title": "Share a photo post",
+  "text": "A post holds one or more photos and a caption; the image goes to Supabase Storage."
+ },
+ {
+  "type": "tap",
+  "t": 1793435520.481,
+  "x": 195,
+  "y": 814
+ },
+ {
+  "type": "tap",
+  "t": 1793435522.498,
+  "x": 195,
+  "y": 126
+ },
+ {
+  "type": "tap",
+  "t": 1793435525.222,
+  "x": 195,
+  "y": 290
+ },
+ {
+  "type": "tap",
+  "t": 1793435529.019,
+  "x": 195,
+  "y": 433
+ },
+ {
+  "type": "chapter",
+  "t": 1793435533.603,
+  "title": "Open the post",
+  "text": "My profile counts the new post; tapping it opens the post with its comments."
+ },
+ {
+  "type": "tap",
+  "t": 1793435535.606,
+  "x": 65,
+  "y": 385
+ },
+ {
+  "type": "chapter",
+  "t": 1793435538.714,
+  "title": "Like and comment",
+  "text": "Likes and comments are saved to the database and update on every open screen in real time."
+ },
+ {
+  "type": "tap",
+  "t": 1793435539.924,
+  "x": 36,
+  "y": 528
+ },
+ {
+  "type": "tap",
+  "t": 1793435541.831,
+  "x": 170,
+  "y": 800
+ },
+ {
+  "type": "end",
+  "t": 1793435547.77
+ }
+]

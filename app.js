@@ -625,6 +625,56 @@ const projectTemplates = {
       ],
     },
   },
+  pulso: {
+    title: "Pulso",
+    number: "07",
+    label: "Group mobile application project / Team of four",
+    description:
+      "A Flutter community social app with photo posts, stories, follows, and realtime likes and comments.",
+    idea: "Pulso, Filipino for “pulse”, is a community social app. Users share photo posts and short-lived stories, follow each other, and switch between a For You feed and a Following feed, with likes, comments, bookmarks, and notifications keeping them up to date.",
+    contribution:
+      "I built Pulso with three teammates. I wrote the sign-up, log-in, session, and log-out flow with its unit tests, and built the app’s five main screens: the feed, explore, post detail, profile with saved posts, and profile editing. I then implemented likes, comments, and follows with realtime updates and paginated loading, with tests for each, and later fixed our post model to match the live database, added story reactions, and fixed profile editing.",
+    stack:
+      "Flutter and Dart for the app, Riverpod for state, Supabase for accounts, the database, image storage, and realtime updates, and mocktail for tests.",
+    learning:
+      "Each feature has a repository that talks to Supabase and a controller the screens watch through Riverpod. Likes, comments, and follows subscribe to Supabase realtime, so counts update on every open screen without a refresh, and the feed loads in pages as you scroll. The project’s test suite has 132 passing tests.",
+    footer:
+      "About the video: it is a screen recording of the real app built for the web, signed in to my account on our team’s live Supabase project. The post image is one I made for the demo, and my email is blurred in the first seconds. Stories need a phone’s file access, so they are not shown.",
+    video: {
+      src: "assets/videos/pulso.mp4",
+      hevc: "assets/videos/pulso.hevc.mp4",
+      hevcCodecs: "hvc1.1.6.L120.90",
+      poster: "assets/videos/pulso.jpg",
+      aspect: "1080 / 1080",
+      duration: 43.6,
+      chapters: [
+        {
+          time: 0,
+          title: "Set up my profile",
+          caption:
+            "A new account starts with just an email; Edit Profile sets a display name, a username, and a bio.",
+        },
+        {
+          time: 14.7,
+          title: "Share a photo post",
+          caption:
+            "A post holds one or more photos and a caption; the image goes to Supabase Storage.",
+        },
+        {
+          time: 29,
+          title: "Open the post",
+          caption:
+            "My profile counts the new post; tapping it opens the post with its comments.",
+        },
+        {
+          time: 34.1,
+          title: "Like and comment",
+          caption:
+            "Likes and comments are saved to the database and update on every open screen in real time.",
+        },
+      ],
+    },
+  },
   ml: {
     title: "Student Grade Prediction",
     number: "06",
